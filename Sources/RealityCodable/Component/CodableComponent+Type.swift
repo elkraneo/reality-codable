@@ -1,6 +1,6 @@
 import RealityKit
 
-extension IdentifiableComponent.ComponentType: RawRepresentable {
+extension CodableComponent.ComponentType: RawRepresentable {
   public var rawValue: Component.Type {
     switch self {
       case .anchoring:
@@ -92,7 +92,7 @@ extension IdentifiableComponent.ComponentType: RawRepresentable {
   }
 }
 
-extension IdentifiableComponent.ComponentType: CustomStringConvertible {
+extension CodableComponent.ComponentType: CustomStringConvertible {
   public var description: String {
     switch self {
       case .anchoring:
@@ -146,7 +146,7 @@ extension IdentifiableComponent.ComponentType: CustomStringConvertible {
   }
 }
 
-extension IdentifiableComponent.ComponentType {
+extension CodableComponent.ComponentType {
   public var help: String {
     switch self {
       case .anchoring:

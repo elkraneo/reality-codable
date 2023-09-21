@@ -1,6 +1,6 @@
 import RealityKit
 
-public struct IdentifiableComponent: Codable {
+public struct CodableComponent: Codable {
 
   public let componentType: ComponentType
   private(set) public var properties: ComponentProperties
@@ -218,8 +218,8 @@ public struct IdentifiableComponent: Codable {
 
 //MARK: -
 
-extension IdentifiableComponent: Equatable, Hashable {
-  public static func == (lhs: IdentifiableComponent, rhs: IdentifiableComponent) -> Bool {
+extension CodableComponent: Equatable, Hashable {
+  public static func == (lhs: CodableComponent, rhs: CodableComponent) -> Bool {
     lhs.componentType == rhs.componentType
   }
 

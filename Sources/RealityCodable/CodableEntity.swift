@@ -72,11 +72,11 @@ public struct CodableEntity: Equatable, Identifiable, Hashable, Codable {
   }
 
   public struct Components: Equatable, Hashable, Codable {
-    public let components: [IdentifiableComponent]
+    public let components: [CodableComponent]
     public var count: Int { components.count }
 
     public init(
-      components: [IdentifiableComponent]
+      components: [CodableComponent]
     ) {
       self.components = components
     }
