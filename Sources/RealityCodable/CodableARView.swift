@@ -2,10 +2,10 @@ import Foundation
 import RealityKit
 
 public struct CodableScene: Codable, Equatable {
-  public let anchors: [CodableEntity]
+  public let anchors: [_CodableEntity]
 
   public init(
-    anchors: [CodableEntity]
+    anchors: [_CodableEntity]
   ) {
     self.anchors = anchors
   }
@@ -29,7 +29,7 @@ public struct CodableScene: Codable, Equatable {
 
     public init(
       _ arView: RealityKit.ARView,
-      anchors: [CodableEntity],
+      anchors: [_CodableEntity],
       contentScaleFactor: CGFloat
     ) {
       self.scene = CodableScene(anchors: anchors)

@@ -11,16 +11,14 @@ import Foundation
 ///
 /// - Note: This method assumes that each node has a unique ID.
 ///
-public func findCodableEntity(root: CodableEntity, targetID: UInt64) -> CodableEntity? {
+public func findCodableEntity(root: _CodableEntity, targetID: UInt64) -> _CodableEntity? {
   if root.id == targetID {
     return root
   }
 
-  if let children = root.children {
-    for child in children {
-      if let foundNode = findCodableEntity(root: child, targetID: targetID) {
-        return foundNode
-      }
+  for child in root.children {
+    if let foundNode = findCodableEntity(root: child, targetID: targetID) {
+      return foundNode
     }
   }
 
