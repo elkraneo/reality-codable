@@ -1,8 +1,8 @@
 import Foundation
 import RealityKit
 
-public struct IdentifiableEntity: Equatable, Identifiable, Hashable, Codable {
-  public static func == (lhs: IdentifiableEntity, rhs: IdentifiableEntity) -> Bool {
+public struct CodableEntity: Equatable, Identifiable, Hashable, Codable {
+  public static func == (lhs: CodableEntity, rhs: CodableEntity) -> Bool {
     lhs.id == rhs.id
   }
 
@@ -18,7 +18,7 @@ public struct IdentifiableEntity: Equatable, Identifiable, Hashable, Codable {
   public var availableAnimations: [CodableAnimationResource]
   public var name: String?
   public let entityType: EntityType
-  public var children: [IdentifiableEntity]? {
+  public var children: [CodableEntity]? {
     hierarhy.children.isEmpty ? nil : hierarhy.children
   }
   public var state: State
@@ -60,10 +60,10 @@ public struct IdentifiableEntity: Equatable, Identifiable, Hashable, Codable {
 
     public let parentID: UInt64?
     public var childrenCount: Int { children.count }
-    public var children: [IdentifiableEntity]
+    public var children: [CodableEntity]
 
     public init(
-      children: [IdentifiableEntity],
+      children: [CodableEntity],
       parentID: UInt64?
     ) {
       self.children = children
@@ -84,9 +84,9 @@ public struct IdentifiableEntity: Equatable, Identifiable, Hashable, Codable {
 
   public init(
     _ entity: RealityKit.Entity,
-    state: IdentifiableEntity.State,
-    hierarhy: IdentifiableEntity.Hierarhy,
-    components: IdentifiableEntity.Components
+    state: CodableEntity.State,
+    hierarhy: CodableEntity.Hierarhy,
+    components: CodableEntity.Components
   ) {
     #if !os(visionOS)
       if let anchor = entity as? AnchorEntity {
@@ -106,7 +106,7 @@ public struct IdentifiableEntity: Equatable, Identifiable, Hashable, Codable {
   }
 }
 
-extension IdentifiableEntity.EntityType: RawRepresentable {
+extension CodableEntity.EntityType: RawRepresentable {
   public var rawValue: Entity.Type {
     switch self {
       case .anchor:
@@ -163,7 +163,7 @@ extension IdentifiableEntity.EntityType: RawRepresentable {
   }
 }
 
-extension IdentifiableEntity.EntityType: CustomStringConvertible {
+extension CodableEntity.EntityType: CustomStringConvertible {
   public var description: String {
     switch self {
       case .anchor:
@@ -188,7 +188,7 @@ extension IdentifiableEntity.EntityType: CustomStringConvertible {
   }
 }
 
-extension IdentifiableEntity.EntityType {
+extension CodableEntity.EntityType {
   public var symbol: String {
     switch self {
       case .anchor:
@@ -213,7 +213,7 @@ extension IdentifiableEntity.EntityType {
   }
 }
 
-extension IdentifiableEntity.EntityType {
+extension CodableEntity.EntityType {
   public var help: String {
     switch self {
       case .anchor:
