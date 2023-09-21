@@ -31,7 +31,7 @@ public class _CodableEntity: Codable {
   // var synchronization: SynchronizationComponent?
   // var transform: Transform
 
-  init(
+  public init(
     _ entity: RealityKit.Entity
   ) {
     self.accessibilityDescription = entity.accessibilityDescription
