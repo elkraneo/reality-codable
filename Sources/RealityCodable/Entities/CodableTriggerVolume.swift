@@ -1,5 +1,6 @@
 import Foundation
+import RealityKit
 
-public struct CodableTriggerVolume: Codable {
+public class CodableTriggerVolume: _CodableEntity {
   // var collision: CollisionComponent?
 }

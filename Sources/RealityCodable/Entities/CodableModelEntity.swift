@@ -1,6 +1,7 @@
 import Foundation
+import RealityKit
 
-public struct CodableModelEntity: Codable {
+public class CodableModelEntity: _CodableEntity {
   // var collision: CollisionComponent?
   // var debugModel: ModelDebugOptionsComponent?
   var jointNames: [String]
@@ -9,4 +10,17 @@ public struct CodableModelEntity: Codable {
   // var modelDebugOptions: ModelDebugOptionsComponent?
   // var physicsBody: PhysicsBodyComponent?
   // var physicsMotion: PhysicsMotionComponent?
+
+  public init(
+    _ modelEntity: RealityKit.ModelEntity
+  ) {
+    self.jointNames = modelEntity.jointNames
+    super.init(modelEntity)
+  }
+
+  required init(
+    from decoder: Decoder
+  ) throws {
+    fatalError("init(from:) has not been implemented")
+  }
 }

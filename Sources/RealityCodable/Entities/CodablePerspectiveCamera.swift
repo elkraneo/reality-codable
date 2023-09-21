@@ -1,5 +1,6 @@
 import Foundation
+import RealityKit
 
-public struct CodablePerspectiveCamera: Codable {
+public class CodablePerspectiveCamera: _CodableEntity {
   // var camera: PerspectiveCameraComponent
 }
