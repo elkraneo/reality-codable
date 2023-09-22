@@ -32,6 +32,7 @@ public class _CodableEntity: Codable {
   // var scene: Scene?
   // var spatialAudio: SpatialAudioComponent?
   // var synchronization: SynchronizationComponent?
+  internal(set) public var title: String
   // var transform: Transform
 
   public init(
@@ -40,7 +41,7 @@ public class _CodableEntity: Codable {
     self.accessibilityDescription = entity.accessibilityDescription
     self.accessibilityLabel = entity.accessibilityLabel
     self.availableAnimations = entity.availableAnimations.compactMap(CodableAnimationResource.init)
-    self.children = entity.children.map(_CodableEntity.init)
+    self.children = entity.children.map(\.encoded)
     self.components = []
     //FIXME: self.components = Set(arrayLiteral: Array(entity.components).map(_CodableComponent.init))
     self.id = entity.id
@@ -54,6 +55,7 @@ public class _CodableEntity: Codable {
     self.orientation = CodableQuaternion(entity.orientation)
     self.position = entity.position
     self.scale = entity.scale
+    self.title = "Entity"
   }
 }
 

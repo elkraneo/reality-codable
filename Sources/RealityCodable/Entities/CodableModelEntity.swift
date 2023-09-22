@@ -16,6 +16,7 @@ public class CodableModelEntity: _CodableEntity {
   ) {
     self.jointNames = modelEntity.jointNames
     super.init(modelEntity)
+    self.title = "ModelEntity"
   }
 
   required init(

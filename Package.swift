@@ -18,24 +18,21 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(url: "https://github.com/apple/swift-docc-symbolkit.git", branch: "main")
+    .package(url: "https://github.com/elkraneo/reality-symbols", branch: "main")
   ],
   targets: [
     // Targets are the basic building blocks of a package, defining a module or a test suite.
     // Targets can depend on other targets in this package and products from dependencies.
     .target(
-      name: "RealityCodable"
+      name: "RealityCodable",
+      dependencies: [
+        .product(name: "RealitySymbols", package: "reality-symbols")
+      ]
     ),
     .testTarget(
       name: "RealityCodableTests",
       dependencies: [
-        "RealityCodable",
-        .product(name: "SymbolKit", package: "swift-docc-symbolkit"),
-      ],
-      resources: [
-        .copy("Resources/xrOS/"),
-        .copy("Resources/iOS/"),
-        .copy("Resources/macOS/"),
+        "RealityCodable"
       ]
     ),
   ]

@@ -10,6 +10,7 @@ public class CodableAnchorEntity: _CodableEntity {
   ) {
     self.anchorIdentifier = anchorEntity.anchorIdentifier
     super.init(anchorEntity)
+    self.title = "AnchorEntity"
   }
 
   required init(
