@@ -2,7 +2,7 @@ import Foundation
 import RealityKit
 import RealitySymbols
 
-public class CodableAnchorEntity: _CodableEntity {
+public class CodableAnchorEntity: CodableEntity {
   var anchorIdentifier: UUID?
   // var anchoring: AnchoringComponent
 

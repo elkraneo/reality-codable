@@ -2,7 +2,7 @@ import Foundation
 import RealityKit
 import RealitySymbols
 
-public class CodablePerspectiveCamera: _CodableEntity {
+public class CodablePerspectiveCamera: CodableEntity {
   // var camera: PerspectiveCameraComponent
 
   public override init(

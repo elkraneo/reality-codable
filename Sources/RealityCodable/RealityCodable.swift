@@ -3,7 +3,7 @@ import RealitySymbols
 import OSLog
 
 extension Entity {
-  public var encoded: _CodableEntity {
+  public var encoded: CodableEntity {
     let logger = Logger(subsystem: "io.elkraneo.reality-codable", category: "Entity.encoded")
   
     for entityType in EntityType.allCases {
@@ -34,11 +34,11 @@ extension Entity {
 #elseif os(macOS)
 
   extension EntityType {
-    func makeCodable(with entity: RealityKit.Entity) -> _CodableEntity {
+    func makeCodable(with entity: RealityKit.Entity) -> CodableEntity {
       switch self {
         //TODO:
         case .entity:
-          return _CodableEntity(entity, entityType: self)
+          return CodableEntity(entity, entityType: self)
         case .modelEntity:
           return CodableModelEntity((entity as! ModelEntity), entityType: self)
         case .perspectiveCamera:
@@ -50,12 +50,12 @@ extension Entity {
 #elseif os(visionOS)
 
   extension EntityType {
-    func makeCodable(with entity: RealityKit.Entity) -> _CodableEntity {
+    func makeCodable(with entity: RealityKit.Entity) -> CodableEntity {
       switch self {
         case .anchorEntity:
           return CodableAnchorEntity((entity as! AnchorEntity), entityType: self)
         case .entity:
-          return _CodableEntity(entity, entityType: self)
+          return CodableEntity(entity, entityType: self)
         case .modelEntity:
           return CodableModelEntity((entity as! ModelEntity), entityType: self)
         case .perspectiveCamera:

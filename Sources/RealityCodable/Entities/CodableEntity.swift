@@ -1,258 +1,139 @@
 import Foundation
 import RealityKit
+import RealitySymbols
 
-public struct CodableEntity: Equatable, Identifiable, Hashable, Codable {
-  public static func == (lhs: CodableEntity, rhs: CodableEntity) -> Bool {
-    lhs.id == rhs.id
-  }
-
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(self.id)
-  }
-
-  public var id: UInt64
-  public let isAccessibilityElement: Bool
-  public let accessibilityLabel: String?
+public class CodableEntity: Codable, Identifiable {
   public let accessibilityDescription: String?
-  public var anchorIdentifier: UUID?
-  public var availableAnimations: [CodableAnimationResource]
-  public var name: String?
-  public let entityType: EntityType
-  public var children: [CodableEntity]? {
-    hierarhy.children.isEmpty ? nil : hierarhy.children
+  public let accessibilityLabel: String?
+  // var ambientAudio: AmbientAudioComponent?
+  // var anchor: (HasAnchoring)?
+  public let availableAnimations: [CodableAnimationResource]
+  // var bindableValues: BindableValuesReference
+  // var channelAudio: ChannelAudioComponent?
+  // var characterController: CharacterControllerComponent?
+  // var characterControllerState: CharacterControllerStateComponent?
+  public let children: [CodableEntity]
+  public var optionalChildren: [CodableEntity]? {
+    children.isEmpty ? nil : children
   }
-  public var state: State
-  public var hierarhy: Hierarhy
-  public var components: Components
+  public let components: Set<_CodableComponent>
+  public let id: UInt64
+  public let isAccessibilityElement: Bool
+  public let isActive: Bool
+  public let isAnchored: Bool
+  public let isEnabled: Bool
+  public let isEnabledInHierarchy: Bool
+  public let isOwner: Bool
+  public let name: String
+  // var parameters: Entity.ParameterSet
+  public let parentID: UInt64?
 
-  public enum EntityType: CaseIterable, Codable {
-    case anchor
-    // case bodyTrackedEntity
-    case directionalLight
-    case entity
-    case model
-    case perspectiveCamera
-    case pointLight
-    case spotLight
-    case triggerVolume
-  }
-
-  public struct State: Equatable, Hashable, Codable {
-    public let isEnabled: Bool
-    public let isEnabledInHierarchy: Bool
-    public let isActive: Bool
-    public let isAnchored: Bool
-
-    public init(
-      isEnabled: Bool,
-      isEnabledInHierarchy: Bool,
-      isActive: Bool,
-      isAnchored: Bool
-    ) {
-      self.isEnabled = isEnabled
-      self.isEnabledInHierarchy = isEnabledInHierarchy
-      self.isActive = isActive
-      self.isAnchored = isAnchored
-    }
-  }
-
-  public struct Hierarhy: Codable {
-
-    public let parentID: UInt64?
-    public var childrenCount: Int { children.count }
-    public var children: [CodableEntity]
-
-    public init(
-      children: [CodableEntity],
-      parentID: UInt64?
-    ) {
-      self.children = children
-      self.parentID = parentID
-    }
-  }
-
-  public struct Components: Equatable, Hashable, Codable {
-    public let components: [CodableComponent]
-    public var count: Int { components.count }
-
-    public init(
-      components: [CodableComponent]
-    ) {
-      self.components = components
-    }
-  }
+  // var scene: Scene?
+  // var spatialAudio: SpatialAudioComponent?
+  // var synchronization: SynchronizationComponent?
+  public let entityTypeDescription: String
+  public let entityTypeSystemImage: String
 
   public init(
     _ entity: RealityKit.Entity,
-    state: CodableEntity.State,
-    hierarhy: CodableEntity.Hierarhy,
-    components: CodableEntity.Components
+    entityType: EntityType
   ) {
-    #if !os(visionOS)
-      if let anchor = entity as? AnchorEntity {
-        self.anchorIdentifier = anchor.anchorIdentifier
-      }
-    #endif
+    self.accessibilityDescription = entity.accessibilityDescription
+    self.accessibilityLabel = entity.accessibilityLabel
+    self.availableAnimations = entity.availableAnimations.compactMap(CodableAnimationResource.init)
+    self.children = entity.children.map(\.encoded)
+    self.components = encodeComponents(entity.components)  //FIXME: make the API closer to encoding children entities
     self.id = entity.id
     self.isAccessibilityElement = entity.isAccessibilityElement
-    self.accessibilityLabel = entity.accessibilityLabel
-    self.accessibilityDescription = entity.accessibilityDescription
-    self.availableAnimations = entity.availableAnimations.compactMap(CodableAnimationResource.init)
+    self.isActive = entity.isActive
+    self.isAnchored = entity.isAnchored
+    self.isEnabled = entity.isEnabled
+    self.isEnabledInHierarchy = entity.isEnabledInHierarchy
+    self.isOwner = entity.isOwner
     self.name = entity.name
-    self.entityType = .init(rawValue: Swift.type(of: entity)) ?? .entity
-    self.state = state
-    self.hierarhy = hierarhy
-    self.components = components
+    self.parentID = entity.parent?.id
+    //MARK: EntityType extracted
+    self.entityTypeDescription = entityType.description
+    self.entityTypeSystemImage = entityType.systemImage
   }
 }
 
-extension CodableEntity.EntityType: RawRepresentable {
-  public var rawValue: Entity.Type {
-    switch self {
-      case .anchor:
-        return AnchorEntity.self
-      // case .bodyTrackedEntity:
-      //     return AnchorEntity.self
-
-      case .directionalLight:
-        #if !os(visionOS)
-          return DirectionalLight.self
-        #endif
-        fatalError()
-
-      case .entity:
-        return Entity.self
-
-      case .model:
-        return ModelEntity.self
-
-      case .perspectiveCamera:
-        return PerspectiveCamera.self
-
-      case .pointLight:
-        #if !os(visionOS)
-          return PointLight.self
-        #endif
-        fatalError()
-
-      case .spotLight:
-        #if !os(visionOS)
-          return SpotLight.self
-        #endif
-        fatalError()
-
-      case .triggerVolume:
-        return TriggerVolume.self
-    }
-  }
-
-  public init?(
-    rawValue: Entity.Type
-  ) {
-    for entityType in Self.allCases {
-      if entityType.rawValue == rawValue {
-        self = entityType
-        return
-      } else {
-        self = .entity
-        return
-      }
-    }
-    //TODO: handle unknown/custom entities
-    fatalError("Unknown Entity.Type")
+extension CodableEntity: Equatable {
+  public static func == (lhs: CodableEntity, rhs: CodableEntity) -> Bool {
+    lhs.id == rhs.id
   }
 }
 
-extension CodableEntity.EntityType: CustomStringConvertible {
-  public var description: String {
-    switch self {
-      case .anchor:
-        return "AnchorEntity"
-      // case .bodyTrackedEntity:
-      //     return "BodyTrackedEntity"
-      case .directionalLight:
-        return "DirectionalLight"
-      case .entity:
-        return "Entity"
-      case .model:
-        return "ModelEntity"
-      case .perspectiveCamera:
-        return "PerspectiveCamera"
-      case .pointLight:
-        return "PointLight"
-      case .spotLight:
-        return "SpotLight"
-      case .triggerVolume:
-        return "TriggerVolume"
+//MARK: - Find
+
+/// Performs a depth-first search in a tree-like structure represented by `IdentifiableEntity`.
+///
+/// - Parameters:
+///   - root: The root node of the tree.
+///   - targetID: The target ID to search for.
+/// - Returns: The `IdentifiableEntity` with the matching ID, or `nil` if not found.
+///
+/// - Complexity: O(n), where n is the number of nodes in the tree.
+///
+/// - Note: This method assumes that each node has a unique ID.
+///
+public func findCodableEntity(root: CodableEntity, targetID: UInt64) -> CodableEntity? {
+  if root.id == targetID {
+    return root
+  }
+
+  for child in root.children {
+    if let foundNode = findCodableEntity(root: child, targetID: targetID) {
+      return foundNode
     }
   }
+
+  return nil
 }
 
-extension CodableEntity.EntityType {
-  public var symbol: String {
-    switch self {
-      case .anchor:
-        return "arrow.down.to.line"
-      // case .bodyTrackedEntity:
-      //     return "figure.walk"
-      case .directionalLight:
-        return "sun.max"
-      case .entity:
-        return "move.3d"
-      case .model:
-        return "cube"
-      case .perspectiveCamera:
-        return "camera"
-      case .pointLight:
-        return "lightbulb.led"
-      case .spotLight:
-        return "lamp.desk"
-      case .triggerVolume:
-        return "cube.transparent"
-    }
-  }
-}
+//MARK: -
 
-extension CodableEntity.EntityType {
-  public var help: String {
-    switch self {
-      case .anchor:
-        return """
-          An anchor that tethers entities to a scene.
-          """
-      // case .bodyTrackedEntity:
-      //     return """
-      //         An entity used to animate a virtual character in an AR scene by tracking a real person.
-      //         """
-      case .directionalLight:
-        return """
-          An entity that casts a virtual light in a particular direction.
-          """
-      case .entity:
-        return """
-          An element of a RealityKit scene to which you attach components that provide appearance and behavior characteristics for the entity.
-          """
-      case .model:
-        return """
-          A representation of a physical object that RealityKit renders and optionally simulates.
-          """
-      case .perspectiveCamera:
-        return """
-          A virtual camera that establishes the rendering perspective.
-          """
-      case .pointLight:
-        return """
-          An entity that produces an omnidirectional light for virtual objects.
-          """
-      case .spotLight:
-        return """
-          An entity that illuminates virtual content in a cone-shaped volume.
-          """
-      case .triggerVolume:
-        return
-          """
-          An invisible 3D shape that detects when objects enter or exit a given region of space.
-          """
-    }
-  }
-}
+//TODO: restore help
+//extension CodableEntity.EntityType {
+//  public var help: String {
+//    switch self {
+//      case .anchor:
+//        return """
+//          An anchor that tethers entities to a scene.
+//          """
+//      // case .bodyTrackedEntity:
+//      //     return """
+//      //         An entity used to animate a virtual character in an AR scene by tracking a real person.
+//      //         """
+//      case .directionalLight:
+//        return """
+//          An entity that casts a virtual light in a particular direction.
+//          """
+//      case .entity:
+//        return """
+//          An element of a RealityKit scene to which you attach components that provide appearance and behavior characteristics for the entity.
+//          """
+//      case .model:
+//        return """
+//          A representation of a physical object that RealityKit renders and optionally simulates.
+//          """
+//      case .perspectiveCamera:
+//        return """
+//          A virtual camera that establishes the rendering perspective.
+//          """
+//      case .pointLight:
+//        return """
+//          An entity that produces an omnidirectional light for virtual objects.
+//          """
+//      case .spotLight:
+//        return """
+//          An entity that illuminates virtual content in a cone-shaped volume.
+//          """
+//      case .triggerVolume:
+//        return
+//          """
+//          An invisible 3D shape that detects when objects enter or exit a given region of space.
+//          """
+//    }
+//  }
+//}

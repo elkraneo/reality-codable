@@ -2,7 +2,7 @@ import Foundation
 import RealityKit
 import RealitySymbols
 
-public class CodableUnknown: _CodableEntity {
+public class CodableUnknown: CodableEntity {
 
   public override init(
     _ entity: Entity,

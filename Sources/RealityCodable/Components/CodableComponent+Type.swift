@@ -1,6 +1,7 @@
 import RealityKit
 
 extension CodableComponent.ComponentType: RawRepresentable {
+  @available(*, deprecated, message: "Use reality-codable package instead")
   public var rawValue: Component.Type {
     switch self {
       case .anchoring:

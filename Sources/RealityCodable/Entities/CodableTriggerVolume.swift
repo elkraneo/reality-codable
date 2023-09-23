@@ -2,7 +2,7 @@ import Foundation
 import RealityKit
 import RealitySymbols
 
-public class CodableTriggerVolume: _CodableEntity {
+public class CodableTriggerVolume: CodableEntity {
   // var collision: CollisionComponent?
 
   public override init(

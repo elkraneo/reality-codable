@@ -2,7 +2,7 @@ import Foundation
 import RealityKit
 import RealitySymbols
 
-public class CodableModelEntity: _CodableEntity {
+public class CodableModelEntity: CodableEntity {
   // var collision: CollisionComponent?
   // var debugModel: ModelDebugOptionsComponent?
   var jointNames: [String]
