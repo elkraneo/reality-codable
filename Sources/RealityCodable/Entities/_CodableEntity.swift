@@ -1,5 +1,6 @@
 import Foundation
 import RealityKit
+import RealitySymbols
 
 public class _CodableEntity: Codable {
   internal(set) public var accessibilityDescription: String?
@@ -32,11 +33,12 @@ public class _CodableEntity: Codable {
   // var scene: Scene?
   // var spatialAudio: SpatialAudioComponent?
   // var synchronization: SynchronizationComponent?
-  internal(set) public var title: String
+  internal(set) public var entityType: EntityType
   // var transform: Transform
 
   public init(
-    _ entity: RealityKit.Entity
+    _ entity: RealityKit.Entity,
+    entityType: EntityType
   ) {
     self.accessibilityDescription = entity.accessibilityDescription
     self.accessibilityLabel = entity.accessibilityLabel
@@ -55,7 +57,7 @@ public class _CodableEntity: Codable {
     self.orientation = CodableQuaternion(entity.orientation)
     self.position = entity.position
     self.scale = entity.scale
-    self.title = "Entity"
+    self.entityType = entityType
   }
 }
 

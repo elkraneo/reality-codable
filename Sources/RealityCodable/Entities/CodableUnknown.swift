@@ -1,13 +1,16 @@
 import Foundation
 import RealityKit
+import RealitySymbols
 
 public class CodableUnknown: _CodableEntity {
-  
-  public override init(_ entity: Entity) {
-    super.init(entity)
-    self.title = "\(type(of: entity))"
+
+  public override init(
+    _ entity: Entity,
+    entityType: EntityType
+  ) {
+    super.init(entity, entityType: entityType)
   }
-  
+
   required init(
     from decoder: Decoder
   ) throws {

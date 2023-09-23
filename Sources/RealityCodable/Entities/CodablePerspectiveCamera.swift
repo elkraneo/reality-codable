@@ -1,14 +1,17 @@
 import Foundation
 import RealityKit
+import RealitySymbols
 
 public class CodablePerspectiveCamera: _CodableEntity {
   // var camera: PerspectiveCameraComponent
-  
-  public override init(_ entity: Entity) {
-    super.init(entity)
-    self.title = "PerspectiveCamera"
+
+  public override init(
+    _ entity: Entity,
+    entityType: EntityType
+  ) {
+    super.init(entity, entityType: entityType)
   }
-  
+
   required init(
     from decoder: Decoder
   ) throws {

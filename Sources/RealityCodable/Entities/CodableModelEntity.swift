@@ -1,5 +1,6 @@
 import Foundation
 import RealityKit
+import RealitySymbols
 
 public class CodableModelEntity: _CodableEntity {
   // var collision: CollisionComponent?
@@ -12,11 +13,11 @@ public class CodableModelEntity: _CodableEntity {
   // var physicsMotion: PhysicsMotionComponent?
 
   public init(
-    _ modelEntity: RealityKit.ModelEntity
+    _ modelEntity: RealityKit.ModelEntity,
+    entityType: EntityType
   ) {
     self.jointNames = modelEntity.jointNames
-    super.init(modelEntity)
-    self.title = "ModelEntity"
+    super.init(modelEntity, entityType: entityType)
   }
 
   required init(

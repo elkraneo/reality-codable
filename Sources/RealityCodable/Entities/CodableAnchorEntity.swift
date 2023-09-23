@@ -1,16 +1,17 @@
 import Foundation
 import RealityKit
+import RealitySymbols
 
 public class CodableAnchorEntity: _CodableEntity {
   var anchorIdentifier: UUID?
   // var anchoring: AnchoringComponent
 
   public init(
-    _ anchorEntity: RealityKit.AnchorEntity
+    _ anchorEntity: RealityKit.AnchorEntity,
+    entityType: EntityType
   ) {
     self.anchorIdentifier = anchorEntity.anchorIdentifier
-    super.init(anchorEntity)
-    self.title = "AnchorEntity"
+    super.init(anchorEntity, entityType: entityType)
   }
 
   required init(

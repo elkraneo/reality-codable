@@ -1,14 +1,17 @@
 import Foundation
 import RealityKit
+import RealitySymbols
 
 public class CodableTriggerVolume: _CodableEntity {
   // var collision: CollisionComponent?
-  
-  public override init(_ entity: Entity) {
-    super.init(entity)
-    self.title = "TriggerVolume"
+
+  public override init(
+    _ entity: Entity,
+    entityType: EntityType
+  ) {
+    super.init(entity, entityType: entityType)
   }
-  
+
   required init(
     from decoder: Decoder
   ) throws {
