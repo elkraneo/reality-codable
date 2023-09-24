@@ -1,0 +1,17 @@
+import Foundation
+import RealityKit
+
+#elseif os(visionOS)
+
+% import json
+% with open('/Users/cristian/Developer/external/RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/xrOS/Processed/Components.json') as file:
+% data = json.load(file)
+% for component in data:
+struct Codable${component["name"]}: Codable {
+  % for property in component["properties"]:
+  ${property}
+  %end
+}
+
+% end
+#endif

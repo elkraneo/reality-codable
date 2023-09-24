@@ -18,7 +18,9 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(url: "https://github.com/elkraneo/reality-symbols", branch: "main")
+    //.package(url: "https://github.com/elkraneo/reality-symbols", branch: "main")
+    .package(path: "../../../../external/RealitySymbols/source/reality-symbols")
+
   ],
   targets: [
     // Targets are the basic building blocks of a package, defining a module or a test suite.
