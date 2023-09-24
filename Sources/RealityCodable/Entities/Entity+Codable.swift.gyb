@@ -1,0 +1,44 @@
+% warning = "This file was automatically generated and should not be edited."
+// ${warning}
+
+import Foundation
+import RealityKit
+% import json
+
+#if os(iOS)
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/iOS/Processed/Entities.json') as file:
+% data = json.load(file)
+% for entity in data:
+public struct Codable${entity["name"]}: Codable {
+  % for property in entity["properties"]:
+  public ${property}
+  %end
+}
+
+%end
+#elseif os(macOS)
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/macOS/Processed/Entities.json') as file:
+% data = json.load(file)
+% for entity in data:
+public struct Codable${entity["name"]}: Codable {
+  % for property in entity["properties"]:
+  public ${property}
+  %end
+}
+
+%end
+#elseif os(visionOS)
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/xrOS/Processed/Entities.json') as file:
+% data = json.load(file)
+% for entity in data:
+public struct Codable${entity["name"]}: Codable {
+  % for property in entity["properties"]:
+  public ${property}
+  %end
+}
+
+% end
+#endif
