@@ -1,15 +1,42 @@
+% warning = "This file was automatically generated and should not be edited."
+// ${warning}
+
 import Foundation
 import RealityKit
-
-#elseif os(visionOS)
-
 % import json
-% with open('/Users/cristian/Developer/external/RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/xrOS/Processed/Components.json') as file:
+
+#if os(iOS)
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/iOS/Processed/Components.json') as file:
 % data = json.load(file)
 % for component in data:
-struct Codable${component["name"]}: Codable {
+public struct Codable${component["name"]}: Codable {
   % for property in component["properties"]:
-  ${property}
+  public ${property}
+  %end
+}
+
+%end
+#elseif os(macOS)
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/macOS/Processed/Components.json') as file:
+% data = json.load(file)
+% for component in data:
+public struct Codable${component["name"]}: Codable {
+  % for property in component["properties"]:
+  public ${property}
+  %end
+}
+
+%end
+#elseif os(visionOS)
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/xrOS/Processed/Components.json') as file:
+% data = json.load(file)
+% for component in data:
+public struct Codable${component["name"]}: Codable {
+  % for property in component["properties"]:
+  public ${property}
   %end
 }
 

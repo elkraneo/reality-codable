@@ -1,208 +1,413 @@
+// This file was automatically generated and should not be edited.
+
 import Foundation
 import RealityKit
 
+#if os(iOS)
+
+public struct CodableAccessibilityComponent: Codable {
+  public var customActions: [LocalizedStringResource]
+  public var customContent: [AccessibilityComponent.CustomContent]
+  public var isAccessibilityElement: Bool
+  public var label: LocalizedStringResource?
+  public var systemActions: AccessibilityComponent.SupportedActions
+  public var value: LocalizedStringResource?
+}
+
+public struct CodableAnchoringComponent: Codable {
+  public let target: AnchoringComponent.Target
+}
+
+public struct CodableBodyTrackingComponent: Codable {
+  public var isPaused: Bool
+  public var target: BodyTrackingComponent.Target
+}
+
+public struct CodableCharacterControllerComponent: Codable {
+  public var collisionFilter: CollisionFilter
+  public var height: Float
+  public var radius: Float
+  public var skinWidth: Float
+  public var slopeLimit: Float
+  public var stepLimit: Float
+  public var upVector: SIMD3<Float>
+}
+
+public struct CodableCharacterControllerStateComponent: Codable {
+  public let isOnGround: Bool
+  public let velocity: SIMD3<Float>
+}
+
+public struct CodableCollisionComponent: Codable {
+  public var filter: CollisionFilter
+  public var mode: CollisionComponent.Mode
+  public var shapes: [ShapeResource]
+}
+
+public struct CodableDirectionalLightComponent: Codable {
+  public var intensity: Float
+  public var isRealWorldProxy: Bool
+}
+
+public struct CodableModelComponent: Codable {
+  public var boundsMargin: Float
+  public var materials: [Material]
+  public var mesh: MeshResource
+}
+
+public struct CodableModelDebugOptionsComponent: Codable {
+  public var visualizationMode: ModelDebugOptionsComponent.VisualizationMode
+}
+
+public struct CodablePerspectiveCameraComponent: Codable {
+  public var far: Float
+  public var fieldOfViewInDegrees: Float
+  public var near: Float
+}
+
+public struct CodablePhysicsBodyComponent: Codable {
+  public var isContinuousCollisionDetectionEnabled: Bool
+  public var isRotationLocked: (x: Bool, y: Bool, z: Bool)
+  public var isTranslationLocked: (x: Bool, y: Bool, z: Bool)
+  public var massProperties: PhysicsMassProperties
+  public var material: PhysicsMaterialResource
+  public var mode: PhysicsBodyMode
+}
+
+public struct CodablePhysicsMotionComponent: Codable {
+  public var angularVelocity: SIMD3<Float>
+  public var linearVelocity: SIMD3<Float>
+}
+
+public struct CodablePointLightComponent: Codable {
+  public var attenuationRadius: Float
+  public var intensity: Float
+}
+
+public struct CodableSceneUnderstandingComponent: Codable {
+  public var entityType: SceneUnderstandingComponent.EntityType?
+}
+
+public struct CodableSpotLightComponent: Codable {
+  public var attenuationRadius: Float
+  public var innerAngleInDegrees: Float
+  public var intensity: Float
+  public var outerAngleInDegrees: Float
+}
+
+public struct CodableSynchronizationComponent: Codable {
+  public var identifier: UInt64
+  public var isOwner: Bool
+  public var ownershipTransferMode: SynchronizationComponent.OwnershipTransferMode
+}
+
+public struct CodableTransform: Codable {
+  public var hashValue: Int
+  public var matrix: float4x4
+  public var rotation: simd_quatf
+  public var scale: SIMD3<Float>
+  public var translation: SIMD3<Float>
+}
+
+#elseif os(macOS)
+
+public struct CodableAccessibilityComponent: Codable {
+  public var customActions: [LocalizedStringResource]
+  public var customContent: [AccessibilityComponent.CustomContent]
+  public var isAccessibilityElement: Bool
+  public var label: LocalizedStringResource?
+  public var systemActions: AccessibilityComponent.SupportedActions
+  public var value: LocalizedStringResource?
+}
+
+public struct CodableAnchoringComponent: Codable {
+  public let target: AnchoringComponent.Target
+}
+
+public struct CodableCharacterControllerComponent: Codable {
+  public var collisionFilter: CollisionFilter
+  public var height: Float
+  public var radius: Float
+  public var skinWidth: Float
+  public var slopeLimit: Float
+  public var stepLimit: Float
+  public var upVector: SIMD3<Float>
+}
+
+public struct CodableCharacterControllerStateComponent: Codable {
+  public let isOnGround: Bool
+  public let velocity: SIMD3<Float>
+}
+
+public struct CodableCollisionComponent: Codable {
+  public var filter: CollisionFilter
+  public var mode: CollisionComponent.Mode
+  public var shapes: [ShapeResource]
+}
+
+public struct CodableDirectionalLightComponent: Codable {
+  public var intensity: Float
+  public var isRealWorldProxy: Bool
+}
+
+public struct CodableModelComponent: Codable {
+  public var boundsMargin: Float
+  public var materials: [Material]
+  public var mesh: MeshResource
+}
+
+public struct CodableModelDebugOptionsComponent: Codable {
+  public var visualizationMode: ModelDebugOptionsComponent.VisualizationMode
+}
+
+public struct CodablePerspectiveCameraComponent: Codable {
+  public var far: Float
+  public var fieldOfViewInDegrees: Float
+  public var near: Float
+}
+
+public struct CodablePhysicsBodyComponent: Codable {
+  public var isContinuousCollisionDetectionEnabled: Bool
+  public var isRotationLocked: (x: Bool, y: Bool, z: Bool)
+  public var isTranslationLocked: (x: Bool, y: Bool, z: Bool)
+  public var massProperties: PhysicsMassProperties
+  public var material: PhysicsMaterialResource
+  public var mode: PhysicsBodyMode
+}
+
+public struct CodablePhysicsMotionComponent: Codable {
+  public var angularVelocity: SIMD3<Float>
+  public var linearVelocity: SIMD3<Float>
+}
+
+public struct CodablePointLightComponent: Codable {
+  public var attenuationRadius: Float
+  public var intensity: Float
+}
+
+public struct CodableSpotLightComponent: Codable {
+  public var attenuationRadius: Float
+  public var innerAngleInDegrees: Float
+  public var intensity: Float
+  public var outerAngleInDegrees: Float
+}
+
+public struct CodableSynchronizationComponent: Codable {
+  public var identifier: UInt64
+  public var isOwner: Bool
+  public var ownershipTransferMode: SynchronizationComponent.OwnershipTransferMode
+}
+
+public struct CodableTransform: Codable {
+  public var hashValue: Int
+  public var matrix: float4x4
+  public var rotation: simd_quatf
+  public var scale: SIMD3<Float>
+  public var translation: SIMD3<Float>
+}
+
 #elseif os(visionOS)
 
-struct CodableAccessibilityComponent: Codable {
-  var customActions: [LocalizedStringResource]
-  var customContent: [AccessibilityComponent.CustomContent]
-  var isAccessibilityElement: Bool
-  var label: LocalizedStringResource?
-  var systemActions: AccessibilityComponent.SupportedActions
-  var value: LocalizedStringResource?
+public struct CodableAccessibilityComponent: Codable {
+  public var customActions: [LocalizedStringResource]
+  public var customContent: [AccessibilityComponent.CustomContent]
+  public var isAccessibilityElement: Bool
+  public var label: LocalizedStringResource?
+  public var systemActions: AccessibilityComponent.SupportedActions
+  public var value: LocalizedStringResource?
 }
 
-struct CodableAdaptiveResolutionComponent: Codable {
-  var pixelsPerMeter: Float
+public struct CodableAdaptiveResolutionComponent: Codable {
+  public var pixelsPerMeter: Float
 }
 
-struct CodableAmbientAudioComponent: Codable {
-  var gain: Audio.Decibel
-  var hashValue: Int
+public struct CodableAmbientAudioComponent: Codable {
+  public var gain: Audio.Decibel
+  public var hashValue: Int
 }
 
-struct CodableAnchoringComponent: Codable {
-  let target: AnchoringComponent.Target
-  var trackingMode: AnchoringComponent.TrackingMode
+public struct CodableAnchoringComponent: Codable {
+  public let target: AnchoringComponent.Target
+  public var trackingMode: AnchoringComponent.TrackingMode
 }
 
-struct CodableAudioMixGroupsComponent: Codable {
-  var hashValue: Int
+public struct CodableAudioMixGroupsComponent: Codable {
+  public var hashValue: Int
 }
 
-struct CodableChannelAudioComponent: Codable {
-  var gain: Audio.Decibel
-  var hashValue: Int
+public struct CodableChannelAudioComponent: Codable {
+  public var gain: Audio.Decibel
+  public var hashValue: Int
 }
 
-struct CodableCharacterControllerComponent: Codable {
-  var collisionFilter: CollisionFilter
-  var height: Float
-  var radius: Float
-  var skinWidth: Float
-  var slopeLimit: Float
-  var stepLimit: Float
-  var upVector: SIMD3<Float>
+public struct CodableCharacterControllerComponent: Codable {
+  public var collisionFilter: CollisionFilter
+  public var height: Float
+  public var radius: Float
+  public var skinWidth: Float
+  public var slopeLimit: Float
+  public var stepLimit: Float
+  public var upVector: SIMD3<Float>
 }
 
-struct CodableCharacterControllerStateComponent: Codable {
-  let isOnGround: Bool
-  let velocity: SIMD3<Float>
+public struct CodableCharacterControllerStateComponent: Codable {
+  public let isOnGround: Bool
+  public let velocity: SIMD3<Float>
 }
 
-struct CodableCollisionComponent: Codable {
-  var collisionOptions: CollisionComponent.CollisionOptions
-  var filter: CollisionFilter
-  var isStatic: Bool
-  var mode: CollisionComponent.Mode
-  var shapes: [ShapeResource]
+public struct CodableCollisionComponent: Codable {
+  public var collisionOptions: CollisionComponent.CollisionOptions
+  public var filter: CollisionFilter
+  public var isStatic: Bool
+  public var mode: CollisionComponent.Mode
+  public var shapes: [ShapeResource]
 }
 
-struct CodableGroundingShadowComponent: Codable {
-  var castsShadow: Bool
+public struct CodableGroundingShadowComponent: Codable {
+  public var castsShadow: Bool
 }
 
-struct CodableHoverEffectComponent: Codable {
+public struct CodableHoverEffectComponent: Codable {
 }
 
-struct CodableImageBasedLightComponent: Codable {
-  var inheritsRotation: Bool
-  var intensityExponent: Float
-  var source: ImageBasedLightComponent.Source
+public struct CodableImageBasedLightComponent: Codable {
+  public var inheritsRotation: Bool
+  public var intensityExponent: Float
+  public var source: ImageBasedLightComponent.Source
 }
 
-struct CodableImageBasedLightReceiverComponent: Codable {
-  var imageBasedLight: Entity
+public struct CodableImageBasedLightReceiverComponent: Codable {
+  public var imageBasedLight: Entity
 }
 
-struct CodableInputTargetComponent: Codable {
-  var allowedInputTypes: InputTargetComponent.InputType
-  var isEnabled: Bool
+public struct CodableInputTargetComponent: Codable {
+  public var allowedInputTypes: InputTargetComponent.InputType
+  public var isEnabled: Bool
 }
 
-struct CodableModelComponent: Codable {
-  var boundsMargin: Float
-  var materials: [Material]
-  var mesh: MeshResource
+public struct CodableModelComponent: Codable {
+  public var boundsMargin: Float
+  public var materials: [Material]
+  public var mesh: MeshResource
 }
 
-struct CodableModelDebugOptionsComponent: Codable {
-  var visualizationMode: ModelDebugOptionsComponent.VisualizationMode
+public struct CodableModelDebugOptionsComponent: Codable {
+  public var visualizationMode: ModelDebugOptionsComponent.VisualizationMode
 }
 
-struct CodableModelSortGroupComponent: Codable {
-  var group: ModelSortGroup
-  var order: Int32
+public struct CodableModelSortGroupComponent: Codable {
+  public var group: ModelSortGroup
+  public var order: Int32
 }
 
-struct CodableOpacityComponent: Codable {
-  var opacity: Float
+public struct CodableOpacityComponent: Codable {
+  public var opacity: Float
 }
 
-struct CodableParticleEmitterComponent: Codable {
-  var birthDirection: ParticleEmitterComponent.BirthDirection
-  var birthLocation: ParticleEmitterComponent.BirthLocation
-  var burstCount: Int
-  var burstCountVariation: Int
-  var emissionDirection: SIMD3<Float>
-  var emitterShape: ParticleEmitterComponent.EmitterShape
-  var emitterShapeSize: SIMD3<Float>
-  var fieldSimulationSpace: ParticleEmitterComponent.SimulationSpace
-  var isEmitting: Bool
-  var mainEmitter: ParticleEmitterComponent.ParticleEmitter
-  var particlesInheritTransform: Bool
-  var radialAmount: Float
-  var simulationState: ParticleEmitterComponent.SimulationState
-  var spawnInheritsParentColor: Bool
-  var spawnOccasion: ParticleEmitterComponent.SpawnOccasion
-  var spawnSpreadFactor: Float
-  var spawnSpreadFactorVariation: Float
-  var spawnVelocityFactor: Float
-  var spawnedEmitter: ParticleEmitterComponent.ParticleEmitter?
-  var speed: Float
-  var speedVariation: Float
-  var torusInnerRadius: Float
+public struct CodableParticleEmitterComponent: Codable {
+  public var birthDirection: ParticleEmitterComponent.BirthDirection
+  public var birthLocation: ParticleEmitterComponent.BirthLocation
+  public var burstCount: Int
+  public var burstCountVariation: Int
+  public var emissionDirection: SIMD3<Float>
+  public var emitterShape: ParticleEmitterComponent.EmitterShape
+  public var emitterShapeSize: SIMD3<Float>
+  public var fieldSimulationSpace: ParticleEmitterComponent.SimulationSpace
+  public var isEmitting: Bool
+  public var mainEmitter: ParticleEmitterComponent.ParticleEmitter
+  public var particlesInheritTransform: Bool
+  public var radialAmount: Float
+  public var simulationState: ParticleEmitterComponent.SimulationState
+  public var spawnInheritsParentColor: Bool
+  public var spawnOccasion: ParticleEmitterComponent.SpawnOccasion
+  public var spawnSpreadFactor: Float
+  public var spawnSpreadFactorVariation: Float
+  public var spawnVelocityFactor: Float
+  public var spawnedEmitter: ParticleEmitterComponent.ParticleEmitter?
+  public var speed: Float
+  public var speedVariation: Float
+  public var torusInnerRadius: Float
 }
 
-struct CodablePerspectiveCameraComponent: Codable {
-  var far: Float
-  var fieldOfViewInDegrees: Float
-  var near: Float
+public struct CodablePerspectiveCameraComponent: Codable {
+  public var far: Float
+  public var fieldOfViewInDegrees: Float
+  public var near: Float
 }
 
-struct CodablePhysicsBodyComponent: Codable {
-  var angularDamping: Float
-  var isAffectedByGravity: Bool
-  var isContinuousCollisionDetectionEnabled: Bool
-  var isRotationLocked: (x: Bool, y: Bool, z: Bool)
-  var isTranslationLocked: (x: Bool, y: Bool, z: Bool)
-  var linearDamping: Float
-  var massProperties: PhysicsMassProperties
-  var material: PhysicsMaterialResource
-  var mode: PhysicsBodyMode
+public struct CodablePhysicsBodyComponent: Codable {
+  public var angularDamping: Float
+  public var isAffectedByGravity: Bool
+  public var isContinuousCollisionDetectionEnabled: Bool
+  public var isRotationLocked: (x: Bool, y: Bool, z: Bool)
+  public var isTranslationLocked: (x: Bool, y: Bool, z: Bool)
+  public var linearDamping: Float
+  public var massProperties: PhysicsMassProperties
+  public var material: PhysicsMaterialResource
+  public var mode: PhysicsBodyMode
 }
 
-struct CodablePhysicsMotionComponent: Codable {
-  var angularVelocity: SIMD3<Float>
-  var linearVelocity: SIMD3<Float>
+public struct CodablePhysicsMotionComponent: Codable {
+  public var angularVelocity: SIMD3<Float>
+  public var linearVelocity: SIMD3<Float>
 }
 
-struct CodablePhysicsSimulationComponent: Codable {
-  var clock: CMClockOrTimebase
-  var collisionOptions: PhysicsSimulationComponent.CollisionOptions
-  var gravity: SIMD3<Float>
+public struct CodablePhysicsSimulationComponent: Codable {
+  public var clock: CMClockOrTimebase
+  public var collisionOptions: PhysicsSimulationComponent.CollisionOptions
+  public var gravity: SIMD3<Float>
 }
 
-struct CodablePortalComponent: Codable {
-  var clippingPlane: PortalComponent.ClippingPlane?
-  var targetEntity: Entity?
+public struct CodablePortalComponent: Codable {
+  public var clippingPlane: PortalComponent.ClippingPlane?
+  public var targetEntity: Entity?
 }
 
-struct CodableSceneUnderstandingComponent: Codable {
-  var entityType: SceneUnderstandingComponent.EntityType?
-  var origin: SceneUnderstandingComponent.Origin
+public struct CodableSceneUnderstandingComponent: Codable {
+  public var entityType: SceneUnderstandingComponent.EntityType?
+  public var origin: SceneUnderstandingComponent.Origin
 }
 
-struct CodableSpatialAudioComponent: Codable {
-  var directLevel: Audio.Decibel
-  var directivity: Audio.Directivity
-  var gain: Audio.Decibel
-  var hashValue: Int
-  var reverbLevel: Audio.Decibel
+public struct CodableSpatialAudioComponent: Codable {
+  public var directLevel: Audio.Decibel
+  public var directivity: Audio.Directivity
+  public var gain: Audio.Decibel
+  public var hashValue: Int
+  public var reverbLevel: Audio.Decibel
 }
 
-struct CodableSynchronizationComponent: Codable {
-  var identifier: UInt64
-  var isOwner: Bool
-  var ownershipTransferMode: SynchronizationComponent.OwnershipTransferMode
+public struct CodableSynchronizationComponent: Codable {
+  public var identifier: UInt64
+  public var isOwner: Bool
+  public var ownershipTransferMode: SynchronizationComponent.OwnershipTransferMode
 }
 
-struct CodableTextComponent: Codable {
-  var backgroundColor: CGColor?
-  var cornerRadius: Float
-  var size: CGSize
-  var text: AttributedString?
+public struct CodableTextComponent: Codable {
+  public var backgroundColor: CGColor?
+  public var cornerRadius: Float
+  public var size: CGSize
+  public var text: AttributedString?
 }
 
-struct CodableTransform: Codable {
-  var hashValue: Int
-  var matrix: float4x4
-  var rotation: simd_quatf
-  var scale: SIMD3<Float>
-  var translation: SIMD3<Float>
+public struct CodableTransform: Codable {
+  public var hashValue: Int
+  public var matrix: float4x4
+  public var rotation: simd_quatf
+  public var scale: SIMD3<Float>
+  public var translation: SIMD3<Float>
 }
 
-struct CodableVideoPlayerComponent: Codable {
-  var avPlayer: AVPlayer?
-  var currentScreenVideoDimension: SIMD2<Float>
-  var desiredViewingMode: VideoPlaybackController.ViewingMode
-  var isPassthroughTintingEnabled: Bool
-  var playerScreenSize: SIMD2<Float>
-  var screenVideoDimension: SIMD2<Float>
-  var viewingMode: VideoPlaybackController.ViewingMode?
+public struct CodableVideoPlayerComponent: Codable {
+  public var avPlayer: AVPlayer?
+  public var currentScreenVideoDimension: SIMD2<Float>
+  public var desiredViewingMode: VideoPlaybackController.ViewingMode
+  public var isPassthroughTintingEnabled: Bool
+  public var playerScreenSize: SIMD2<Float>
+  public var screenVideoDimension: SIMD2<Float>
+  public var viewingMode: VideoPlaybackController.ViewingMode?
 }
 
-struct CodableWorldComponent: Codable {
+public struct CodableWorldComponent: Codable {
 }
 
 #endif
