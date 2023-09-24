@@ -10,10 +10,23 @@ import RealityKit
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/iOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
-public struct Codable${entity["name"]}: Codable {
-  % for property in entity["properties"]:
+public class Codable${entity["name"]}: CodableEntity {
+  % for property in entity["properties"]["complete"]:
   public ${property}
   %end
+    
+  public init(
+    _ entity: RealityKit.${entity["name"]}
+  ) {
+    % for identifiers in entity["properties"]["identifiers"]:
+    self.${identifiers} = entity.${identifiers}
+    %end
+    super.init(entity)
+  }
+  
+  required init(from decoder: Decoder) throws {
+    fatalError("init(from:) has not been implemented")
+  }
 }
 
 %end
@@ -22,10 +35,23 @@ public struct Codable${entity["name"]}: Codable {
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/macOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
-public struct Codable${entity["name"]}: Codable {
-  % for property in entity["properties"]:
+public class Codable${entity["name"]}: CodableEntity {
+  % for property in entity["properties"]["complete"]:
   public ${property}
   %end
+    
+  public init(
+    _ entity: RealityKit.${entity["name"]}
+  ) {
+    % for identifiers in entity["properties"]["identifiers"]:
+    self.${identifiers} = entity.${identifiers}
+    %end
+    super.init(entity)
+  }
+  
+  required init(from decoder: Decoder) throws {
+    fatalError("init(from:) has not been implemented")
+  }
 }
 
 %end
@@ -34,10 +60,23 @@ public struct Codable${entity["name"]}: Codable {
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/xrOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
-public struct Codable${entity["name"]}: Codable {
-  % for property in entity["properties"]:
+public class Codable${entity["name"]}: CodableEntity {
+  % for property in entity["properties"]["complete"]:
   public ${property}
   %end
+  
+  public init(
+    _ entity: RealityKit.${entity["name"]}
+  ) {
+    % for identifiers in entity["properties"]["identifiers"]:
+    self.${identifiers} = entity.${identifiers}
+    %end
+    super.init(entity)
+  }
+  
+  required init(from decoder: Decoder) throws {
+    fatalError("init(from:) has not been implemented")
+  }
 }
 
 % end

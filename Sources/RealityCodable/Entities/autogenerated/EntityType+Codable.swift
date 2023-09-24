@@ -2,6 +2,7 @@
 
 import Foundation
 import RealityKit
+import RealitySymbols
 
 #if os(iOS)
 
@@ -27,6 +28,7 @@ extension EntityType {
       case .triggerVolume:
         return CodableTriggerVolume(entity as! TriggerVolume)
     }
+  }
 }
 
 #elseif os(macOS)
@@ -51,6 +53,7 @@ extension EntityType {
       case .triggerVolume:
         return CodableTriggerVolume(entity as! TriggerVolume)
     }
+  }
 }
 
 #elseif os(visionOS)
@@ -69,6 +72,7 @@ extension EntityType {
       case .triggerVolume:
         return CodableTriggerVolume(entity as! TriggerVolume)
     }
+  }
 }
 
 #endif

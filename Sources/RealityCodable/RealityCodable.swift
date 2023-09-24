@@ -8,7 +8,7 @@ extension Entity {
   
     for entityType in EntityType.allCases {
       if type(of: self) == entityType.type {
-        return entityType.makeCodable(with: self)
+        return entityType.makeCodable(from: self)
       }
     }
     
@@ -18,52 +18,3 @@ extension Entity {
     return CodableUnknown(self, entityType: .entity)
   }
 }
-
-#if os(iOS)
-
-  extension EntityType {
-    func makeCodable(with entity: RealityKit.Entity) -> _CodableEntity {
-      switch self {
-        //TODO:
-        case .entity:
-          return _CodableEntity(entity)
-      }
-    }
-  }
-
-#elseif os(macOS)
-
-  extension EntityType {
-    func makeCodable(with entity: RealityKit.Entity) -> CodableEntity {
-      switch self {
-        //TODO:
-        case .entity:
-          return CodableEntity(entity, entityType: self)
-        case .modelEntity:
-          return CodableModelEntity((entity as! ModelEntity), entityType: self)
-        case .perspectiveCamera:
-          return CodablePerspectiveCamera((entity as! PerspectiveCamera), entityType: self)
-      }
-    }
-  }
-
-#elseif os(visionOS)
-
-  extension EntityType {
-    func makeCodable(with entity: RealityKit.Entity) -> CodableEntity {
-      switch self {
-        case .anchorEntity:
-          return CodableAnchorEntity((entity as! AnchorEntity), entityType: self)
-        case .entity:
-          return CodableEntity(entity, entityType: self)
-        case .modelEntity:
-          return CodableModelEntity((entity as! ModelEntity), entityType: self)
-        case .perspectiveCamera:
-          return CodablePerspectiveCamera((entity as! PerspectiveCamera), entityType: self)
-        case .triggerVolume:
-          return CodableTriggerVolume((entity as! TriggerVolume), entityType: self)
-      }
-    }
-  }
-
-#endif

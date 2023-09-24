@@ -3,6 +3,7 @@
 
 import Foundation
 import RealityKit
+import RealitySymbols
 % import json
 
 #if os(iOS)
@@ -17,6 +18,7 @@ extension EntityType {
         return Codable${entity["name"]}(entity as! ${entity["name"]})
       %end
     }
+  }
 }
 
 #elseif os(macOS)
@@ -31,6 +33,7 @@ extension EntityType {
         return Codable${entity["name"]}(entity as! ${entity["name"]})
       %end
     }
+  }
 }
 
 #elseif os(visionOS)
@@ -45,6 +48,7 @@ extension EntityType {
         return Codable${entity["name"]}(entity as! ${entity["name"]})
       %end
     }
+  }
 }
 
 % end

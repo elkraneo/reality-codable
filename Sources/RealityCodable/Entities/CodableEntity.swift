@@ -2,61 +2,61 @@ import Foundation
 import RealityKit
 import RealitySymbols
 
-public class CodableEntity: Codable, Identifiable {
-  public let accessibilityDescription: String?
-  public let accessibilityLabel: String?
-  // var ambientAudio: AmbientAudioComponent?
-  // var anchor: (HasAnchoring)?
-  public let availableAnimations: [CodableAnimationResource]
-  // var bindableValues: BindableValuesReference
-  // var channelAudio: ChannelAudioComponent?
-  // var characterController: CharacterControllerComponent?
-  // var characterControllerState: CharacterControllerStateComponent?
-  public let children: [CodableEntity]
-  public var optionalChildren: [CodableEntity]? {
-    children.isEmpty ? nil : children
-  }
-  public let components: Set<_CodableComponent>
-  public let id: UInt64
-  public let isAccessibilityElement: Bool
-  public let isActive: Bool
-  public let isAnchored: Bool
-  public let isEnabled: Bool
-  public let isEnabledInHierarchy: Bool
-  public let isOwner: Bool
-  public let name: String
-  // var parameters: Entity.ParameterSet
-  public let parentID: UInt64?
-
-  // var scene: Scene?
-  // var spatialAudio: SpatialAudioComponent?
-  // var synchronization: SynchronizationComponent?
-  public let entityTypeDescription: String
-  public let entityTypeSystemImage: String
-
-  public init(
-    _ entity: RealityKit.Entity,
-    entityType: EntityType
-  ) {
-    self.accessibilityDescription = entity.accessibilityDescription
-    self.accessibilityLabel = entity.accessibilityLabel
-    self.availableAnimations = entity.availableAnimations.compactMap(CodableAnimationResource.init)
-    self.children = entity.children.map(\.encoded)
-    self.components = encodeComponents(entity.components)  //FIXME: make the API closer to encoding children entities
-    self.id = entity.id
-    self.isAccessibilityElement = entity.isAccessibilityElement
-    self.isActive = entity.isActive
-    self.isAnchored = entity.isAnchored
-    self.isEnabled = entity.isEnabled
-    self.isEnabledInHierarchy = entity.isEnabledInHierarchy
-    self.isOwner = entity.isOwner
-    self.name = entity.name
-    self.parentID = entity.parent?.id
-    //MARK: EntityType extracted
-    self.entityTypeDescription = entityType.description
-    self.entityTypeSystemImage = entityType.systemImage
-  }
-}
+//public class CodableEntity: Codable, Identifiable {
+//  public let accessibilityDescription: String?
+//  public let accessibilityLabel: String?
+//  // var ambientAudio: AmbientAudioComponent?
+//  // var anchor: (HasAnchoring)?
+//  public let availableAnimations: [CodableAnimationResource]
+//  // var bindableValues: BindableValuesReference
+//  // var channelAudio: ChannelAudioComponent?
+//  // var characterController: CharacterControllerComponent?
+//  // var characterControllerState: CharacterControllerStateComponent?
+//  public let children: [CodableEntity]
+//  public var optionalChildren: [CodableEntity]? {
+//    children.isEmpty ? nil : children
+//  }
+//  public let components: Set<_CodableComponent>
+//  public let id: UInt64
+//  public let isAccessibilityElement: Bool
+//  public let isActive: Bool
+//  public let isAnchored: Bool
+//  public let isEnabled: Bool
+//  public let isEnabledInHierarchy: Bool
+//  public let isOwner: Bool
+//  public let name: String
+//  // var parameters: Entity.ParameterSet
+//  public let parentID: UInt64?
+//
+//  // var scene: Scene?
+//  // var spatialAudio: SpatialAudioComponent?
+//  // var synchronization: SynchronizationComponent?
+//  public let entityTypeDescription: String
+//  public let entityTypeSystemImage: String
+//
+//  public init(
+//    _ entity: RealityKit.Entity,
+//    entityType: EntityType
+//  ) {
+//    self.accessibilityDescription = entity.accessibilityDescription
+//    self.accessibilityLabel = entity.accessibilityLabel
+//    self.availableAnimations = entity.availableAnimations.compactMap(CodableAnimationResource.init)
+//    self.children = entity.children.map(\.encoded)
+//    self.components = encodeComponents(entity.components)  //FIXME: make the API closer to encoding children entities
+//    self.id = entity.id
+//    self.isAccessibilityElement = entity.isAccessibilityElement
+//    self.isActive = entity.isActive
+//    self.isAnchored = entity.isAnchored
+//    self.isEnabled = entity.isEnabled
+//    self.isEnabledInHierarchy = entity.isEnabledInHierarchy
+//    self.isOwner = entity.isOwner
+//    self.name = entity.name
+//    self.parentID = entity.parent?.id
+//    //MARK: EntityType extracted
+//    self.entityTypeDescription = entityType.description
+//    self.entityTypeSystemImage = entityType.systemImage
+//  }
+//}
 
 extension CodableEntity: Equatable {
   public static func == (lhs: CodableEntity, rhs: CodableEntity) -> Bool {
