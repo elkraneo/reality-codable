@@ -16,7 +16,7 @@ extension EntityType {
       case .directionalLight:
         return CodableDirectionalLight(entity as! DirectionalLight)
       case .entity:
-        return CodableEntity(entity as! Entity)
+        return CodableEntity(entity)
       case .modelEntity:
         return CodableModelEntity(entity as! ModelEntity)
       case .perspectiveCamera:
@@ -41,7 +41,7 @@ extension EntityType {
       case .directionalLight:
         return CodableDirectionalLight(entity as! DirectionalLight)
       case .entity:
-        return CodableEntity(entity as! Entity)
+        return CodableEntity(entity)
       case .modelEntity:
         return CodableModelEntity(entity as! ModelEntity)
       case .perspectiveCamera:
@@ -52,6 +52,8 @@ extension EntityType {
         return CodableSpotLight(entity as! SpotLight)
       case .triggerVolume:
         return CodableTriggerVolume(entity as! TriggerVolume)
+    default:
+      fatalError()
     }
   }
 }
@@ -64,13 +66,15 @@ extension EntityType {
       case .anchorEntity:
         return CodableAnchorEntity(entity as! AnchorEntity)
       case .entity:
-        return CodableEntity(entity as! Entity)
+        return CodableEntity(entity)
       case .modelEntity:
         return CodableModelEntity(entity as! ModelEntity)
       case .perspectiveCamera:
         return CodablePerspectiveCamera(entity as! PerspectiveCamera)
       case .triggerVolume:
         return CodableTriggerVolume(entity as! TriggerVolume)
+    default:
+      fatalError()
     }
   }
 }

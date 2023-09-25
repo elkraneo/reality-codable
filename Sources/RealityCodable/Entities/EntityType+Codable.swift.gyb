@@ -3,7 +3,6 @@
 
 import Foundation
 import RealityKit
-import RealitySymbols
 % import json
 
 #if os(iOS)
