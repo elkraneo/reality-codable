@@ -4,22 +4,22 @@
 import Foundation
 import RealityKit
 % import json
-
-#if os(iOS)
-
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/iOS/Processed/Entities.json') as file:
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/Unified/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
+
 public class Codable${entity["name"]}: CodableEntity {
-  % for property in entity["properties"]["complete"]:
+  % for property in entity["properties"]:
   public ${property}
   %end
     
   public init(
-    _ entity: RealityKit.${entity["name"]}
+    _ entity: RealityKit.Entity
   ) {
-    % for identifiers in entity["properties"]["identifiers"]:
-    self.${identifiers} = entity.${identifiers}
+    % castedEntity = entity["name"][0].lower() + entity["name"][1:]
+    let ${castedEntity} = entity as! ${entity["name"]}
+    % for identifiers in entity["propertiesIdentifiers"]:
+    self.${identifiers} = ${castedEntity}.${identifiers}
     %end
     super.init(entity)
   }
@@ -30,54 +30,3 @@ public class Codable${entity["name"]}: CodableEntity {
 }
 
 %end
-#elseif os(macOS)
-
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/macOS/Processed/Entities.json') as file:
-% data = json.load(file)
-% for entity in data:
-public class Codable${entity["name"]}: CodableEntity {
-  % for property in entity["properties"]["complete"]:
-  public ${property}
-  %end
-    
-  public init(
-    _ entity: RealityKit.${entity["name"]}
-  ) {
-    % for identifiers in entity["properties"]["identifiers"]:
-    self.${identifiers} = entity.${identifiers}
-    %end
-    super.init(entity)
-  }
-  
-  required init(from decoder: Decoder) throws {
-    fatalError("init(from:) has not been implemented")
-  }
-}
-
-%end
-#elseif os(visionOS)
-
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/xrOS/Processed/Entities.json') as file:
-% data = json.load(file)
-% for entity in data:
-public class Codable${entity["name"]}: CodableEntity {
-  % for property in entity["properties"]["complete"]:
-  public ${property}
-  %end
-  
-  public init(
-    _ entity: RealityKit.${entity["name"]}
-  ) {
-    % for identifiers in entity["properties"]["identifiers"]:
-    self.${identifiers} = entity.${identifiers}
-    %end
-    super.init(entity)
-  }
-  
-  required init(from decoder: Decoder) throws {
-    fatalError("init(from:) has not been implemented")
-  }
-}
-
-% end
-#endif

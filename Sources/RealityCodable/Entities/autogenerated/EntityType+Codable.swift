@@ -4,79 +4,29 @@ import Foundation
 import RealityKit
 import RealitySymbols
 
-#if os(iOS)
-
 extension EntityType {
   func makeCodable(from entity: RealityKit.Entity) -> CodableEntity {
     switch self {
       case .anchorEntity:
-        return CodableAnchorEntity(entity as! AnchorEntity)
+        return CodableAnchorEntity(entity)
       case .bodyTrackedEntity:
-        return CodableBodyTrackedEntity(entity as! BodyTrackedEntity)
+        return CodableBodyTrackedEntity(entity)
       case .directionalLight:
-        return CodableDirectionalLight(entity as! DirectionalLight)
+        return CodableDirectionalLight(entity)
       case .entity:
         return CodableEntity(entity)
+      // case .entity:
+      //   return CodableEntity(entity)
       case .modelEntity:
-        return CodableModelEntity(entity as! ModelEntity)
+        return CodableModelEntity(entity)
       case .perspectiveCamera:
-        return CodablePerspectiveCamera(entity as! PerspectiveCamera)
+        return CodablePerspectiveCamera(entity)
       case .pointLight:
-        return CodablePointLight(entity as! PointLight)
+        return CodablePointLight(entity)
       case .spotLight:
-        return CodableSpotLight(entity as! SpotLight)
+        return CodableSpotLight(entity)
       case .triggerVolume:
-        return CodableTriggerVolume(entity as! TriggerVolume)
+        return CodableTriggerVolume(entity)
     }
   }
 }
-
-#elseif os(macOS)
-
-extension EntityType {
-  func makeCodable(from entity: RealityKit.Entity) -> CodableEntity {
-    switch self {
-      case .anchorEntity:
-        return CodableAnchorEntity(entity as! AnchorEntity)
-      case .directionalLight:
-        return CodableDirectionalLight(entity as! DirectionalLight)
-      case .entity:
-        return CodableEntity(entity)
-      case .modelEntity:
-        return CodableModelEntity(entity as! ModelEntity)
-      case .perspectiveCamera:
-        return CodablePerspectiveCamera(entity as! PerspectiveCamera)
-      case .pointLight:
-        return CodablePointLight(entity as! PointLight)
-      case .spotLight:
-        return CodableSpotLight(entity as! SpotLight)
-      case .triggerVolume:
-        return CodableTriggerVolume(entity as! TriggerVolume)
-    default:
-      fatalError()
-    }
-  }
-}
-
-#elseif os(visionOS)
-
-extension EntityType {
-  func makeCodable(from entity: RealityKit.Entity) -> CodableEntity {
-    switch self {
-      case .anchorEntity:
-        return CodableAnchorEntity(entity as! AnchorEntity)
-      case .entity:
-        return CodableEntity(entity)
-      case .modelEntity:
-        return CodableModelEntity(entity as! ModelEntity)
-      case .perspectiveCamera:
-        return CodablePerspectiveCamera(entity as! PerspectiveCamera)
-      case .triggerVolume:
-        return CodableTriggerVolume(entity as! TriggerVolume)
-    default:
-      fatalError()
-    }
-  }
-}
-
-#endif

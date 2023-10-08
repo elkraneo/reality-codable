@@ -18,8 +18,7 @@ let package = Package(
     )
   ],
   dependencies: [
-    //.package(url: "https://github.com/elkraneo/reality-symbols", branch: "main")
-    .package(path: "../../../../external/RealitySymbols/source/reality-symbols")
+    .package(url: "https://github.com/elkraneo/reality-symbols", branch: "main")
 
   ],
   targets: [

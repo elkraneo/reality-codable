@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "reality-symbols",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/elkraneo/reality-symbols",
+      "state" : {
+        "branch" : "main",
+        "revision" : "bb844c285515c5aafbb09e47cf40c15f3b0e18da"
+      }
+    },
+    {
       "identity" : "swift-docc-symbolkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-docc-symbolkit.git",

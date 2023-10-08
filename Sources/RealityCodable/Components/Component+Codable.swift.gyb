@@ -7,7 +7,7 @@ import RealityKit
 
 #if os(iOS)
 
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/iOS/Processed/Components.json') as file:
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Components.json') as file:
 % data = json.load(file)
 % for component in data:
 public struct Codable${component["name"]}: Codable {
@@ -19,7 +19,7 @@ public struct Codable${component["name"]}: Codable {
 %end
 #elseif os(macOS)
 
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/macOS/Processed/Components.json') as file:
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Components.json') as file:
 % data = json.load(file)
 % for component in data:
 public struct Codable${component["name"]}: Codable {
@@ -31,7 +31,7 @@ public struct Codable${component["name"]}: Codable {
 %end
 #elseif os(visionOS)
 
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Resources/xrOS/Processed/Components.json') as file:
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/xrOS/Processed/Components.json') as file:
 % data = json.load(file)
 % for component in data:
 public struct Codable${component["name"]}: Codable {
