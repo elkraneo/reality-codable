@@ -3,320 +3,325 @@
 import Foundation
 import RealityKit
 
-public class CodableAnchorEntity: CodableEntity {
-  public var anchorIdentifier: UUID?
-  public var anchoring: AnchoringComponent
-    
-  public override init(
-    _ entity: RealityKit.Entity
-  ) {
-    let anchorEntity = entity as! AnchorEntity
-    self.anchorIdentifier = anchorEntity.anchorIdentifier
-    self.anchoring = anchorEntity.anchoring
-    super.init(entity)
-  }
-  
-  required init(from decoder: Decoder) throws {
-    fatalError("init(from:) has not been implemented")
+enum CodableRealityKit {
+  enum iOS {}
+  enum macOS {}
+  enum xrOS {}
+}
+
+//MARK: iOS — AnchorEntity
+
+extension CodableRealityKit.iOS {
+  public class AnchorEntity: CodableRealityKit.iOS.Entity {
   }
 }
 
-
-public class CodableBodyTrackedEntity: CodableEntity {
-//  public var bodyTracking: BodyTrackingComponent
-//  public var debugModel: ModelDebugOptionsComponent?
-//  public var jointNames: [String]
-//  public var jointTransforms: [Transform]
-//  public var model: ModelComponent?
-//  public var modelDebugOptions: ModelDebugOptionsComponent?
-    
-  public override init(
-    _ entity: RealityKit.Entity
-  ) {
-//    let bodyTrackedEntity = entity as! BodyTrackedEntity
-////    self.bodyTracking = bodyTrackedEntity.bodyTracking
-//    self.debugModel = bodyTrackedEntity.debugModel
-//    self.jointNames = bodyTrackedEntity.jointNames
-//    self.jointTransforms = bodyTrackedEntity.jointTransforms
-//    self.model = bodyTrackedEntity.model
-//    self.modelDebugOptions = bodyTrackedEntity.modelDebugOptions
-    super.init(entity)
+#if os(iOS)
+  extension CodableRealityKit.iOS.AnchorEntity {
+    public convenience init(
+      _ entity: RealityKit.AnchorEntity
+    ) {
+      self.init(from: entity)
+    }
   }
-  
-  required init(from decoder: Decoder) throws {
-    fatalError("init(from:) has not been implemented")
+#endif
+
+//MARK: iOS — BodyTrackedEntity
+
+extension CodableRealityKit.iOS {
+  public class BodyTrackedEntity: CodableRealityKit.iOS.Entity {
   }
 }
 
-
-public class CodableDirectionalLight: CodableEntity {
-//  public var light: DirectionalLightComponent
-//  public var shadow: DirectionalLightComponent.Shadow?
-    
-  public override init(
-    _ entity: RealityKit.Entity
-  ) {
-//    let directionalLight = entity as! DirectionalLight
-//    self.light = directionalLight.light
-//    self.shadow = directionalLight.shadow
-    super.init(entity)
+#if os(iOS)
+  extension CodableRealityKit.iOS.BodyTrackedEntity {
+    public convenience init(
+      _ entity: RealityKit.BodyTrackedEntity
+    ) {
+      self.init(from: entity)
+    }
   }
-  
-  required init(from decoder: Decoder) throws {
-    fatalError("init(from:) has not been implemented")
+#endif
+
+//MARK: iOS — DirectionalLight
+
+extension CodableRealityKit.iOS {
+  public class DirectionalLight: CodableRealityKit.iOS.Entity {
   }
 }
 
-
-public class CodableEntity: Codable, Identifiable {
-  public var accessibilityDescription: String?
-  public var accessibilityLabel: String?
-//  public var ambientAudio: AmbientAudioComponent?
-//  public var anchor: (HasAnchoring)?
-//  public var availableAnimations: [AnimationResource]
-//  public var bindableValues: BindableValuesReference
-//  public var channelAudio: ChannelAudioComponent?
-//  public var characterController: CharacterControllerComponent?
-//  public var characterControllerState: CharacterControllerStateComponent?
-  public var children: [CodableEntity]
-  public var optionalChildren: [CodableEntity]? {
-    children.isEmpty ? nil : children
+#if os(iOS)
+  extension CodableRealityKit.iOS.DirectionalLight {
+    public convenience init(
+      _ entity: RealityKit.DirectionalLight
+    ) {
+      self.init(from: entity)
+    }
   }
+#endif
 
-//  public var components: Entity.ComponentSet
-  public var debugDescription: String
-//  public var defaultAnimationClock: CMClockOrTimebase
-  public var hashValue: Int
-  public var id: UInt64
-  public var isAccessibilityElement: Bool
-  public var isActive: Bool
-  public var isAnchored: Bool
-  public var isEnabled: Bool
-  public var isEnabledInHierarchy: Bool
-  public var isOwner: Bool
-  public var name: String
-//  public var orientation: simd_quatf
-//  public var parameters: Entity.ParameterSet
-  public var parent: CodableEntity?
-  public var position: SIMD3<Float>
-  public var scale: SIMD3<Float>
-//  public var scene: Scene?
-//  public var spatialAudio: SpatialAudioComponent?
-//  public var synchronization: SynchronizationComponent?
-//  public var transform: Transform
-    
-  public init(
-    _ entity: RealityKit.Entity
-  ) {
-//    let entity = entity as! Entity
-    self.accessibilityDescription = entity.accessibilityDescription
-    self.accessibilityLabel = entity.accessibilityLabel
-//    self.ambientAudio = entity.ambientAudio
-//    self.anchor = entity.anchor
-//    self.availableAnimations = entity.availableAnimations
-//    self.bindableValues = entity.bindableValues
-//    self.channelAudio = entity.channelAudio
-//    self.characterController = entity.characterController
-//    self.characterControllerState = entity.characterControllerState
-    self.children = []
-//    self.components = entity.components
-    self.debugDescription = entity.debugDescription
-//    self.defaultAnimationClock = entity.defaultAnimationClock
-    self.hashValue = entity.hashValue
-    self.id = entity.id
-    self.isAccessibilityElement = entity.isAccessibilityElement
-    self.isActive = entity.isActive
-    self.isAnchored = entity.isAnchored
-    self.isEnabled = entity.isEnabled
-    self.isEnabledInHierarchy = entity.isEnabledInHierarchy
-    self.isOwner = entity.isOwner
-    self.name = entity.name
-//    self.orientation = entity.orientation
-//    self.parameters = entity.parameters
-//    self.parent = entity.parent
-    self.position = entity.position
-    self.scale = entity.scale
-//    self.scene = entity.scene
-//    self.spatialAudio = entity.spatialAudio
-//    self.synchronization = entity.synchronization
-//    self.transform = entity.transform
-//    self.init(entity)
-  }
-  
-//  required init(from decoder: Decoder) throws {
-//    fatalError("init(from:) has not been implemented")
-//  }
-}
+//MARK: iOS — Entity
 
-
-//public class CodableEntity: CodableEntity {
-//  public var accessibilityDescription: String?
-//  public var accessibilityLabel: String?
-//  public var anchor: (HasAnchoring)?
-//  public var availableAnimations: [AnimationResource]
-//  public var bindableValues: BindableValuesReference
-//  public var characterController: CharacterControllerComponent?
-//  public var characterControllerState: CharacterControllerStateComponent?
-//  public var children: Entity.ChildCollection
-//  public var components: Entity.ComponentSet
-//  public var debugDescription: String
-//  public var defaultAnimationClock: CMClockOrTimebase
-//  public var hashValue: Int
-//  public var id: UInt64
-//  public var isAccessibilityElement: Bool
-//  public var isActive: Bool
-//  public var isAnchored: Bool
-//  public var isEnabled: Bool
-//  public var isEnabledInHierarchy: Bool
-//  public var isOwner: Bool
-//  public var name: String
-//  public var orientation: simd_quatf
-//  public var parameters: Entity.ParameterSet
-//  public var parent: Entity?
-//  public var position: SIMD3<Float>
-//  public var scale: SIMD3<Float>
-//  public var scene: Scene?
-//  public var synchronization: SynchronizationComponent?
-//  public var transform: Transform
-//    
-//  public init(
-//    _ entity: RealityKit.Entity
-//  ) {
-//    let entity = entity as! Entity
-//    self.accessibilityDescription = entity.accessibilityDescription
-//    self.accessibilityLabel = entity.accessibilityLabel
-//    self.anchor = entity.anchor
-//    self.availableAnimations = entity.availableAnimations
-//    self.bindableValues = entity.bindableValues
-//    self.characterController = entity.characterController
-//    self.characterControllerState = entity.characterControllerState
-//    self.children = entity.children
-//    self.components = entity.components
-//    self.debugDescription = entity.debugDescription
-//    self.defaultAnimationClock = entity.defaultAnimationClock
-//    self.hashValue = entity.hashValue
-//    self.id = entity.id
-//    self.isAccessibilityElement = entity.isAccessibilityElement
-//    self.isActive = entity.isActive
-//    self.isAnchored = entity.isAnchored
-//    self.isEnabled = entity.isEnabled
-//    self.isEnabledInHierarchy = entity.isEnabledInHierarchy
-//    self.isOwner = entity.isOwner
-//    self.name = entity.name
-//    self.orientation = entity.orientation
-//    self.parameters = entity.parameters
-//    self.parent = entity.parent
-//    self.position = entity.position
-//    self.scale = entity.scale
-//    self.scene = entity.scene
-//    self.synchronization = entity.synchronization
-//    self.transform = entity.transform
-//    super.init(entity)
-//  }
-//  
-//  required init(from decoder: Decoder) throws {
-//    fatalError("init(from:) has not been implemented")
-//  }
-//}
-
-
-public class CodableModelEntity: CodableEntity {
-  public var collision: CollisionComponent?
-  public var debugModel: ModelDebugOptionsComponent?
-  public var jointNames: [String]
-  public var jointTransforms: [Transform]
-  public var model: ModelComponent?
-//  public var modelDebugOptions: ModelDebugOptionsComponent?
-  public var physicsBody: PhysicsBodyComponent?
-  public var physicsMotion: PhysicsMotionComponent?
-    
-  public override init(
-    _ entity: RealityKit.Entity
-  ) {
-    let modelEntity = entity as! ModelEntity
-    self.collision = modelEntity.collision
-//    self.debugModel = modelEntity.debugModel
-    self.jointNames = modelEntity.jointNames
-    self.jointTransforms = modelEntity.jointTransforms
-    self.model = modelEntity.model
-//    self.modelDebugOptions = modelEntity.modelDebugOptions
-    self.physicsBody = modelEntity.physicsBody
-    self.physicsMotion = modelEntity.physicsMotion
-    super.init(entity)
-  }
-  
-  required init(from decoder: Decoder) throws {
-    fatalError("init(from:) has not been implemented")
+extension CodableRealityKit.iOS {
+  public class Entity: Codable {
+    public init(
+      from entity: RealityKit.Entity
+    ) {
+      //TODO:
+    }
   }
 }
 
-
-public class CodablePerspectiveCamera: CodableEntity {
-  public var camera: PerspectiveCameraComponent
-    
-  public override init(
-    _ entity: RealityKit.Entity
-  ) {
-    let perspectiveCamera = entity as! PerspectiveCamera
-    self.camera = perspectiveCamera.camera
-    super.init(entity)
+#if os(iOS)
+  extension CodableRealityKit.iOS.Entity {
+    public convenience init(
+      _ entity: RealityKit.Entity
+    ) {
+      self.init(from: entity)
+    }
   }
-  
-  required init(from decoder: Decoder) throws {
-    fatalError("init(from:) has not been implemented")
-  }
-}
+#endif
 
+//MARK: iOS — ModelEntity
 
-public class CodablePointLight: CodableEntity {
-//  public var light: PointLightComponent
-    
-  public override init(
-    _ entity: RealityKit.Entity
-  ) {
-//    let pointLight = entity as! PointLight
-//    self.light = pointLight.light
-    super.init(entity)
-  }
-  
-  required init(from decoder: Decoder) throws {
-    fatalError("init(from:) has not been implemented")
+extension CodableRealityKit.iOS {
+  public class ModelEntity: CodableRealityKit.iOS.Entity {
   }
 }
 
-
-public class CodableSpotLight: CodableEntity {
-//  public var light: SpotLightComponent
-//  public var shadow: SpotLightComponent.Shadow?
-    
-  public override init(
-    _ entity: RealityKit.Entity
-  ) {
-//    let spotLight = entity as! SpotLight
-//    self.light = spotLight.light
-//    self.shadow = spotLight.shadow
-    super.init(entity)
+#if os(iOS)
+  extension CodableRealityKit.iOS.ModelEntity {
+    public convenience init(
+      _ entity: RealityKit.ModelEntity
+    ) {
+      self.init(from: entity)
+    }
   }
-  
-  required init(from decoder: Decoder) throws {
-    fatalError("init(from:) has not been implemented")
+#endif
+
+//MARK: iOS — PerspectiveCamera
+
+extension CodableRealityKit.iOS {
+  public class PerspectiveCamera: CodableRealityKit.iOS.Entity {
   }
 }
 
-
-public class CodableTriggerVolume: CodableEntity {
-  public var collision: CollisionComponent?
-    
-  public override init(
-    _ entity: RealityKit.Entity
-  ) {
-    let triggerVolume = entity as! TriggerVolume
-    self.collision = triggerVolume.collision
-    super.init(entity)
+#if os(iOS)
+  extension CodableRealityKit.iOS.PerspectiveCamera {
+    public convenience init(
+      _ entity: RealityKit.PerspectiveCamera
+    ) {
+      self.init(from: entity)
+    }
   }
-  
-  required init(from decoder: Decoder) throws {
-    fatalError("init(from:) has not been implemented")
+#endif
+
+//MARK: iOS — PointLight
+
+extension CodableRealityKit.iOS {
+  public class PointLight: CodableRealityKit.iOS.Entity {
   }
 }
 
+#if os(iOS)
+  extension CodableRealityKit.iOS.PointLight {
+    public convenience init(
+      _ entity: RealityKit.PointLight
+    ) {
+      self.init(from: entity)
+    }
+  }
+#endif
+
+//MARK: iOS — SpotLight
+
+extension CodableRealityKit.iOS {
+  public class SpotLight: CodableRealityKit.iOS.Entity {
+  }
+}
+
+#if os(iOS)
+  extension CodableRealityKit.iOS.SpotLight {
+    public convenience init(
+      _ entity: RealityKit.SpotLight
+    ) {
+      self.init(from: entity)
+    }
+  }
+#endif
+
+//MARK: iOS — TriggerVolume
+
+extension CodableRealityKit.iOS {
+  public class TriggerVolume: CodableRealityKit.iOS.Entity {
+  }
+}
+
+#if os(iOS)
+  extension CodableRealityKit.iOS.TriggerVolume {
+    public convenience init(
+      _ entity: RealityKit.TriggerVolume
+    ) {
+      self.init(from: entity)
+    }
+  }
+#endif
+
+//MARK: -
+
+//MARK: macOS — AnchorEntity
+
+extension CodableRealityKit.macOS {
+  public class AnchorEntity: CodableRealityKit.macOS.Entity {
+  }
+}
+
+#if os(macOS)
+  extension CodableRealityKit.macOS.AnchorEntity {
+    public convenience init(
+      _ entity: RealityKit.AnchorEntity
+    ) {
+      self.init(from: entity)
+    }
+  }
+#endif
+
+//MARK: macOS — DirectionalLight
+
+extension CodableRealityKit.macOS {
+  public class DirectionalLight: CodableRealityKit.macOS.Entity {
+  }
+}
+
+#if os(macOS)
+  extension CodableRealityKit.macOS.DirectionalLight {
+    public convenience init(
+      _ entity: RealityKit.DirectionalLight
+    ) {
+      self.init(from: entity)
+    }
+  }
+#endif
+
+//MARK: macOS — Entity
+
+extension CodableRealityKit.macOS {
+  public class Entity: Codable {
+    public init(
+      from entity: RealityKit.Entity
+    ) {
+      //TODO:
+    }
+  }
+}
+
+#if os(macOS)
+  extension CodableRealityKit.macOS.Entity {
+    public convenience init(
+      _ entity: RealityKit.Entity
+    ) {
+      self.init(from: entity)
+    }
+  }
+#endif
+
+//MARK: macOS — ModelEntity
+
+extension CodableRealityKit.macOS {
+  public class ModelEntity: CodableRealityKit.macOS.Entity {
+  }
+}
+
+#if os(macOS)
+  extension CodableRealityKit.macOS.ModelEntity {
+    public convenience init(
+      _ entity: RealityKit.ModelEntity
+    ) {
+      self.init(from: entity)
+    }
+  }
+#endif
+
+//MARK: macOS — PerspectiveCamera
+
+extension CodableRealityKit.macOS {
+  public class PerspectiveCamera: CodableRealityKit.macOS.Entity {
+  }
+}
+
+#if os(macOS)
+  extension CodableRealityKit.macOS.PerspectiveCamera {
+    public convenience init(
+      _ entity: RealityKit.PerspectiveCamera
+    ) {
+      self.init(from: entity)
+    }
+  }
+#endif
+
+//MARK: macOS — PointLight
+
+extension CodableRealityKit.macOS {
+  public class PointLight: CodableRealityKit.macOS.Entity {
+  }
+}
+
+#if os(macOS)
+  extension CodableRealityKit.macOS.PointLight {
+    public convenience init(
+      _ entity: RealityKit.PointLight
+    ) {
+      self.init(from: entity)
+    }
+  }
+#endif
+
+//MARK: macOS — SpotLight
+
+extension CodableRealityKit.macOS {
+  public class SpotLight: CodableRealityKit.macOS.Entity {
+  }
+}
+
+#if os(macOS)
+  extension CodableRealityKit.macOS.SpotLight {
+    public convenience init(
+      _ entity: RealityKit.SpotLight
+    ) {
+      self.init(from: entity)
+    }
+  }
+#endif
+
+//MARK: macOS — TriggerVolume
+
+extension CodableRealityKit.macOS {
+  public class TriggerVolume: CodableRealityKit.macOS.Entity {
+  }
+}
+
+#if os(macOS)
+  extension CodableRealityKit.macOS.TriggerVolume {
+    public convenience init(
+      _ entity: RealityKit.TriggerVolume
+    ) {
+      self.init(from: entity)
+    }
+  }
+#endif
+
+//MARK: - xrOS
+
+extension CodableRealityKit.xrOS {
+
+  public class AnchorEntity: Entity {
+  }
+  public class Entity: Codable {
+  }
+  public class ModelEntity: Entity {
+  }
+  public class PerspectiveCamera: Entity {
+  }
+  public class TriggerVolume: Entity {
+  }
+}

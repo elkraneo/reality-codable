@@ -15,8 +15,8 @@ extension EntityType {
         return CodableDirectionalLight(entity)
       case .entity:
         return CodableEntity(entity)
-      // case .entity:
-      //   return CodableEntity(entity)
+      case .entity:
+        return CodableEntity(entity)
       case .modelEntity:
         return CodableModelEntity(entity)
       case .perspectiveCamera:
@@ -30,3 +30,4 @@ extension EntityType {
     }
   }
 }
+

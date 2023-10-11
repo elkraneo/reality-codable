@@ -1,32 +1,94 @@
 % warning = "This file was automatically generated and should not be edited."
 // ${warning}
 
+% import json
 import Foundation
 import RealityKit
-% import json
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/Unified/Processed/Entities.json') as file:
-% data = json.load(file)
-% for entity in data:
 
-public class Codable${entity["name"]}: CodableEntity {
-  % for property in entity["properties"]:
-  public ${property}
+enum CodableRealityKit {
+  enum iOS {}
+  enum macOS {}
+  enum xrOS {}
+}
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Entities.json') as file:
+% data = json.load(file)
+
+% for entity in data:
+//MARK: iOS — ${entity["name"]}
+
+extension CodableRealityKit.iOS {
+  %if entity["name"] == "Entity":
+  public class ${entity["name"]}: Codable {
+    public init(
+      from entity: RealityKit.Entity
+    ) {
+      //TODO:
+    }
+  %else:
+  public class ${entity["name"]}: CodableRealityKit.iOS.Entity {
   %end
-    
-  public init(
-    _ entity: RealityKit.Entity
-  ) {
-    % castedEntity = entity["name"][0].lower() + entity["name"][1:]
-    let ${castedEntity} = entity as! ${entity["name"]}
-    % for identifiers in entity["propertiesIdentifiers"]:
-    self.${identifiers} = ${castedEntity}.${identifiers}
-    %end
-    super.init(entity)
-  }
-  
-  required init(from decoder: Decoder) throws {
-    fatalError("init(from:) has not been implemented")
   }
 }
 
+#if os(iOS)
+extension CodableRealityKit.iOS.${entity["name"]} {
+  public convenience init(
+   _ entity: RealityKit.${entity["name"]}
+  ) {
+    self.init(from: entity)
+  }
+}
+#endif
+
 %end
+
+//MARK: -
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Entities.json') as file:
+% data = json.load(file)
+
+% for entity in data:
+//MARK: macOS — ${entity["name"]}
+
+extension CodableRealityKit.macOS {
+  %if entity["name"] == "Entity":
+  public class ${entity["name"]}: Codable {
+    public init(
+      from entity: RealityKit.Entity
+    ) {
+      //TODO:
+    }
+  %else:
+  public class ${entity["name"]}: CodableRealityKit.macOS.Entity {
+  %end
+  }
+}
+
+#if os(macOS)
+extension CodableRealityKit.macOS.${entity["name"]} {
+  public convenience init(
+   _ entity: RealityKit.${entity["name"]}
+  ) {
+    self.init(from: entity)
+  }
+}
+#endif
+
+%end
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/xrOS/Processed/Entities.json') as file:
+% data = json.load(file)
+//MARK: - xrOS
+
+extension CodableRealityKit.xrOS {
+
+% for entity in data:
+  %if entity["name"] == "Entity":
+  public class ${entity["name"]}: Codable {
+  %else:
+  public class ${entity["name"]}: Entity {
+  %end
+  }
+%end
+}
