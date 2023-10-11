@@ -15,7 +15,7 @@ enum CodableRealityKit {
 % data = json.load(file)
 
 % for entity in data:
-//MARK: iOS — ${entity["name"]}
+//MARK: ${entity["name"]} — iOS
 
 extension CodableRealityKit.iOS {
   %if entity["name"] == "Entity":
@@ -49,7 +49,7 @@ extension CodableRealityKit.iOS.${entity["name"]} {
 % data = json.load(file)
 
 % for entity in data:
-//MARK: macOS — ${entity["name"]}
+//MARK: ${entity["name"]} — macOS
 
 extension CodableRealityKit.macOS {
   %if entity["name"] == "Entity":
@@ -79,16 +79,32 @@ extension CodableRealityKit.macOS.${entity["name"]} {
 
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/xrOS/Processed/Entities.json') as file:
 % data = json.load(file)
-//MARK: - xrOS
-
-extension CodableRealityKit.xrOS {
 
 % for entity in data:
+//MARK: ${entity["name"]} — xrOS
+
+extension CodableRealityKit.xrOS {
   %if entity["name"] == "Entity":
   public class ${entity["name"]}: Codable {
+    public init(
+      from entity: RealityKit.Entity
+    ) {
+      //TODO:
+    }
   %else:
-  public class ${entity["name"]}: Entity {
+  public class ${entity["name"]}: CodableRealityKit.xrOS.Entity {
   %end
   }
-%end
 }
+
+#if os(visionOS)
+extension CodableRealityKit.xrOS.${entity["name"]} {
+  public convenience init(
+   _ entity: RealityKit.${entity["name"]}
+  ) {
+    self.init(from: entity)
+  }
+}
+#endif
+
+%end
