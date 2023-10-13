@@ -2,23 +2,18 @@
 
 import Foundation
 import RealityKit
-
-enum CodableRealityKit {
-  enum iOS {}
-  enum macOS {}
-  enum xrOS {}
-}
+import RealitySymbols
 
 
 //MARK: AnchorEntity — iOS
 
-extension CodableRealityKit.iOS {
-  public class AnchorEntity: CodableRealityKit.iOS.Entity {
+extension RealityPlatform.iOS {
+  public class AnchorEntity: RealityPlatform.iOS.Entity {
   }
 }
 
 #if os(iOS)
-extension CodableRealityKit.iOS.AnchorEntity {
+extension RealityPlatform.iOS.AnchorEntity {
   public convenience init(
    _ entity: RealityKit.AnchorEntity
   ) {
@@ -29,13 +24,13 @@ extension CodableRealityKit.iOS.AnchorEntity {
 
 //MARK: BodyTrackedEntity — iOS
 
-extension CodableRealityKit.iOS {
-  public class BodyTrackedEntity: CodableRealityKit.iOS.Entity {
+extension RealityPlatform.iOS {
+  public class BodyTrackedEntity: RealityPlatform.iOS.Entity {
   }
 }
 
 #if os(iOS)
-extension CodableRealityKit.iOS.BodyTrackedEntity {
+extension RealityPlatform.iOS.BodyTrackedEntity {
   public convenience init(
    _ entity: RealityKit.BodyTrackedEntity
   ) {
@@ -46,13 +41,13 @@ extension CodableRealityKit.iOS.BodyTrackedEntity {
 
 //MARK: DirectionalLight — iOS
 
-extension CodableRealityKit.iOS {
-  public class DirectionalLight: CodableRealityKit.iOS.Entity {
+extension RealityPlatform.iOS {
+  public class DirectionalLight: RealityPlatform.iOS.Entity {
   }
 }
 
 #if os(iOS)
-extension CodableRealityKit.iOS.DirectionalLight {
+extension RealityPlatform.iOS.DirectionalLight {
   public convenience init(
    _ entity: RealityKit.DirectionalLight
   ) {
@@ -63,7 +58,7 @@ extension CodableRealityKit.iOS.DirectionalLight {
 
 //MARK: Entity — iOS
 
-extension CodableRealityKit.iOS {
+extension RealityPlatform.iOS {
   public class Entity: Codable {
     public init(
       from entity: RealityKit.Entity
@@ -74,7 +69,7 @@ extension CodableRealityKit.iOS {
 }
 
 #if os(iOS)
-extension CodableRealityKit.iOS.Entity {
+extension RealityPlatform.iOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
   ) {
@@ -85,13 +80,13 @@ extension CodableRealityKit.iOS.Entity {
 
 //MARK: ModelEntity — iOS
 
-extension CodableRealityKit.iOS {
-  public class ModelEntity: CodableRealityKit.iOS.Entity {
+extension RealityPlatform.iOS {
+  public class ModelEntity: RealityPlatform.iOS.Entity {
   }
 }
 
 #if os(iOS)
-extension CodableRealityKit.iOS.ModelEntity {
+extension RealityPlatform.iOS.ModelEntity {
   public convenience init(
    _ entity: RealityKit.ModelEntity
   ) {
@@ -102,13 +97,13 @@ extension CodableRealityKit.iOS.ModelEntity {
 
 //MARK: PerspectiveCamera — iOS
 
-extension CodableRealityKit.iOS {
-  public class PerspectiveCamera: CodableRealityKit.iOS.Entity {
+extension RealityPlatform.iOS {
+  public class PerspectiveCamera: RealityPlatform.iOS.Entity {
   }
 }
 
 #if os(iOS)
-extension CodableRealityKit.iOS.PerspectiveCamera {
+extension RealityPlatform.iOS.PerspectiveCamera {
   public convenience init(
    _ entity: RealityKit.PerspectiveCamera
   ) {
@@ -119,13 +114,13 @@ extension CodableRealityKit.iOS.PerspectiveCamera {
 
 //MARK: PointLight — iOS
 
-extension CodableRealityKit.iOS {
-  public class PointLight: CodableRealityKit.iOS.Entity {
+extension RealityPlatform.iOS {
+  public class PointLight: RealityPlatform.iOS.Entity {
   }
 }
 
 #if os(iOS)
-extension CodableRealityKit.iOS.PointLight {
+extension RealityPlatform.iOS.PointLight {
   public convenience init(
    _ entity: RealityKit.PointLight
   ) {
@@ -136,13 +131,13 @@ extension CodableRealityKit.iOS.PointLight {
 
 //MARK: SpotLight — iOS
 
-extension CodableRealityKit.iOS {
-  public class SpotLight: CodableRealityKit.iOS.Entity {
+extension RealityPlatform.iOS {
+  public class SpotLight: RealityPlatform.iOS.Entity {
   }
 }
 
 #if os(iOS)
-extension CodableRealityKit.iOS.SpotLight {
+extension RealityPlatform.iOS.SpotLight {
   public convenience init(
    _ entity: RealityKit.SpotLight
   ) {
@@ -153,13 +148,13 @@ extension CodableRealityKit.iOS.SpotLight {
 
 //MARK: TriggerVolume — iOS
 
-extension CodableRealityKit.iOS {
-  public class TriggerVolume: CodableRealityKit.iOS.Entity {
+extension RealityPlatform.iOS {
+  public class TriggerVolume: RealityPlatform.iOS.Entity {
   }
 }
 
 #if os(iOS)
-extension CodableRealityKit.iOS.TriggerVolume {
+extension RealityPlatform.iOS.TriggerVolume {
   public convenience init(
    _ entity: RealityKit.TriggerVolume
   ) {
@@ -174,13 +169,13 @@ extension CodableRealityKit.iOS.TriggerVolume {
 
 //MARK: AnchorEntity — macOS
 
-extension CodableRealityKit.macOS {
-  public class AnchorEntity: CodableRealityKit.macOS.Entity {
+extension RealityPlatform.macOS {
+  public class AnchorEntity: RealityPlatform.macOS.Entity {
   }
 }
 
 #if os(macOS)
-extension CodableRealityKit.macOS.AnchorEntity {
+extension RealityPlatform.macOS.AnchorEntity {
   public convenience init(
    _ entity: RealityKit.AnchorEntity
   ) {
@@ -191,13 +186,13 @@ extension CodableRealityKit.macOS.AnchorEntity {
 
 //MARK: DirectionalLight — macOS
 
-extension CodableRealityKit.macOS {
-  public class DirectionalLight: CodableRealityKit.macOS.Entity {
+extension RealityPlatform.macOS {
+  public class DirectionalLight: RealityPlatform.macOS.Entity {
   }
 }
 
 #if os(macOS)
-extension CodableRealityKit.macOS.DirectionalLight {
+extension RealityPlatform.macOS.DirectionalLight {
   public convenience init(
    _ entity: RealityKit.DirectionalLight
   ) {
@@ -208,7 +203,7 @@ extension CodableRealityKit.macOS.DirectionalLight {
 
 //MARK: Entity — macOS
 
-extension CodableRealityKit.macOS {
+extension RealityPlatform.macOS {
   public class Entity: Codable {
     public init(
       from entity: RealityKit.Entity
@@ -219,7 +214,7 @@ extension CodableRealityKit.macOS {
 }
 
 #if os(macOS)
-extension CodableRealityKit.macOS.Entity {
+extension RealityPlatform.macOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
   ) {
@@ -230,13 +225,13 @@ extension CodableRealityKit.macOS.Entity {
 
 //MARK: ModelEntity — macOS
 
-extension CodableRealityKit.macOS {
-  public class ModelEntity: CodableRealityKit.macOS.Entity {
+extension RealityPlatform.macOS {
+  public class ModelEntity: RealityPlatform.macOS.Entity {
   }
 }
 
 #if os(macOS)
-extension CodableRealityKit.macOS.ModelEntity {
+extension RealityPlatform.macOS.ModelEntity {
   public convenience init(
    _ entity: RealityKit.ModelEntity
   ) {
@@ -247,13 +242,13 @@ extension CodableRealityKit.macOS.ModelEntity {
 
 //MARK: PerspectiveCamera — macOS
 
-extension CodableRealityKit.macOS {
-  public class PerspectiveCamera: CodableRealityKit.macOS.Entity {
+extension RealityPlatform.macOS {
+  public class PerspectiveCamera: RealityPlatform.macOS.Entity {
   }
 }
 
 #if os(macOS)
-extension CodableRealityKit.macOS.PerspectiveCamera {
+extension RealityPlatform.macOS.PerspectiveCamera {
   public convenience init(
    _ entity: RealityKit.PerspectiveCamera
   ) {
@@ -264,13 +259,13 @@ extension CodableRealityKit.macOS.PerspectiveCamera {
 
 //MARK: PointLight — macOS
 
-extension CodableRealityKit.macOS {
-  public class PointLight: CodableRealityKit.macOS.Entity {
+extension RealityPlatform.macOS {
+  public class PointLight: RealityPlatform.macOS.Entity {
   }
 }
 
 #if os(macOS)
-extension CodableRealityKit.macOS.PointLight {
+extension RealityPlatform.macOS.PointLight {
   public convenience init(
    _ entity: RealityKit.PointLight
   ) {
@@ -281,13 +276,13 @@ extension CodableRealityKit.macOS.PointLight {
 
 //MARK: SpotLight — macOS
 
-extension CodableRealityKit.macOS {
-  public class SpotLight: CodableRealityKit.macOS.Entity {
+extension RealityPlatform.macOS {
+  public class SpotLight: RealityPlatform.macOS.Entity {
   }
 }
 
 #if os(macOS)
-extension CodableRealityKit.macOS.SpotLight {
+extension RealityPlatform.macOS.SpotLight {
   public convenience init(
    _ entity: RealityKit.SpotLight
   ) {
@@ -298,13 +293,13 @@ extension CodableRealityKit.macOS.SpotLight {
 
 //MARK: TriggerVolume — macOS
 
-extension CodableRealityKit.macOS {
-  public class TriggerVolume: CodableRealityKit.macOS.Entity {
+extension RealityPlatform.macOS {
+  public class TriggerVolume: RealityPlatform.macOS.Entity {
   }
 }
 
 #if os(macOS)
-extension CodableRealityKit.macOS.TriggerVolume {
+extension RealityPlatform.macOS.TriggerVolume {
   public convenience init(
    _ entity: RealityKit.TriggerVolume
   ) {
@@ -315,15 +310,15 @@ extension CodableRealityKit.macOS.TriggerVolume {
 
 
 
-//MARK: AnchorEntity — xrOS
+//MARK: AnchorEntity — visionOS
 
-extension CodableRealityKit.xrOS {
-  public class AnchorEntity: CodableRealityKit.xrOS.Entity {
+extension RealityPlatform.visionOS {
+  public class AnchorEntity: RealityPlatform.visionOS.Entity {
   }
 }
 
 #if os(visionOS)
-extension CodableRealityKit.xrOS.AnchorEntity {
+extension RealityPlatform.visionOS.AnchorEntity {
   public convenience init(
    _ entity: RealityKit.AnchorEntity
   ) {
@@ -332,9 +327,9 @@ extension CodableRealityKit.xrOS.AnchorEntity {
 }
 #endif
 
-//MARK: Entity — xrOS
+//MARK: Entity — visionOS
 
-extension CodableRealityKit.xrOS {
+extension RealityPlatform.visionOS {
   public class Entity: Codable {
     public init(
       from entity: RealityKit.Entity
@@ -345,7 +340,7 @@ extension CodableRealityKit.xrOS {
 }
 
 #if os(visionOS)
-extension CodableRealityKit.xrOS.Entity {
+extension RealityPlatform.visionOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
   ) {
@@ -354,15 +349,15 @@ extension CodableRealityKit.xrOS.Entity {
 }
 #endif
 
-//MARK: ModelEntity — xrOS
+//MARK: ModelEntity — visionOS
 
-extension CodableRealityKit.xrOS {
-  public class ModelEntity: CodableRealityKit.xrOS.Entity {
+extension RealityPlatform.visionOS {
+  public class ModelEntity: RealityPlatform.visionOS.Entity {
   }
 }
 
 #if os(visionOS)
-extension CodableRealityKit.xrOS.ModelEntity {
+extension RealityPlatform.visionOS.ModelEntity {
   public convenience init(
    _ entity: RealityKit.ModelEntity
   ) {
@@ -371,15 +366,15 @@ extension CodableRealityKit.xrOS.ModelEntity {
 }
 #endif
 
-//MARK: PerspectiveCamera — xrOS
+//MARK: PerspectiveCamera — visionOS
 
-extension CodableRealityKit.xrOS {
-  public class PerspectiveCamera: CodableRealityKit.xrOS.Entity {
+extension RealityPlatform.visionOS {
+  public class PerspectiveCamera: RealityPlatform.visionOS.Entity {
   }
 }
 
 #if os(visionOS)
-extension CodableRealityKit.xrOS.PerspectiveCamera {
+extension RealityPlatform.visionOS.PerspectiveCamera {
   public convenience init(
    _ entity: RealityKit.PerspectiveCamera
   ) {
@@ -388,15 +383,15 @@ extension CodableRealityKit.xrOS.PerspectiveCamera {
 }
 #endif
 
-//MARK: TriggerVolume — xrOS
+//MARK: TriggerVolume — visionOS
 
-extension CodableRealityKit.xrOS {
-  public class TriggerVolume: CodableRealityKit.xrOS.Entity {
+extension RealityPlatform.visionOS {
+  public class TriggerVolume: RealityPlatform.visionOS.Entity {
   }
 }
 
 #if os(visionOS)
-extension CodableRealityKit.xrOS.TriggerVolume {
+extension RealityPlatform.visionOS.TriggerVolume {
   public convenience init(
    _ entity: RealityKit.TriggerVolume
   ) {

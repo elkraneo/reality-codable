@@ -1,13 +1,44 @@
 import Foundation
 import RealityKit
+import RealitySymbols
 
-public struct CodableScene: Codable, Equatable {
-  public let anchors: [CodableEntity]
+extension RealityPlatform.iOS {
 
-  public init(
-    anchors: [CodableEntity]
-  ) {
-    self.anchors = anchors
+  //FIXME: why this needs to be codable?
+  public struct Scene: Codable /*, Equatable*/ {
+    public let anchors: [RealityPlatform.iOS.AnchorEntity]
+
+    public init(
+      anchors: [RealityPlatform.iOS.AnchorEntity]
+    ) {
+      self.anchors = anchors
+    }
+  }
+}
+
+extension RealityPlatform.macOS {
+
+  public struct Scene: Codable {
+    public let anchors: [RealityPlatform.macOS.AnchorEntity]
+
+    public init(
+      anchors: [RealityPlatform.macOS.AnchorEntity]
+    ) {
+      self.anchors = anchors
+    }
+  }
+}
+
+extension RealityPlatform.visionOS {
+
+  public struct Scene: Codable {
+    public let childrens: [RealityPlatform.visionOS.Entity]
+
+    public init(
+      childrens: [RealityPlatform.visionOS.Entity]
+    ) {
+      self.childrens = childrens
+    }
   }
 }
 

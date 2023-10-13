@@ -1,0 +1,57 @@
+% warning = "This file was automatically generated and should not be edited."
+// ${warning}
+
+import Foundation
+import RealityKit
+import RealitySymbols
+% import json
+
+#if os(iOS)
+
+extension RealityPlatform.iOS.EntityType {
+
+  func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.iOS.Entity {
+    switch self {
+    % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Entities.json') as file:
+    % data = json.load(file)
+    % for entity in data:
+      case .${entity["name"][0].lower() + entity["name"][1:]}:
+        return RealityPlatform.iOS.${entity["name"]}(entity)
+    %end
+    }
+  }
+}
+
+#elseif os(macOS)
+
+extension RealityPlatform.macOS.EntityType {
+
+  func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.macOS.Entity {
+    switch self {
+    % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Entities.json') as file:
+    % data = json.load(file)
+    % for entity in data:
+      case .${entity["name"][0].lower() + entity["name"][1:]}:
+        return RealityPlatform.macOS.${entity["name"]}(entity)
+    %end
+    }
+  }
+}
+
+#elseif os(visionOS)
+
+extension RealityPlatform.visionOS.EntityType {
+
+  func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.visionOS.Entity {
+    switch self {
+    % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/visionOS/Processed/Entities.json') as file:
+    % data = json.load(file)
+    % for entity in data:
+      case .${entity["name"][0].lower() + entity["name"][1:]}:
+        return RealityPlatform.visionOS.${entity["name"]}(entity)
+    %end
+    }
+  }
+}
+
+#endif
