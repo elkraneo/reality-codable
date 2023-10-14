@@ -3,7 +3,31 @@ import RealityKit
 import RealitySymbols
 
 extension RealityPlatform.iOS {
+  /**
+   Scene structure on iOS
 
+   ```
+                                  ┌─────────┐
+                                  │ ARView  │
+                                  └─────────┘
+                                       │
+                                ┌─────────────┐
+                                │    Scene    │
+                                └─────────────┘
+                         ┌─────────────┴─────────────┐
+               ┌───────────────────┐       ┌───────────────────┐
+               │   Anchor Entity   │       │   Anchor Entity   │
+               └───────────────────┘       └───────────────────┘
+                ┌────────┴───────┐                   │
+           ┌─────────┐      ┌─────────┐         ┌─────────┐
+           │ Entity  │      │ Entity  │         │ Entity  │
+           └─────────┘      └─────────┘         └─────────┘
+        ┌───────┴──────┐
+   ┌─────────┐    ┌─────────┐
+   │ Entity  │    │ Entity  │
+   └─────────┘    └─────────┘
+   ```
+  */
   public struct Scene: Codable, Equatable {
     public let anchors: [RealityPlatform.iOS.AnchorEntity]
 
@@ -29,7 +53,24 @@ extension RealityPlatform.macOS {
 }
 
 extension RealityPlatform.visionOS {
+  /**
+   Scene structure on visionOS
 
+   ```
+                                ┌─────────────┐
+                                │    Scene    │
+                                └─────────────┘
+                         ┌─────────────┴─────────────┐
+                ┌────────┴───────┐                   │
+           ┌─────────┐      ┌─────────┐         ┌─────────┐
+           │ Entity  │      │ Entity  │         │ Entity  │
+           └─────────┘      └─────────┘         └─────────┘
+        ┌───────┴──────┐
+   ┌─────────┐    ┌─────────┐
+   │ Entity  │    │ Entity  │
+   └─────────┘    └─────────┘
+   ```
+  */
   public struct Scene: Codable, Equatable {
     public let children: [RealityPlatform.visionOS.Entity]
 
@@ -39,35 +80,52 @@ extension RealityPlatform.visionOS {
       self.children = children
     }
   }
+
+  public func findEntity(
+    id targetID: RealityPlatform.visionOS.Entity.ID,
+    root: RealityPlatform.visionOS.Entity
+  ) -> RealityPlatform.visionOS.Entity? {
+    if root.id == targetID {
+      return root
+    }
+    guard let children = root.children else { return nil }
+    for child in children {
+      if let foundNode = findEntity(id: targetID, root: child) {
+        return foundNode
+      }
+    }
+
+    return nil
+  }
 }
 
 #if !os(visionOS)
   extension RealityKit.ARView.DebugOptions: Codable {}
 
-//FIXME: restore ARView functionality
-//  public struct CodableARView: Codable, Equatable {
-//    //MARK: Working with the Scene
-//    public let scene: CodableScene
-//
-//    //MARK: Debugging the Session
-//    ///The current debugging options.
-//    public let debugOptionsRawValue: RealityKit.ARView.DebugOptions.RawValue
-//
-//    /// #Managing the View
-//
-//    // The scale factor of the content in the view.
-//    public let contentScaleFactor: CGFloat
-//
-//    public init(
-//      _ arView: RealityKit.ARView,
-//      anchors: [CodableEntity],
-//      contentScaleFactor: CGFloat
-//    ) {
-//      self.scene = CodableScene(anchors: anchors)
-//      self.debugOptionsRawValue = arView.debugOptions.rawValue
-//      self.contentScaleFactor = contentScaleFactor
-//    }
-//  }
+  //FIXME: restore ARView functionality
+  //  public struct CodableARView: Codable, Equatable {
+  //    //MARK: Working with the Scene
+  //    public let scene: CodableScene
+  //
+  //    //MARK: Debugging the Session
+  //    ///The current debugging options.
+  //    public let debugOptionsRawValue: RealityKit.ARView.DebugOptions.RawValue
+  //
+  //    /// #Managing the View
+  //
+  //    // The scale factor of the content in the view.
+  //    public let contentScaleFactor: CGFloat
+  //
+  //    public init(
+  //      _ arView: RealityKit.ARView,
+  //      anchors: [CodableEntity],
+  //      contentScaleFactor: CGFloat
+  //    ) {
+  //      self.scene = CodableScene(anchors: anchors)
+  //      self.debugOptionsRawValue = arView.debugOptions.rawValue
+  //      self.contentScaleFactor = contentScaleFactor
+  //    }
+  //  }
 
   /*
   /// #Working with the Scene
@@ -126,18 +184,18 @@ extension RealityPlatform.visionOS {
     }
   }
 
-  public func findCodableEntity(root: RealityKit.Entity, targetID: UInt64) -> Entity? {
-    if root.id == targetID {
-      return root
-    }
-
-    for child in root.children {
-      if let foundNode = findCodableEntity(root: child, targetID: targetID) {
-        return foundNode
-      }
-    }
-
-    return nil
-  }
+//  public func findCodableEntity(root: RealityKit.Entity, targetID: UInt64) -> Entity? {
+//    if root.id == targetID {
+//      return root
+//    }
+//
+//    for child in root.children {
+//      if let foundNode = findCodableEntity(root: child, targetID: targetID) {
+//        return foundNode
+//      }
+//    }
+//
+//    return nil
+//  }
 
 #endif
