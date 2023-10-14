@@ -9,7 +9,7 @@ extension RealityKit.Entity {
     public var encoded: RealityPlatform.iOS.Entity {
       let logger = Logger(subsystem: "iOS.reality-codable", category: "Entity.encoded")
 
-      for entityType in RealityPlatform.macOS.EntityType.allCases {
+      for entityType in RealityPlatform.iOS.EntityType.allCases {
         if "\(type(of: self))" == entityType.description {
           return entityType.makeCodable(from: self)
         }
@@ -17,10 +17,10 @@ extension RealityKit.Entity {
 
       let data = "\(type(of: self))".data(using: .utf8)!
       logger.warning(
-        "\(String(data: data, encoding: .utf8)!, privacy: .public) — Unknown EntityType case"
+        "\(String(data: data, encoding: .utf8)!, privacy: .public) — Unknown iOS EntityType case"
       )
 
-      return RealityPlatform.iOS.Entity(self)
+      return RealityPlatform.iOS.Entity(from: self)
     }
 
   #elseif os(macOS)
@@ -36,10 +36,10 @@ extension RealityKit.Entity {
 
       let data = "\(type(of: self))".data(using: .utf8)!
       logger.warning(
-        "\(String(data: data, encoding: .utf8)!, privacy: .public) — Unknown EntityType case"
+        "\(String(data: data, encoding: .utf8)!, privacy: .public) — Unknown macOS EntityType case"
       )
 
-      return RealityPlatform.macOS.Entity(self)
+      return RealityPlatform.macOS.Entity(from: self)
     }
 
   #elseif os(visionOS)
@@ -55,12 +55,11 @@ extension RealityKit.Entity {
 
       let data = "\(type(of: self))".data(using: .utf8)!
       logger.warning(
-        "\(String(data: data, encoding: .utf8)!, privacy: .public) — Unknown EntityType case"
+        "\(String(data: data, encoding: .utf8)!, privacy: .public) — Unknown visionOS EntityType case"
       )
 
       return RealityPlatform.visionOS.Entity(self)
     }
 
   #endif
-
 }

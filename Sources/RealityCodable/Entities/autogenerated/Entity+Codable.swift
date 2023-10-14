@@ -17,6 +17,7 @@ extension RealityPlatform.iOS.AnchorEntity {
    _ entity: RealityKit.AnchorEntity
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -34,6 +35,7 @@ extension RealityPlatform.iOS.BodyTrackedEntity {
    _ entity: RealityKit.BodyTrackedEntity
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -51,6 +53,7 @@ extension RealityPlatform.iOS.DirectionalLight {
    _ entity: RealityKit.DirectionalLight
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -60,6 +63,7 @@ extension RealityPlatform.iOS.DirectionalLight {
 extension RealityPlatform.iOS {
   public class Entity: Codable, Equatable, Identifiable {
     public var id: UInt64
+    public var children: [RealityPlatform.iOS.Entity]?
 
     public init(
       from entity: RealityKit.Entity
@@ -79,6 +83,7 @@ extension RealityPlatform.iOS.Entity {
    _ entity: RealityKit.Entity
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -96,6 +101,7 @@ extension RealityPlatform.iOS.ModelEntity {
    _ entity: RealityKit.ModelEntity
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -113,6 +119,7 @@ extension RealityPlatform.iOS.PerspectiveCamera {
    _ entity: RealityKit.PerspectiveCamera
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -130,6 +137,7 @@ extension RealityPlatform.iOS.PointLight {
    _ entity: RealityKit.PointLight
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -147,6 +155,7 @@ extension RealityPlatform.iOS.SpotLight {
    _ entity: RealityKit.SpotLight
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -164,6 +173,7 @@ extension RealityPlatform.iOS.TriggerVolume {
    _ entity: RealityKit.TriggerVolume
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -184,6 +194,7 @@ extension RealityPlatform.macOS.AnchorEntity {
    _ entity: RealityKit.AnchorEntity
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -201,6 +212,7 @@ extension RealityPlatform.macOS.DirectionalLight {
    _ entity: RealityKit.DirectionalLight
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -210,6 +222,7 @@ extension RealityPlatform.macOS.DirectionalLight {
 extension RealityPlatform.macOS {
   public class Entity: Codable, Equatable, Identifiable {
     public var id: UInt64
+    public var children: [RealityPlatform.macOS.Entity]?
 
     public init(
       from entity: RealityKit.Entity
@@ -229,6 +242,7 @@ extension RealityPlatform.macOS.Entity {
    _ entity: RealityKit.Entity
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -246,6 +260,7 @@ extension RealityPlatform.macOS.ModelEntity {
    _ entity: RealityKit.ModelEntity
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -263,6 +278,7 @@ extension RealityPlatform.macOS.PerspectiveCamera {
    _ entity: RealityKit.PerspectiveCamera
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -280,6 +296,7 @@ extension RealityPlatform.macOS.PointLight {
    _ entity: RealityKit.PointLight
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -297,6 +314,7 @@ extension RealityPlatform.macOS.SpotLight {
    _ entity: RealityKit.SpotLight
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -314,6 +332,7 @@ extension RealityPlatform.macOS.TriggerVolume {
    _ entity: RealityKit.TriggerVolume
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -332,6 +351,7 @@ extension RealityPlatform.visionOS.AnchorEntity {
    _ entity: RealityKit.AnchorEntity
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -341,6 +361,7 @@ extension RealityPlatform.visionOS.AnchorEntity {
 extension RealityPlatform.visionOS {
   public class Entity: Codable, Equatable, Identifiable {
     public var id: UInt64
+    public var children: [RealityPlatform.visionOS.Entity]?
 
     public init(
       from entity: RealityKit.Entity
@@ -360,6 +381,7 @@ extension RealityPlatform.visionOS.Entity {
    _ entity: RealityKit.Entity
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -377,6 +399,7 @@ extension RealityPlatform.visionOS.ModelEntity {
    _ entity: RealityKit.ModelEntity
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -394,6 +417,7 @@ extension RealityPlatform.visionOS.PerspectiveCamera {
    _ entity: RealityKit.PerspectiveCamera
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -411,6 +435,7 @@ extension RealityPlatform.visionOS.TriggerVolume {
    _ entity: RealityKit.TriggerVolume
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif

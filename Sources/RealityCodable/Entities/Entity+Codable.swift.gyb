@@ -15,6 +15,7 @@ extension RealityPlatform.iOS {
   %if entity["name"] == "Entity":
   public class ${entity["name"]}: Codable, Equatable, Identifiable {
     public var id: UInt64
+    public var children: [RealityPlatform.iOS.Entity]?
 
     public init(
       from entity: RealityKit.Entity
@@ -37,6 +38,7 @@ extension RealityPlatform.iOS.${entity["name"]} {
    _ entity: RealityKit.${entity["name"]}
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -54,6 +56,7 @@ extension RealityPlatform.macOS {
   %if entity["name"] == "Entity":
   public class ${entity["name"]}: Codable, Equatable, Identifiable {
     public var id: UInt64
+    public var children: [RealityPlatform.macOS.Entity]?
 
     public init(
       from entity: RealityKit.Entity
@@ -76,6 +79,7 @@ extension RealityPlatform.macOS.${entity["name"]} {
    _ entity: RealityKit.${entity["name"]}
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
@@ -91,6 +95,7 @@ extension RealityPlatform.visionOS {
   %if entity["name"] == "Entity":
   public class ${entity["name"]}: Codable, Equatable, Identifiable {
     public var id: UInt64
+    public var children: [RealityPlatform.visionOS.Entity]?
 
     public init(
       from entity: RealityKit.Entity
@@ -113,6 +118,7 @@ extension RealityPlatform.visionOS.${entity["name"]} {
    _ entity: RealityKit.${entity["name"]}
   ) {
     self.init(from: entity)
+    self.children = entity.children.map(\.encoded)
   }
 }
 #endif
