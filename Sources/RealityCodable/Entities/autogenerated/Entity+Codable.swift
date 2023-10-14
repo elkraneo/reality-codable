@@ -4,7 +4,6 @@ import Foundation
 import RealityKit
 import RealitySymbols
 
-
 //MARK: AnchorEntity — iOS
 
 extension RealityPlatform.iOS {
@@ -166,7 +165,6 @@ extension RealityPlatform.iOS.TriggerVolume {
 
 //MARK: -
 
-
 //MARK: AnchorEntity — macOS
 
 extension RealityPlatform.macOS {
@@ -307,7 +305,6 @@ extension RealityPlatform.macOS.TriggerVolume {
   }
 }
 #endif
-
 
 
 //MARK: AnchorEntity — visionOS

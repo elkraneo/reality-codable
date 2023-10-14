@@ -8,7 +8,6 @@ import RealitySymbols
 
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Entities.json') as file:
 % data = json.load(file)
-
 % for entity in data:
 //MARK: ${entity["name"]} — iOS
 
@@ -42,7 +41,6 @@ extension RealityPlatform.iOS.${entity["name"]} {
 
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Entities.json') as file:
 % data = json.load(file)
-
 % for entity in data:
 //MARK: ${entity["name"]} — macOS
 
@@ -74,7 +72,6 @@ extension RealityPlatform.macOS.${entity["name"]} {
 
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/visionOS/Processed/Entities.json') as file:
 % data = json.load(file)
-
 % for entity in data:
 //MARK: ${entity["name"]} — visionOS
 

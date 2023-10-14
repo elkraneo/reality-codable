@@ -32,12 +32,12 @@ extension RealityPlatform.macOS {
 extension RealityPlatform.visionOS {
 
   public struct Scene: Codable {
-    public let childrens: [RealityPlatform.visionOS.Entity]
+    public let children: [RealityPlatform.visionOS.Entity]
 
     public init(
-      childrens: [RealityPlatform.visionOS.Entity]
+      children: [RealityPlatform.visionOS.Entity]
     ) {
-      self.childrens = childrens
+      self.children = children
     }
   }
 }
@@ -45,29 +45,30 @@ extension RealityPlatform.visionOS {
 #if !os(visionOS)
   extension RealityKit.ARView.DebugOptions: Codable {}
 
-  public struct CodableARView: Codable, Equatable {
-    //MARK: Working with the Scene
-    public let scene: CodableScene
-
-    //MARK: Debugging the Session
-    ///The current debugging options.
-    public let debugOptionsRawValue: RealityKit.ARView.DebugOptions.RawValue
-
-    /// #Managing the View
-
-    // The scale factor of the content in the view.
-    public let contentScaleFactor: CGFloat
-
-    public init(
-      _ arView: RealityKit.ARView,
-      anchors: [CodableEntity],
-      contentScaleFactor: CGFloat
-    ) {
-      self.scene = CodableScene(anchors: anchors)
-      self.debugOptionsRawValue = arView.debugOptions.rawValue
-      self.contentScaleFactor = contentScaleFactor
-    }
-  }
+//FIXME: restore ARView functionality
+//  public struct CodableARView: Codable, Equatable {
+//    //MARK: Working with the Scene
+//    public let scene: CodableScene
+//
+//    //MARK: Debugging the Session
+//    ///The current debugging options.
+//    public let debugOptionsRawValue: RealityKit.ARView.DebugOptions.RawValue
+//
+//    /// #Managing the View
+//
+//    // The scale factor of the content in the view.
+//    public let contentScaleFactor: CGFloat
+//
+//    public init(
+//      _ arView: RealityKit.ARView,
+//      anchors: [CodableEntity],
+//      contentScaleFactor: CGFloat
+//    ) {
+//      self.scene = CodableScene(anchors: anchors)
+//      self.debugOptionsRawValue = arView.debugOptions.rawValue
+//      self.contentScaleFactor = contentScaleFactor
+//    }
+//  }
 
   /*
   /// #Working with the Scene
