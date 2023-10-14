@@ -79,24 +79,26 @@ extension RealityPlatform.visionOS {
     ) {
       self.children = children
     }
-  }
-}
 
-public func findEntity<E: Identifiable & RealityKit.HasHierarchy>(
-  id targetID: E.ID,
-  root: E
-) -> E? {
-  if targetID == root.id {
-    return root
-  }
+    public static func findEntity(
+      id targetID: RealityPlatform.visionOS.Entity.ID,
+      root: RealityPlatform.visionOS.Entity
+    ) -> RealityPlatform.visionOS.Entity? {
+      if targetID == root.id {
+        return root
+      }
 
-  for child in root.children {
-    if let foundNode = findEntity(id: targetID, root: child) {
-      return foundNode as? E
+      guard let children = root.children else { return nil }
+      for child in children {
+        if let foundNode = findEntity(id: targetID, root: child) {
+          return foundNode
+        }
+      }
+
+      return nil
     }
-  }
 
-  return nil
+  }
 }
 
 #if !os(visionOS)
