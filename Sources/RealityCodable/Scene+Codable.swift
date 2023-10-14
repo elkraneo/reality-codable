@@ -80,14 +80,17 @@ extension RealityPlatform.visionOS {
       self.children = children
     }
   }
+}
 
-  public func findEntity(
+extension RealityPlatform.visionOS.Scene {
+  public static func findEntity(
     id targetID: RealityPlatform.visionOS.Entity.ID,
     root: RealityPlatform.visionOS.Entity
   ) -> RealityPlatform.visionOS.Entity? {
-    if root.id == targetID {
+    if targetID == root.id {
       return root
     }
+
     guard let children = root.children else { return nil }
     for child in children {
       if let foundNode = findEntity(id: targetID, root: child) {
