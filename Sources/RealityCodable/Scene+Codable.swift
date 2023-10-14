@@ -80,6 +80,7 @@ extension RealityPlatform.visionOS {
       self.children = children
     }
 
+    //TODO: make generic
     public static func findEntity(
       id targetID: RealityPlatform.visionOS.Entity.ID,
       root: RealityPlatform.visionOS.Entity
@@ -97,7 +98,6 @@ extension RealityPlatform.visionOS {
 
       return nil
     }
-
   }
 }
 
