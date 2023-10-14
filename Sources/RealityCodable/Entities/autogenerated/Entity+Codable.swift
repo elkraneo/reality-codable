@@ -4,7 +4,7 @@ import Foundation
 import RealityKit
 import RealitySymbols
 
-//MARK: AnchorEntity — iOS
+//MARK: - iOS
 
 extension RealityPlatform.iOS {
   public class AnchorEntity: RealityPlatform.iOS.Entity {
@@ -21,8 +21,6 @@ extension RealityPlatform.iOS.AnchorEntity {
 }
 #endif
 
-//MARK: BodyTrackedEntity — iOS
-
 extension RealityPlatform.iOS {
   public class BodyTrackedEntity: RealityPlatform.iOS.Entity {
   }
@@ -38,8 +36,6 @@ extension RealityPlatform.iOS.BodyTrackedEntity {
 }
 #endif
 
-//MARK: DirectionalLight — iOS
-
 extension RealityPlatform.iOS {
   public class DirectionalLight: RealityPlatform.iOS.Entity {
   }
@@ -54,8 +50,6 @@ extension RealityPlatform.iOS.DirectionalLight {
   }
 }
 #endif
-
-//MARK: Entity — iOS
 
 extension RealityPlatform.iOS {
   public class Entity: Codable, Equatable, Identifiable {
@@ -76,6 +70,7 @@ extension RealityPlatform.iOS {
 }
 
 #if os(iOS)
+//MARK: Entity
 extension RealityPlatform.iOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
@@ -85,8 +80,6 @@ extension RealityPlatform.iOS.Entity {
   }
 }
 #endif
-
-//MARK: ModelEntity — iOS
 
 extension RealityPlatform.iOS {
   public class ModelEntity: RealityPlatform.iOS.Entity {
@@ -103,8 +96,6 @@ extension RealityPlatform.iOS.ModelEntity {
 }
 #endif
 
-//MARK: PerspectiveCamera — iOS
-
 extension RealityPlatform.iOS {
   public class PerspectiveCamera: RealityPlatform.iOS.Entity {
   }
@@ -119,8 +110,6 @@ extension RealityPlatform.iOS.PerspectiveCamera {
   }
 }
 #endif
-
-//MARK: PointLight — iOS
 
 extension RealityPlatform.iOS {
   public class PointLight: RealityPlatform.iOS.Entity {
@@ -137,8 +126,6 @@ extension RealityPlatform.iOS.PointLight {
 }
 #endif
 
-//MARK: SpotLight — iOS
-
 extension RealityPlatform.iOS {
   public class SpotLight: RealityPlatform.iOS.Entity {
   }
@@ -153,8 +140,6 @@ extension RealityPlatform.iOS.SpotLight {
   }
 }
 #endif
-
-//MARK: TriggerVolume — iOS
 
 extension RealityPlatform.iOS {
   public class TriggerVolume: RealityPlatform.iOS.Entity {
@@ -171,10 +156,7 @@ extension RealityPlatform.iOS.TriggerVolume {
 }
 #endif
 
-
-//MARK: -
-
-//MARK: AnchorEntity — macOS
+//MARK: - macOS
 
 extension RealityPlatform.macOS {
   public class AnchorEntity: RealityPlatform.macOS.Entity {
@@ -191,8 +173,6 @@ extension RealityPlatform.macOS.AnchorEntity {
 }
 #endif
 
-//MARK: DirectionalLight — macOS
-
 extension RealityPlatform.macOS {
   public class DirectionalLight: RealityPlatform.macOS.Entity {
   }
@@ -207,8 +187,6 @@ extension RealityPlatform.macOS.DirectionalLight {
   }
 }
 #endif
-
-//MARK: Entity — macOS
 
 extension RealityPlatform.macOS {
   public class Entity: Codable, Equatable, Identifiable {
@@ -229,6 +207,7 @@ extension RealityPlatform.macOS {
 }
 
 #if os(macOS)
+//MARK: Entity
 extension RealityPlatform.macOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
@@ -239,8 +218,6 @@ extension RealityPlatform.macOS.Entity {
   }
 }
 #endif
-
-//MARK: ModelEntity — macOS
 
 extension RealityPlatform.macOS {
   public class ModelEntity: RealityPlatform.macOS.Entity {
@@ -257,8 +234,6 @@ extension RealityPlatform.macOS.ModelEntity {
 }
 #endif
 
-//MARK: PerspectiveCamera — macOS
-
 extension RealityPlatform.macOS {
   public class PerspectiveCamera: RealityPlatform.macOS.Entity {
   }
@@ -273,8 +248,6 @@ extension RealityPlatform.macOS.PerspectiveCamera {
   }
 }
 #endif
-
-//MARK: PointLight — macOS
 
 extension RealityPlatform.macOS {
   public class PointLight: RealityPlatform.macOS.Entity {
@@ -291,8 +264,6 @@ extension RealityPlatform.macOS.PointLight {
 }
 #endif
 
-//MARK: SpotLight — macOS
-
 extension RealityPlatform.macOS {
   public class SpotLight: RealityPlatform.macOS.Entity {
   }
@@ -307,8 +278,6 @@ extension RealityPlatform.macOS.SpotLight {
   }
 }
 #endif
-
-//MARK: TriggerVolume — macOS
 
 extension RealityPlatform.macOS {
   public class TriggerVolume: RealityPlatform.macOS.Entity {
@@ -325,8 +294,7 @@ extension RealityPlatform.macOS.TriggerVolume {
 }
 #endif
 
-
-//MARK: AnchorEntity — visionOS
+//MARK: - visionOS
 
 extension RealityPlatform.visionOS {
   public class AnchorEntity: RealityPlatform.visionOS.Entity {
@@ -343,11 +311,9 @@ extension RealityPlatform.visionOS.AnchorEntity {
 }
 #endif
 
-//MARK: Entity — visionOS
-
 extension RealityPlatform.visionOS {
   public class Entity: Codable, Equatable, Identifiable {
-    private(set) public var accessibilityValue: String?
+    private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.Entity]?
     public let id: UInt64
 
@@ -364,17 +330,17 @@ extension RealityPlatform.visionOS {
 }
 
 #if os(visionOS)
+//MARK: Entity
 extension RealityPlatform.visionOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
   ) {
+    self.init(from: entity)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
   }
 }
 #endif
-
-//MARK: ModelEntity — visionOS
 
 extension RealityPlatform.visionOS {
   public class ModelEntity: RealityPlatform.visionOS.Entity {
@@ -391,8 +357,6 @@ extension RealityPlatform.visionOS.ModelEntity {
 }
 #endif
 
-//MARK: PerspectiveCamera — visionOS
-
 extension RealityPlatform.visionOS {
   public class PerspectiveCamera: RealityPlatform.visionOS.Entity {
   }
@@ -408,8 +372,6 @@ extension RealityPlatform.visionOS.PerspectiveCamera {
 }
 #endif
 
-//MARK: TriggerVolume — visionOS
-
 extension RealityPlatform.visionOS {
   public class TriggerVolume: RealityPlatform.visionOS.Entity {
   }
@@ -424,4 +386,3 @@ extension RealityPlatform.visionOS.TriggerVolume {
   }
 }
 #endif
-

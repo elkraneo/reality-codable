@@ -6,10 +6,10 @@ import Foundation
 import RealityKit
 import RealitySymbols
 
+//MARK: - iOS
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
-//MARK: ${entity["name"]} — iOS
 
 extension RealityPlatform.iOS {
   %if entity["name"] == "Entity":
@@ -34,7 +34,8 @@ extension RealityPlatform.iOS {
 }
 
 #if os(iOS)
-  %if entity["name"] == "Entity":
+%if entity["name"] == "Entity":
+//MARK: Entity
 extension RealityPlatform.iOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
@@ -53,15 +54,12 @@ extension RealityPlatform.iOS.${entity["name"]} {
 }
 %end
 #endif
-
 %end
 
-//MARK: -
-
+//MARK: - macOS
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
-//MARK: ${entity["name"]} — macOS
 
 extension RealityPlatform.macOS {
   %if entity["name"] == "Entity":
@@ -87,6 +85,7 @@ extension RealityPlatform.macOS {
 
 #if os(macOS)
 %if entity["name"] == "Entity":
+//MARK: Entity
 extension RealityPlatform.macOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
@@ -106,18 +105,17 @@ extension RealityPlatform.macOS.${entity["name"]} {
 }
 %end
 #endif
-
 %end
 
+//MARK: - visionOS
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/visionOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
-//MARK: ${entity["name"]} — visionOS
 
 extension RealityPlatform.visionOS {
   %if entity["name"] == "Entity":
   public class ${entity["name"]}: Codable, Equatable, Identifiable {
-    private(set) public var accessibilityValue: String?
+    private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.Entity]?
     public let id: UInt64
 
@@ -138,10 +136,12 @@ extension RealityPlatform.visionOS {
 
 #if os(visionOS)
 %if entity["name"] == "Entity":
+//MARK: Entity
 extension RealityPlatform.visionOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
   ) {
+    self.init(from: entity)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
   }
@@ -156,5 +156,4 @@ extension RealityPlatform.visionOS.${entity["name"]} {
 }
 %end
 #endif
-
 %end
