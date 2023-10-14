@@ -4,8 +4,7 @@ import RealitySymbols
 
 extension RealityPlatform.iOS {
 
-  //FIXME: why this needs to be codable?
-  public struct Scene: Codable /*, Equatable*/ {
+  public struct Scene: Codable, Equatable {
     public let anchors: [RealityPlatform.iOS.AnchorEntity]
 
     public init(
@@ -18,7 +17,7 @@ extension RealityPlatform.iOS {
 
 extension RealityPlatform.macOS {
 
-  public struct Scene: Codable {
+  public struct Scene: Codable, Equatable {
     public let anchors: [RealityPlatform.macOS.AnchorEntity]
 
     public init(
@@ -31,7 +30,7 @@ extension RealityPlatform.macOS {
 
 extension RealityPlatform.visionOS {
 
-  public struct Scene: Codable {
+  public struct Scene: Codable, Equatable {
     public let children: [RealityPlatform.visionOS.Entity]
 
     public init(
