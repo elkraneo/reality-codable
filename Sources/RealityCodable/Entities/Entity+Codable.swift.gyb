@@ -13,11 +13,13 @@ import RealitySymbols
 
 extension RealityPlatform.iOS {
   %if entity["name"] == "Entity":
-  public class ${entity["name"]}: Codable {
+  public class ${entity["name"]}: Codable, Identifiable {
+    public var id: UInt64
+
     public init(
       from entity: RealityKit.Entity
     ) {
-      //TODO:
+      self.id = entity.id
     }
   %else:
   public class ${entity["name"]}: RealityPlatform.iOS.Entity {
@@ -46,11 +48,13 @@ extension RealityPlatform.iOS.${entity["name"]} {
 
 extension RealityPlatform.macOS {
   %if entity["name"] == "Entity":
-  public class ${entity["name"]}: Codable {
+  public class ${entity["name"]}: Codable, Identifiable {
+    public var id: UInt64
+
     public init(
       from entity: RealityKit.Entity
     ) {
-      //TODO:
+      self.id = entity.id
     }
   %else:
   public class ${entity["name"]}: RealityPlatform.macOS.Entity {
@@ -77,11 +81,13 @@ extension RealityPlatform.macOS.${entity["name"]} {
 
 extension RealityPlatform.visionOS {
   %if entity["name"] == "Entity":
-  public class ${entity["name"]}: Codable {
+  public class ${entity["name"]}: Codable, Identifiable {
+    public var id: UInt64
+
     public init(
       from entity: RealityKit.Entity
     ) {
-      //TODO:
+      self.id = entity.id
     }
   %else:
   public class ${entity["name"]}: RealityPlatform.visionOS.Entity {

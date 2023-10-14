@@ -58,11 +58,13 @@ extension RealityPlatform.iOS.DirectionalLight {
 //MARK: Entity — iOS
 
 extension RealityPlatform.iOS {
-  public class Entity: Codable {
+  public class Entity: Codable, Identifiable {
+    public var id: UInt64
+
     public init(
       from entity: RealityKit.Entity
     ) {
-      //TODO:
+      self.id = entity.id
     }
   }
 }
@@ -202,11 +204,13 @@ extension RealityPlatform.macOS.DirectionalLight {
 //MARK: Entity — macOS
 
 extension RealityPlatform.macOS {
-  public class Entity: Codable {
+  public class Entity: Codable, Identifiable {
+    public var id: UInt64
+
     public init(
       from entity: RealityKit.Entity
     ) {
-      //TODO:
+      self.id = entity.id
     }
   }
 }
@@ -327,11 +331,13 @@ extension RealityPlatform.visionOS.AnchorEntity {
 //MARK: Entity — visionOS
 
 extension RealityPlatform.visionOS {
-  public class Entity: Codable {
+  public class Entity: Codable, Identifiable {
+    public var id: UInt64
+
     public init(
       from entity: RealityKit.Entity
     ) {
-      //TODO:
+      self.id = entity.id
     }
   }
 }
