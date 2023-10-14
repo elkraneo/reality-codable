@@ -12,11 +12,13 @@ import RealitySymbols
 % for entity in data:
 
 extension RealityPlatform.iOS {
-  %if entity["name"] == "Entity":
+%if entity["name"] == "Entity":
+  //MARK: Entity
   public class ${entity["name"]}: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.iOS.Entity]?
     public let id: UInt64
+    private(set) public var parent: RealityPlatform.iOS.Entity?
 
     public init(
       from entity: RealityKit.Entity
@@ -27,21 +29,21 @@ extension RealityPlatform.iOS {
     public static func == (lhs: RealitySymbols.RealityPlatform.iOS.Entity, rhs: RealitySymbols.RealityPlatform.iOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
-  %else:
+%else:
   public class ${entity["name"]}: RealityPlatform.iOS.Entity {
-  %end
+%end
   }
 }
 
 #if os(iOS)
 %if entity["name"] == "Entity":
-//MARK: Entity
 extension RealityPlatform.iOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
   ) {
     self.init(from: entity)
     self.children = entity.children.map(\.encoded)
+    self.parent = entity.parent?.encoded
   }
 }
 %else:
@@ -62,11 +64,13 @@ extension RealityPlatform.iOS.${entity["name"]} {
 % for entity in data:
 
 extension RealityPlatform.macOS {
-  %if entity["name"] == "Entity":
+%if entity["name"] == "Entity":
+  //MARK: Entity
   public class ${entity["name"]}: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.macOS.Entity]?
     public let id: UInt64
+    private(set) public var parent: RealityPlatform.macOS.Entity?
 
     public init(
       from entity: RealityKit.Entity
@@ -77,15 +81,14 @@ extension RealityPlatform.macOS {
     public static func == (lhs: RealitySymbols.RealityPlatform.macOS.Entity, rhs: RealitySymbols.RealityPlatform.macOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
-  %else:
+%else:
   public class ${entity["name"]}: RealityPlatform.macOS.Entity {
-  %end
+%end
   }
 }
 
 #if os(macOS)
 %if entity["name"] == "Entity":
-//MARK: Entity
 extension RealityPlatform.macOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
@@ -93,6 +96,7 @@ extension RealityPlatform.macOS.Entity {
     self.init(from: entity)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.parent = entity.parent?.encoded
   }
 }
 %else:
@@ -113,11 +117,13 @@ extension RealityPlatform.macOS.${entity["name"]} {
 % for entity in data:
 
 extension RealityPlatform.visionOS {
-  %if entity["name"] == "Entity":
+%if entity["name"] == "Entity":
+  //MARK: Entity
   public class ${entity["name"]}: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.Entity]?
     public let id: UInt64
+    private(set) public var parent: RealityPlatform.visionOS.Entity?
 
     public init(
       from entity: RealityKit.Entity
@@ -128,15 +134,14 @@ extension RealityPlatform.visionOS {
     public static func == (lhs: RealitySymbols.RealityPlatform.visionOS.Entity, rhs: RealitySymbols.RealityPlatform.visionOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
-  %else:
+%else:
   public class ${entity["name"]}: RealityPlatform.visionOS.Entity {
-  %end
+%end
   }
 }
 
 #if os(visionOS)
 %if entity["name"] == "Entity":
-//MARK: Entity
 extension RealityPlatform.visionOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
@@ -144,6 +149,7 @@ extension RealityPlatform.visionOS.Entity {
     self.init(from: entity)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.parent = entity.parent?.encoded
   }
 }
 %else:

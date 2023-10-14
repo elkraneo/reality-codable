@@ -52,10 +52,12 @@ extension RealityPlatform.iOS.DirectionalLight {
 #endif
 
 extension RealityPlatform.iOS {
+  //MARK: Entity
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.iOS.Entity]?
     public let id: UInt64
+    private(set) public var parent: RealityPlatform.iOS.Entity?
 
     public init(
       from entity: RealityKit.Entity
@@ -70,13 +72,13 @@ extension RealityPlatform.iOS {
 }
 
 #if os(iOS)
-//MARK: Entity
 extension RealityPlatform.iOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
   ) {
     self.init(from: entity)
     self.children = entity.children.map(\.encoded)
+    self.parent = entity.parent?.encoded
   }
 }
 #endif
@@ -189,10 +191,12 @@ extension RealityPlatform.macOS.DirectionalLight {
 #endif
 
 extension RealityPlatform.macOS {
+  //MARK: Entity
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.macOS.Entity]?
     public let id: UInt64
+    private(set) public var parent: RealityPlatform.macOS.Entity?
 
     public init(
       from entity: RealityKit.Entity
@@ -207,7 +211,6 @@ extension RealityPlatform.macOS {
 }
 
 #if os(macOS)
-//MARK: Entity
 extension RealityPlatform.macOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
@@ -215,6 +218,7 @@ extension RealityPlatform.macOS.Entity {
     self.init(from: entity)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.parent = entity.parent?.encoded
   }
 }
 #endif
@@ -312,10 +316,12 @@ extension RealityPlatform.visionOS.AnchorEntity {
 #endif
 
 extension RealityPlatform.visionOS {
+  //MARK: Entity
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.Entity]?
     public let id: UInt64
+    private(set) public var parent: RealityPlatform.visionOS.Entity?
 
     public init(
       from entity: RealityKit.Entity
@@ -330,7 +336,6 @@ extension RealityPlatform.visionOS {
 }
 
 #if os(visionOS)
-//MARK: Entity
 extension RealityPlatform.visionOS.Entity {
   public convenience init(
    _ entity: RealityKit.Entity
@@ -338,6 +343,7 @@ extension RealityPlatform.visionOS.Entity {
     self.init(from: entity)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.parent = entity.parent?.encoded
   }
 }
 #endif
