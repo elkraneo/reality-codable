@@ -60,6 +60,7 @@ extension RealityPlatform.visionOS {
                                 ┌─────────────┐
                                 │    Scene    │
                                 └─────────────┘
+                                       │
                          ┌─────────────┴─────────────┐
                 ┌────────┴───────┐                   │
            ┌─────────┐      ┌─────────┐         ┌─────────┐
@@ -174,17 +175,17 @@ extension RealityPlatform.visionOS {
   The current debugging options.
    */
 
-  extension ARView {
-    public func findEntityIdentified(targetID: UInt64) -> Entity? {
-      for anchor in self.scene.anchors {
-        if let entity = findCodableEntity(root: anchor, targetID: targetID) {
-          return entity
-        }
-      }
-
-      return nil
-    }
-  }
+//  extension ARView {
+//    public func findEntityIdentified(targetID: UInt64) -> Entity? {
+//      for anchor in self.scene.anchors {
+//        if let entity = findCodableEntity(root: anchor, targetID: targetID) {
+//          return entity
+//        }
+//      }
+//
+//      return nil
+//    }
+//  }
 
 //  public func findCodableEntity(root: RealityKit.Entity, targetID: UInt64) -> Entity? {
 //    if root.id == targetID {
