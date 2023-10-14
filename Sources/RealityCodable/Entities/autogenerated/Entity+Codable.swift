@@ -58,13 +58,17 @@ extension RealityPlatform.iOS.DirectionalLight {
 //MARK: Entity — iOS
 
 extension RealityPlatform.iOS {
-  public class Entity: Codable, Identifiable {
+  public class Entity: Codable, Equatable, Identifiable {
     public var id: UInt64
 
     public init(
       from entity: RealityKit.Entity
     ) {
       self.id = entity.id
+    }
+    
+    public static func == (lhs: RealitySymbols.RealityPlatform.iOS.Entity, rhs: RealitySymbols.RealityPlatform.iOS.Entity) -> Bool {
+      lhs.id == rhs.id
     }
   }
 }
@@ -204,13 +208,17 @@ extension RealityPlatform.macOS.DirectionalLight {
 //MARK: Entity — macOS
 
 extension RealityPlatform.macOS {
-  public class Entity: Codable, Identifiable {
+  public class Entity: Codable, Equatable, Identifiable {
     public var id: UInt64
 
     public init(
       from entity: RealityKit.Entity
     ) {
       self.id = entity.id
+    }
+
+    public static func == (lhs: RealitySymbols.RealityPlatform.macOS.Entity, rhs: RealitySymbols.RealityPlatform.macOS.Entity) -> Bool {
+      lhs.id == rhs.id
     }
   }
 }
@@ -331,13 +339,17 @@ extension RealityPlatform.visionOS.AnchorEntity {
 //MARK: Entity — visionOS
 
 extension RealityPlatform.visionOS {
-  public class Entity: Codable, Identifiable {
+  public class Entity: Codable, Equatable, Identifiable {
     public var id: UInt64
 
     public init(
       from entity: RealityKit.Entity
     ) {
       self.id = entity.id
+    }
+    
+    public static func == (lhs: RealitySymbols.RealityPlatform.visionOS.Entity, rhs: RealitySymbols.RealityPlatform.visionOS.Entity) -> Bool {
+      lhs.id == rhs.id
     }
   }
 }

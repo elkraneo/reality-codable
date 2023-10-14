@@ -13,13 +13,17 @@ import RealitySymbols
 
 extension RealityPlatform.iOS {
   %if entity["name"] == "Entity":
-  public class ${entity["name"]}: Codable, Identifiable {
+  public class ${entity["name"]}: Codable, Equatable, Identifiable {
     public var id: UInt64
 
     public init(
       from entity: RealityKit.Entity
     ) {
       self.id = entity.id
+    }
+    
+    public static func == (lhs: RealitySymbols.RealityPlatform.iOS.Entity, rhs: RealitySymbols.RealityPlatform.iOS.Entity) -> Bool {
+      lhs.id == rhs.id
     }
   %else:
   public class ${entity["name"]}: RealityPlatform.iOS.Entity {
@@ -48,13 +52,17 @@ extension RealityPlatform.iOS.${entity["name"]} {
 
 extension RealityPlatform.macOS {
   %if entity["name"] == "Entity":
-  public class ${entity["name"]}: Codable, Identifiable {
+  public class ${entity["name"]}: Codable, Equatable, Identifiable {
     public var id: UInt64
 
     public init(
       from entity: RealityKit.Entity
     ) {
       self.id = entity.id
+    }
+
+    public static func == (lhs: RealitySymbols.RealityPlatform.macOS.Entity, rhs: RealitySymbols.RealityPlatform.macOS.Entity) -> Bool {
+      lhs.id == rhs.id
     }
   %else:
   public class ${entity["name"]}: RealityPlatform.macOS.Entity {
@@ -81,13 +89,17 @@ extension RealityPlatform.macOS.${entity["name"]} {
 
 extension RealityPlatform.visionOS {
   %if entity["name"] == "Entity":
-  public class ${entity["name"]}: Codable, Identifiable {
+  public class ${entity["name"]}: Codable, Equatable, Identifiable {
     public var id: UInt64
 
     public init(
       from entity: RealityKit.Entity
     ) {
       self.id = entity.id
+    }
+    
+    public static func == (lhs: RealitySymbols.RealityPlatform.visionOS.Entity, rhs: RealitySymbols.RealityPlatform.visionOS.Entity) -> Bool {
+      lhs.id == rhs.id
     }
   %else:
   public class ${entity["name"]}: RealityPlatform.visionOS.Entity {
