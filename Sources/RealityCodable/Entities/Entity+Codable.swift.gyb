@@ -22,7 +22,7 @@ extension RealityPlatform.iOS {
     private(set) public var children: [RealityPlatform.iOS.Entity]?
     public let id: UInt64
     private(set) public var name: String?
-    private(set) public var parent: RealityPlatform.iOS.Entity?
+    private(set) public var parentID: UInt64?
 
     init(
       id: UInt64
@@ -47,7 +47,7 @@ extension RealityPlatform.iOS.Entity {
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
     self.name = entity.name
-    // self.parent = entity.parent?.encoded
+    self.parentID = entity.parent?.id
   }
 }
 %else:
@@ -72,7 +72,7 @@ extension RealityPlatform.macOS {
     private(set) public var children: [RealityPlatform.macOS.Entity]?
     public let id: UInt64
     private(set) public var name: String?
-    private(set) public var parent: RealityPlatform.macOS.Entity?
+    private(set) public var parentID: UInt64?
 
     init(
       id: UInt64
@@ -97,7 +97,7 @@ extension RealityPlatform.macOS.Entity {
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
     self.name = entity.name
-    // self.parent = entity.parent?.encoded
+    self.parentID = entity.parent?.id
   }
 }
 %else:
@@ -122,7 +122,7 @@ extension RealityPlatform.visionOS {
     private(set) public var children: [RealityPlatform.visionOS.Entity]?
     public let id: UInt64
     private(set) public var name: String?
-    private(set) public var parent: RealityPlatform.visionOS.Entity?
+    private(set) public var parentID: UInt64?
 
     init(
       id: UInt64
@@ -147,7 +147,7 @@ extension RealityPlatform.visionOS.Entity {
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
     self.name = entity.name
-    // self.parent = entity.parent?.encoded
+    self.parentID = entity.parent?.id
   }
 }
 %else:

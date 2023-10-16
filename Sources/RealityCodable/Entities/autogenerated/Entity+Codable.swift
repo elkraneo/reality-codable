@@ -49,7 +49,7 @@ extension RealityPlatform.iOS {
     private(set) public var children: [RealityPlatform.iOS.Entity]?
     public let id: UInt64
     private(set) public var name: String?
-    private(set) public var parent: RealityPlatform.iOS.Entity?
+    private(set) public var parentID: UInt64?
 
     init(
       id: UInt64
@@ -57,7 +57,7 @@ extension RealityPlatform.iOS {
       self.id = id
     }
     
-    public static func == (lhs: RealitySymbols.RealityPlatform.iOS.Entity, rhs: RealitySymbols.RealityPlatform.iOS.Entity) -> Bool {
+    public static func == (lhs: RealityPlatform.iOS.Entity, rhs: RealityPlatform.iOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
   }
@@ -70,7 +70,7 @@ extension RealityPlatform.iOS.Entity {
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
     self.name = entity.name
-    self.parent = entity.parent?.encoded
+    self.parentID = entity.parent?.id
   }
 }
 #endif
@@ -164,7 +164,7 @@ extension RealityPlatform.macOS {
     private(set) public var children: [RealityPlatform.macOS.Entity]?
     public let id: UInt64
     private(set) public var name: String?
-    private(set) public var parent: RealityPlatform.macOS.Entity?
+    private(set) public var parentID: UInt64?
 
     init(
       id: UInt64
@@ -172,7 +172,7 @@ extension RealityPlatform.macOS {
       self.id = id
     }
     
-    public static func == (lhs: RealitySymbols.RealityPlatform.macOS.Entity, rhs: RealitySymbols.RealityPlatform.macOS.Entity) -> Bool {
+    public static func == (lhs: RealityPlatform.macOS.Entity, rhs: RealityPlatform.macOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
   }
@@ -185,7 +185,7 @@ extension RealityPlatform.macOS.Entity {
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
     self.name = entity.name
-    self.parent = entity.parent?.encoded
+    self.parentID = entity.parent?.id
   }
 }
 #endif
@@ -268,7 +268,7 @@ extension RealityPlatform.visionOS {
     private(set) public var children: [RealityPlatform.visionOS.Entity]?
     public let id: UInt64
     private(set) public var name: String?
-    private(set) public var parent: RealityPlatform.visionOS.Entity?
+    private(set) public var parentID: UInt64?
 
     init(
       id: UInt64
@@ -289,7 +289,7 @@ extension RealityPlatform.visionOS.Entity {
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
     self.name = entity.name
-    // self.parent = entity.parent?.encoded
+    self.parentID = entity.parent?.id
   }
 }
 #endif
