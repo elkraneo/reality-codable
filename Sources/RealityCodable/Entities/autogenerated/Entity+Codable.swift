@@ -276,7 +276,7 @@ extension RealityPlatform.visionOS {
       self.id = id
     }
     
-    public static func == (lhs: RealitySymbols.RealityPlatform.visionOS.Entity, rhs: RealitySymbols.RealityPlatform.visionOS.Entity) -> Bool {
+    public static func == (lhs: RealityPlatform.visionOS.Entity, rhs: RealityPlatform.visionOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
   }
@@ -289,7 +289,7 @@ extension RealityPlatform.visionOS.Entity {
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
     self.name = entity.name
-    self.parent = entity.parent?.encoded
+    // self.parent = entity.parent?.encoded
   }
 }
 #endif

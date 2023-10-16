@@ -45,19 +45,25 @@ extension RealityKit.Entity {
   #elseif os(visionOS)
 
     public var encoded: RealityPlatform.visionOS.Entity {
-      let logger = Logger(subsystem: "visionOS.reality-codable", category: "Entity.encoded")
+//      let logger = Logger(subsystem: "visionOS.reality-codable", category: "Entity.encoded")
+      
+//      for entityType in RealityPlatform.visionOS.EntityType.allCases {
+//        if "\(type(of: self))" == entityType.description {
+//          return entityType.makeCodable(from: self)
+//        }
+//      }
+
+//      let data = "\(type(of: self))".data(using: .utf8)!
+//      logger.warning(
+//        "\(String(data: data, encoding: .utf8)!, privacy: .public) — Unknown visionOS EntityType case"
+//      )
 
       for entityType in RealityPlatform.visionOS.EntityType.allCases {
         if "\(type(of: self))" == entityType.description {
-          return entityType.makeCodable(from: self)
+           return entityType.makeCodable(from: self)
         }
       }
-
-      let data = "\(type(of: self))".data(using: .utf8)!
-      logger.warning(
-        "\(String(data: data, encoding: .utf8)!, privacy: .public) — Unknown visionOS EntityType case"
-      )
-
+      
       return RealityPlatform.visionOS.Entity(rawValue: self)
     }
 

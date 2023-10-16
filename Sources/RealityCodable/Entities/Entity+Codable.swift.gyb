@@ -30,7 +30,7 @@ extension RealityPlatform.iOS {
       self.id = id
     }
     
-    public static func == (lhs: RealitySymbols.RealityPlatform.iOS.Entity, rhs: RealitySymbols.RealityPlatform.iOS.Entity) -> Bool {
+    public static func == (lhs: RealityPlatform.iOS.Entity, rhs: RealityPlatform.iOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
   }
@@ -47,7 +47,7 @@ extension RealityPlatform.iOS.Entity {
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
     self.name = entity.name
-    self.parent = entity.parent?.encoded
+    // self.parent = entity.parent?.encoded
   }
 }
 %else:
@@ -80,7 +80,7 @@ extension RealityPlatform.macOS {
       self.id = id
     }
     
-    public static func == (lhs: RealitySymbols.RealityPlatform.macOS.Entity, rhs: RealitySymbols.RealityPlatform.macOS.Entity) -> Bool {
+    public static func == (lhs: RealityPlatform.macOS.Entity, rhs: RealityPlatform.macOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
   }
@@ -97,7 +97,7 @@ extension RealityPlatform.macOS.Entity {
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
     self.name = entity.name
-    self.parent = entity.parent?.encoded
+    // self.parent = entity.parent?.encoded
   }
 }
 %else:
@@ -130,7 +130,7 @@ extension RealityPlatform.visionOS {
       self.id = id
     }
     
-    public static func == (lhs: RealitySymbols.RealityPlatform.visionOS.Entity, rhs: RealitySymbols.RealityPlatform.visionOS.Entity) -> Bool {
+    public static func == (lhs: RealityPlatform.visionOS.Entity, rhs: RealityPlatform.visionOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
   }
@@ -147,7 +147,7 @@ extension RealityPlatform.visionOS.Entity {
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
     self.name = entity.name
-    self.parent = entity.parent?.encoded
+    // self.parent = entity.parent?.encoded
   }
 }
 %else:
