@@ -11,23 +11,23 @@ extension RealityPlatform.iOS.EntityType {
   func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.iOS.Entity {
     switch self {
       case .anchorEntity:
-        return RealityPlatform.iOS.AnchorEntity(entity)
+        return RealityPlatform.iOS.AnchorEntity(rawValue: entity)
       case .bodyTrackedEntity:
-        return RealityPlatform.iOS.BodyTrackedEntity(entity)
+        return RealityPlatform.iOS.BodyTrackedEntity(rawValue: entity)
       case .directionalLight:
-        return RealityPlatform.iOS.DirectionalLight(entity)
+        return RealityPlatform.iOS.DirectionalLight(rawValue: entity)
       case .entity:
-        return RealityPlatform.iOS.Entity(entity)
+        return RealityPlatform.iOS.Entity(rawValue: entity)
       case .modelEntity:
-        return RealityPlatform.iOS.ModelEntity(entity)
+        return RealityPlatform.iOS.ModelEntity(rawValue: entity)
       case .perspectiveCamera:
-        return RealityPlatform.iOS.PerspectiveCamera(entity)
+        return RealityPlatform.iOS.PerspectiveCamera(rawValue: entity)
       case .pointLight:
-        return RealityPlatform.iOS.PointLight(entity)
+        return RealityPlatform.iOS.PointLight(rawValue: entity)
       case .spotLight:
-        return RealityPlatform.iOS.SpotLight(entity)
+        return RealityPlatform.iOS.SpotLight(rawValue: entity)
       case .triggerVolume:
-        return RealityPlatform.iOS.TriggerVolume(entity)
+        return RealityPlatform.iOS.TriggerVolume(rawValue: entity)
     }
   }
 }
@@ -39,21 +39,21 @@ extension RealityPlatform.macOS.EntityType {
   func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.macOS.Entity {
     switch self {
       case .anchorEntity:
-        return RealityPlatform.macOS.AnchorEntity(entity)
+        return RealityPlatform.macOS.AnchorEntity(rawValue: entity)
       case .directionalLight:
-        return RealityPlatform.macOS.DirectionalLight(entity)
+        return RealityPlatform.macOS.DirectionalLight(rawValue: entity)
       case .entity:
-        return RealityPlatform.macOS.Entity(entity)
+        return RealityPlatform.macOS.Entity(rawValue: entity)
       case .modelEntity:
-        return RealityPlatform.macOS.ModelEntity(entity)
+        return RealityPlatform.macOS.ModelEntity(rawValue: entity)
       case .perspectiveCamera:
-        return RealityPlatform.macOS.PerspectiveCamera(entity)
+        return RealityPlatform.macOS.PerspectiveCamera(rawValue: entity)
       case .pointLight:
-        return RealityPlatform.macOS.PointLight(entity)
+        return RealityPlatform.macOS.PointLight(rawValue: entity)
       case .spotLight:
-        return RealityPlatform.macOS.SpotLight(entity)
+        return RealityPlatform.macOS.SpotLight(rawValue: entity)
       case .triggerVolume:
-        return RealityPlatform.macOS.TriggerVolume(entity)
+        return RealityPlatform.macOS.TriggerVolume(rawValue: entity)
     }
   }
 }
@@ -65,15 +65,15 @@ extension RealityPlatform.visionOS.EntityType {
   func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.visionOS.Entity {
     switch self {
       case .anchorEntity:
-        return RealityPlatform.visionOS.AnchorEntity(entity)
+        return RealityPlatform.visionOS.AnchorEntity(rawValue: entity)
       case .entity:
-        return RealityPlatform.visionOS.Entity(entity)
+        return RealityPlatform.visionOS.Entity(rawValue: entity)
       case .modelEntity:
-        return RealityPlatform.visionOS.ModelEntity(entity)
+        return RealityPlatform.visionOS.ModelEntity(rawValue: entity)
       case .perspectiveCamera:
-        return RealityPlatform.visionOS.PerspectiveCamera(entity)
+        return RealityPlatform.visionOS.PerspectiveCamera(rawValue: entity)
       case .triggerVolume:
-        return RealityPlatform.visionOS.TriggerVolume(entity)
+        return RealityPlatform.visionOS.TriggerVolume(rawValue: entity)
     }
   }
 }

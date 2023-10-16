@@ -7,48 +7,27 @@ import RealitySymbols
 //MARK: - iOS
 
 extension RealityPlatform.iOS {
-  public class AnchorEntity: RealityPlatform.iOS.Entity {
-  }
+  public class AnchorEntity: RealityPlatform.iOS.Entity {}
 }
 
 #if os(iOS)
-extension RealityPlatform.iOS.AnchorEntity {
-  public convenience init(
-   _ entity: RealityKit.AnchorEntity
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.iOS.AnchorEntity {}
 #endif
 
 extension RealityPlatform.iOS {
-  public class BodyTrackedEntity: RealityPlatform.iOS.Entity {
-  }
+  public class BodyTrackedEntity: RealityPlatform.iOS.Entity {}
 }
 
 #if os(iOS)
-extension RealityPlatform.iOS.BodyTrackedEntity {
-  public convenience init(
-   _ entity: RealityKit.BodyTrackedEntity
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.iOS.BodyTrackedEntity {}
 #endif
 
 extension RealityPlatform.iOS {
-  public class DirectionalLight: RealityPlatform.iOS.Entity {
-  }
+  public class DirectionalLight: RealityPlatform.iOS.Entity {}
 }
 
 #if os(iOS)
-extension RealityPlatform.iOS.DirectionalLight {
-  public convenience init(
-   _ entity: RealityKit.DirectionalLight
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.iOS.DirectionalLight {}
 #endif
 
 extension RealityPlatform.iOS {
@@ -57,12 +36,13 @@ extension RealityPlatform.iOS {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.iOS.Entity]?
     public let id: UInt64
+    private(set) public var name: String?
     private(set) public var parent: RealityPlatform.iOS.Entity?
 
-    public init(
-      from entity: RealityKit.Entity
+    init(
+        id: UInt64
     ) {
-      self.id = entity.id
+        self.id = id
     }
     
     public static func == (lhs: RealitySymbols.RealityPlatform.iOS.Entity, rhs: RealitySymbols.RealityPlatform.iOS.Entity) -> Bool {
@@ -73,121 +53,72 @@ extension RealityPlatform.iOS {
 
 #if os(iOS)
 extension RealityPlatform.iOS.Entity {
-  public convenience init(
-   _ entity: RealityKit.Entity
-  ) {
-    self.init(from: entity)
+  convenience init(rawValue entity: RealityKit.Entity) {
+    self.init(id: entity.id)
+    self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.name = entity.name
     self.parent = entity.parent?.encoded
   }
 }
 #endif
 
 extension RealityPlatform.iOS {
-  public class ModelEntity: RealityPlatform.iOS.Entity {
-  }
+  public class ModelEntity: RealityPlatform.iOS.Entity {}
 }
 
 #if os(iOS)
-extension RealityPlatform.iOS.ModelEntity {
-  public convenience init(
-   _ entity: RealityKit.ModelEntity
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.iOS.ModelEntity {}
 #endif
 
 extension RealityPlatform.iOS {
-  public class PerspectiveCamera: RealityPlatform.iOS.Entity {
-  }
+  public class PerspectiveCamera: RealityPlatform.iOS.Entity {}
 }
 
 #if os(iOS)
-extension RealityPlatform.iOS.PerspectiveCamera {
-  public convenience init(
-   _ entity: RealityKit.PerspectiveCamera
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.iOS.PerspectiveCamera {}
 #endif
 
 extension RealityPlatform.iOS {
-  public class PointLight: RealityPlatform.iOS.Entity {
-  }
+  public class PointLight: RealityPlatform.iOS.Entity {}
 }
 
 #if os(iOS)
-extension RealityPlatform.iOS.PointLight {
-  public convenience init(
-   _ entity: RealityKit.PointLight
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.iOS.PointLight {}
 #endif
 
 extension RealityPlatform.iOS {
-  public class SpotLight: RealityPlatform.iOS.Entity {
-  }
+  public class SpotLight: RealityPlatform.iOS.Entity {}
 }
 
 #if os(iOS)
-extension RealityPlatform.iOS.SpotLight {
-  public convenience init(
-   _ entity: RealityKit.SpotLight
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.iOS.SpotLight {}
 #endif
 
 extension RealityPlatform.iOS {
-  public class TriggerVolume: RealityPlatform.iOS.Entity {
-  }
+  public class TriggerVolume: RealityPlatform.iOS.Entity {}
 }
 
 #if os(iOS)
-extension RealityPlatform.iOS.TriggerVolume {
-  public convenience init(
-   _ entity: RealityKit.TriggerVolume
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.iOS.TriggerVolume {}
 #endif
 
 //MARK: - macOS
 
 extension RealityPlatform.macOS {
-  public class AnchorEntity: RealityPlatform.macOS.Entity {
-  }
+  public class AnchorEntity: RealityPlatform.macOS.Entity {}
 }
 
 #if os(macOS)
-extension RealityPlatform.macOS.AnchorEntity {
-  public convenience init(
-   _ entity: RealityKit.AnchorEntity
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.macOS.AnchorEntity {}
 #endif
 
 extension RealityPlatform.macOS {
-  public class DirectionalLight: RealityPlatform.macOS.Entity {
-  }
+  public class DirectionalLight: RealityPlatform.macOS.Entity {}
 }
 
 #if os(macOS)
-extension RealityPlatform.macOS.DirectionalLight {
-  public convenience init(
-   _ entity: RealityKit.DirectionalLight
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.macOS.DirectionalLight {}
 #endif
 
 extension RealityPlatform.macOS {
@@ -196,14 +127,15 @@ extension RealityPlatform.macOS {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.macOS.Entity]?
     public let id: UInt64
+    private(set) public var name: String?
     private(set) public var parent: RealityPlatform.macOS.Entity?
 
-    public init(
-      from entity: RealityKit.Entity
+    init(
+        id: UInt64
     ) {
-      self.id = entity.id
+        self.id = id
     }
-
+    
     public static func == (lhs: RealitySymbols.RealityPlatform.macOS.Entity, rhs: RealitySymbols.RealityPlatform.macOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
@@ -212,107 +144,64 @@ extension RealityPlatform.macOS {
 
 #if os(macOS)
 extension RealityPlatform.macOS.Entity {
-  public convenience init(
-   _ entity: RealityKit.Entity
-  ) {
-    self.init(from: entity)
+  convenience init(rawValue entity: RealityKit.Entity) {
+    self.init(id: entity.id)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.name = entity.name
     self.parent = entity.parent?.encoded
   }
 }
 #endif
 
 extension RealityPlatform.macOS {
-  public class ModelEntity: RealityPlatform.macOS.Entity {
-  }
+  public class ModelEntity: RealityPlatform.macOS.Entity {}
 }
 
 #if os(macOS)
-extension RealityPlatform.macOS.ModelEntity {
-  public convenience init(
-   _ entity: RealityKit.ModelEntity
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.macOS.ModelEntity {}
 #endif
 
 extension RealityPlatform.macOS {
-  public class PerspectiveCamera: RealityPlatform.macOS.Entity {
-  }
+  public class PerspectiveCamera: RealityPlatform.macOS.Entity {}
 }
 
 #if os(macOS)
-extension RealityPlatform.macOS.PerspectiveCamera {
-  public convenience init(
-   _ entity: RealityKit.PerspectiveCamera
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.macOS.PerspectiveCamera {}
 #endif
 
 extension RealityPlatform.macOS {
-  public class PointLight: RealityPlatform.macOS.Entity {
-  }
+  public class PointLight: RealityPlatform.macOS.Entity {}
 }
 
 #if os(macOS)
-extension RealityPlatform.macOS.PointLight {
-  public convenience init(
-   _ entity: RealityKit.PointLight
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.macOS.PointLight {}
 #endif
 
 extension RealityPlatform.macOS {
-  public class SpotLight: RealityPlatform.macOS.Entity {
-  }
+  public class SpotLight: RealityPlatform.macOS.Entity {}
 }
 
 #if os(macOS)
-extension RealityPlatform.macOS.SpotLight {
-  public convenience init(
-   _ entity: RealityKit.SpotLight
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.macOS.SpotLight {}
 #endif
 
 extension RealityPlatform.macOS {
-  public class TriggerVolume: RealityPlatform.macOS.Entity {
-  }
+  public class TriggerVolume: RealityPlatform.macOS.Entity {}
 }
 
 #if os(macOS)
-extension RealityPlatform.macOS.TriggerVolume {
-  public convenience init(
-   _ entity: RealityKit.TriggerVolume
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.macOS.TriggerVolume {}
 #endif
 
 //MARK: - visionOS
 
 extension RealityPlatform.visionOS {
-  public class AnchorEntity: RealityPlatform.visionOS.Entity {
-  }
+  public class AnchorEntity: RealityPlatform.visionOS.Entity {}
 }
 
 #if os(visionOS)
-extension RealityPlatform.visionOS.AnchorEntity {
-  public convenience init(
-   _ entity: RealityKit.AnchorEntity
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.visionOS.AnchorEntity {}
 #endif
 
 extension RealityPlatform.visionOS {
@@ -321,12 +210,13 @@ extension RealityPlatform.visionOS {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.Entity]?
     public let id: UInt64
+    private(set) public var name: String?
     private(set) public var parent: RealityPlatform.visionOS.Entity?
 
-    public init(
-      from entity: RealityKit.Entity
+    init(
+        id: UInt64
     ) {
-      self.id = entity.id
+        self.id = id
     }
     
     public static func == (lhs: RealitySymbols.RealityPlatform.visionOS.Entity, rhs: RealitySymbols.RealityPlatform.visionOS.Entity) -> Bool {
@@ -337,58 +227,36 @@ extension RealityPlatform.visionOS {
 
 #if os(visionOS)
 extension RealityPlatform.visionOS.Entity {
-  public convenience init(
-   _ entity: RealityKit.Entity
-  ) {
-    self.init(from: entity)
+  convenience init(rawValue entity: RealityKit.Entity) {
+    self.init(id: entity.id)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.name = entity.name
     self.parent = entity.parent?.encoded
   }
 }
 #endif
 
 extension RealityPlatform.visionOS {
-  public class ModelEntity: RealityPlatform.visionOS.Entity {
-  }
+  public class ModelEntity: RealityPlatform.visionOS.Entity {}
 }
 
 #if os(visionOS)
-extension RealityPlatform.visionOS.ModelEntity {
-  public convenience init(
-   _ entity: RealityKit.ModelEntity
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.visionOS.ModelEntity {}
 #endif
 
 extension RealityPlatform.visionOS {
-  public class PerspectiveCamera: RealityPlatform.visionOS.Entity {
-  }
+  public class PerspectiveCamera: RealityPlatform.visionOS.Entity {}
 }
 
 #if os(visionOS)
-extension RealityPlatform.visionOS.PerspectiveCamera {
-  public convenience init(
-   _ entity: RealityKit.PerspectiveCamera
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.visionOS.PerspectiveCamera {}
 #endif
 
 extension RealityPlatform.visionOS {
-  public class TriggerVolume: RealityPlatform.visionOS.Entity {
-  }
+  public class TriggerVolume: RealityPlatform.visionOS.Entity {}
 }
 
 #if os(visionOS)
-extension RealityPlatform.visionOS.TriggerVolume {
-  public convenience init(
-   _ entity: RealityKit.TriggerVolume
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.visionOS.TriggerVolume {}
 #endif

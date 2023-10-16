@@ -18,42 +18,37 @@ extension RealityPlatform.iOS {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.iOS.Entity]?
     public let id: UInt64
+    private(set) public var name: String?
     private(set) public var parent: RealityPlatform.iOS.Entity?
 
-    public init(
-      from entity: RealityKit.Entity
+    init(
+        id: UInt64
     ) {
-      self.id = entity.id
+        self.id = id
     }
     
     public static func == (lhs: RealitySymbols.RealityPlatform.iOS.Entity, rhs: RealitySymbols.RealityPlatform.iOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
-%else:
-  public class ${entity["name"]}: RealityPlatform.iOS.Entity {
-%end
   }
+%else:
+  public class ${entity["name"]}: RealityPlatform.iOS.Entity {}
+%end
 }
 
 #if os(iOS)
 %if entity["name"] == "Entity":
 extension RealityPlatform.iOS.Entity {
-  public convenience init(
-   _ entity: RealityKit.Entity
-  ) {
-    self.init(from: entity)
+  convenience init(rawValue entity: RealityKit.Entity) {
+    self.init(id: entity.id)
+    self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.name = entity.name
     self.parent = entity.parent?.encoded
   }
 }
 %else:
-extension RealityPlatform.iOS.${entity["name"]} {
-  public convenience init(
-   _ entity: RealityKit.${entity["name"]}
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.iOS.${entity["name"]} {}
 %end
 #endif
 %end
@@ -70,43 +65,37 @@ extension RealityPlatform.macOS {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.macOS.Entity]?
     public let id: UInt64
+    private(set) public var name: String?
     private(set) public var parent: RealityPlatform.macOS.Entity?
 
-    public init(
-      from entity: RealityKit.Entity
+    init(
+        id: UInt64
     ) {
-      self.id = entity.id
+        self.id = id
     }
-
+    
     public static func == (lhs: RealitySymbols.RealityPlatform.macOS.Entity, rhs: RealitySymbols.RealityPlatform.macOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
-%else:
-  public class ${entity["name"]}: RealityPlatform.macOS.Entity {
-%end
   }
+%else:
+  public class ${entity["name"]}: RealityPlatform.macOS.Entity {}
+%end
 }
 
 #if os(macOS)
 %if entity["name"] == "Entity":
 extension RealityPlatform.macOS.Entity {
-  public convenience init(
-   _ entity: RealityKit.Entity
-  ) {
-    self.init(from: entity)
+  convenience init(rawValue entity: RealityKit.Entity) {
+    self.init(id: entity.id)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.name = entity.name
     self.parent = entity.parent?.encoded
   }
 }
 %else:
-extension RealityPlatform.macOS.${entity["name"]} {
-  public convenience init(
-   _ entity: RealityKit.${entity["name"]}
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.macOS.${entity["name"]} {}
 %end
 #endif
 %end
@@ -123,43 +112,37 @@ extension RealityPlatform.visionOS {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.Entity]?
     public let id: UInt64
+    private(set) public var name: String?
     private(set) public var parent: RealityPlatform.visionOS.Entity?
 
-    public init(
-      from entity: RealityKit.Entity
+    init(
+        id: UInt64
     ) {
-      self.id = entity.id
+        self.id = id
     }
     
     public static func == (lhs: RealitySymbols.RealityPlatform.visionOS.Entity, rhs: RealitySymbols.RealityPlatform.visionOS.Entity) -> Bool {
       lhs.id == rhs.id
     }
-%else:
-  public class ${entity["name"]}: RealityPlatform.visionOS.Entity {
-%end
   }
+%else:
+  public class ${entity["name"]}: RealityPlatform.visionOS.Entity {}
+%end
 }
 
 #if os(visionOS)
 %if entity["name"] == "Entity":
 extension RealityPlatform.visionOS.Entity {
-  public convenience init(
-   _ entity: RealityKit.Entity
-  ) {
-    self.init(from: entity)
+  convenience init(rawValue entity: RealityKit.Entity) {
+    self.init(id: entity.id)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.name = entity.name
     self.parent = entity.parent?.encoded
   }
 }
 %else:
-extension RealityPlatform.visionOS.${entity["name"]} {
-  public convenience init(
-   _ entity: RealityKit.${entity["name"]}
-  ) {
-    self.init(from: entity)
-  }
-}
+extension RealityPlatform.visionOS.${entity["name"]} {}
 %end
 #endif
 %end

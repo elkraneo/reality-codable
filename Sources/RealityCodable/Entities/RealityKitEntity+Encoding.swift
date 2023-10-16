@@ -39,7 +39,7 @@ extension RealityKit.Entity {
         "\(String(data: data, encoding: .utf8)!, privacy: .public) — Unknown macOS EntityType case"
       )
 
-      return RealityPlatform.macOS.Entity(from: self)
+      return RealityPlatform.macOS.Entity(rawValue: self)
     }
 
   #elseif os(visionOS)
