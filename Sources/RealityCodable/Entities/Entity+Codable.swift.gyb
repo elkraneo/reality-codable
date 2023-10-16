@@ -7,13 +7,16 @@ import RealityKit
 import RealitySymbols
 
 //MARK: - iOS
+
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
 
+
+//MARK: ${entity["name"]}
+
 extension RealityPlatform.iOS {
 %if entity["name"] == "Entity":
-  //MARK: Entity
   public class ${entity["name"]}: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.iOS.Entity]?
@@ -22,9 +25,9 @@ extension RealityPlatform.iOS {
     private(set) public var parent: RealityPlatform.iOS.Entity?
 
     init(
-        id: UInt64
+      id: UInt64
     ) {
-        self.id = id
+      self.id = id
     }
     
     public static func == (lhs: RealitySymbols.RealityPlatform.iOS.Entity, rhs: RealitySymbols.RealityPlatform.iOS.Entity) -> Bool {
@@ -54,13 +57,16 @@ extension RealityPlatform.iOS.${entity["name"]} {}
 %end
 
 //MARK: - macOS
+
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
 
+
+//MARK: ${entity["name"]}
+
 extension RealityPlatform.macOS {
 %if entity["name"] == "Entity":
-  //MARK: Entity
   public class ${entity["name"]}: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.macOS.Entity]?
@@ -69,9 +75,9 @@ extension RealityPlatform.macOS {
     private(set) public var parent: RealityPlatform.macOS.Entity?
 
     init(
-        id: UInt64
+      id: UInt64
     ) {
-        self.id = id
+      self.id = id
     }
     
     public static func == (lhs: RealitySymbols.RealityPlatform.macOS.Entity, rhs: RealitySymbols.RealityPlatform.macOS.Entity) -> Bool {
@@ -101,13 +107,16 @@ extension RealityPlatform.macOS.${entity["name"]} {}
 %end
 
 //MARK: - visionOS
+
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/visionOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
 
+
+//MARK: ${entity["name"]}
+
 extension RealityPlatform.visionOS {
 %if entity["name"] == "Entity":
-  //MARK: Entity
   public class ${entity["name"]}: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.Entity]?
@@ -116,9 +125,9 @@ extension RealityPlatform.visionOS {
     private(set) public var parent: RealityPlatform.visionOS.Entity?
 
     init(
-        id: UInt64
+      id: UInt64
     ) {
-        self.id = id
+      self.id = id
     }
     
     public static func == (lhs: RealitySymbols.RealityPlatform.visionOS.Entity, rhs: RealitySymbols.RealityPlatform.visionOS.Entity) -> Bool {

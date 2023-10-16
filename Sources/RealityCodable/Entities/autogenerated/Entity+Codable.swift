@@ -6,6 +6,10 @@ import RealitySymbols
 
 //MARK: - iOS
 
+
+
+//MARK: AnchorEntity
+
 extension RealityPlatform.iOS {
   public class AnchorEntity: RealityPlatform.iOS.Entity {}
 }
@@ -13,6 +17,9 @@ extension RealityPlatform.iOS {
 #if os(iOS)
 extension RealityPlatform.iOS.AnchorEntity {}
 #endif
+
+
+//MARK: BodyTrackedEntity
 
 extension RealityPlatform.iOS {
   public class BodyTrackedEntity: RealityPlatform.iOS.Entity {}
@@ -22,6 +29,9 @@ extension RealityPlatform.iOS {
 extension RealityPlatform.iOS.BodyTrackedEntity {}
 #endif
 
+
+//MARK: DirectionalLight
+
 extension RealityPlatform.iOS {
   public class DirectionalLight: RealityPlatform.iOS.Entity {}
 }
@@ -30,8 +40,10 @@ extension RealityPlatform.iOS {
 extension RealityPlatform.iOS.DirectionalLight {}
 #endif
 
+
+//MARK: Entity
+
 extension RealityPlatform.iOS {
-  //MARK: Entity
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.iOS.Entity]?
@@ -40,9 +52,9 @@ extension RealityPlatform.iOS {
     private(set) public var parent: RealityPlatform.iOS.Entity?
 
     init(
-        id: UInt64
+      id: UInt64
     ) {
-        self.id = id
+      self.id = id
     }
     
     public static func == (lhs: RealitySymbols.RealityPlatform.iOS.Entity, rhs: RealitySymbols.RealityPlatform.iOS.Entity) -> Bool {
@@ -63,6 +75,9 @@ extension RealityPlatform.iOS.Entity {
 }
 #endif
 
+
+//MARK: ModelEntity
+
 extension RealityPlatform.iOS {
   public class ModelEntity: RealityPlatform.iOS.Entity {}
 }
@@ -70,6 +85,9 @@ extension RealityPlatform.iOS {
 #if os(iOS)
 extension RealityPlatform.iOS.ModelEntity {}
 #endif
+
+
+//MARK: PerspectiveCamera
 
 extension RealityPlatform.iOS {
   public class PerspectiveCamera: RealityPlatform.iOS.Entity {}
@@ -79,6 +97,9 @@ extension RealityPlatform.iOS {
 extension RealityPlatform.iOS.PerspectiveCamera {}
 #endif
 
+
+//MARK: PointLight
+
 extension RealityPlatform.iOS {
   public class PointLight: RealityPlatform.iOS.Entity {}
 }
@@ -87,6 +108,9 @@ extension RealityPlatform.iOS {
 extension RealityPlatform.iOS.PointLight {}
 #endif
 
+
+//MARK: SpotLight
+
 extension RealityPlatform.iOS {
   public class SpotLight: RealityPlatform.iOS.Entity {}
 }
@@ -94,6 +118,9 @@ extension RealityPlatform.iOS {
 #if os(iOS)
 extension RealityPlatform.iOS.SpotLight {}
 #endif
+
+
+//MARK: TriggerVolume
 
 extension RealityPlatform.iOS {
   public class TriggerVolume: RealityPlatform.iOS.Entity {}
@@ -105,6 +132,10 @@ extension RealityPlatform.iOS.TriggerVolume {}
 
 //MARK: - macOS
 
+
+
+//MARK: AnchorEntity
+
 extension RealityPlatform.macOS {
   public class AnchorEntity: RealityPlatform.macOS.Entity {}
 }
@@ -112,6 +143,9 @@ extension RealityPlatform.macOS {
 #if os(macOS)
 extension RealityPlatform.macOS.AnchorEntity {}
 #endif
+
+
+//MARK: DirectionalLight
 
 extension RealityPlatform.macOS {
   public class DirectionalLight: RealityPlatform.macOS.Entity {}
@@ -121,8 +155,10 @@ extension RealityPlatform.macOS {
 extension RealityPlatform.macOS.DirectionalLight {}
 #endif
 
+
+//MARK: Entity
+
 extension RealityPlatform.macOS {
-  //MARK: Entity
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.macOS.Entity]?
@@ -131,9 +167,9 @@ extension RealityPlatform.macOS {
     private(set) public var parent: RealityPlatform.macOS.Entity?
 
     init(
-        id: UInt64
+      id: UInt64
     ) {
-        self.id = id
+      self.id = id
     }
     
     public static func == (lhs: RealitySymbols.RealityPlatform.macOS.Entity, rhs: RealitySymbols.RealityPlatform.macOS.Entity) -> Bool {
@@ -154,6 +190,9 @@ extension RealityPlatform.macOS.Entity {
 }
 #endif
 
+
+//MARK: ModelEntity
+
 extension RealityPlatform.macOS {
   public class ModelEntity: RealityPlatform.macOS.Entity {}
 }
@@ -161,6 +200,9 @@ extension RealityPlatform.macOS {
 #if os(macOS)
 extension RealityPlatform.macOS.ModelEntity {}
 #endif
+
+
+//MARK: PerspectiveCamera
 
 extension RealityPlatform.macOS {
   public class PerspectiveCamera: RealityPlatform.macOS.Entity {}
@@ -170,6 +212,9 @@ extension RealityPlatform.macOS {
 extension RealityPlatform.macOS.PerspectiveCamera {}
 #endif
 
+
+//MARK: PointLight
+
 extension RealityPlatform.macOS {
   public class PointLight: RealityPlatform.macOS.Entity {}
 }
@@ -178,6 +223,9 @@ extension RealityPlatform.macOS {
 extension RealityPlatform.macOS.PointLight {}
 #endif
 
+
+//MARK: SpotLight
+
 extension RealityPlatform.macOS {
   public class SpotLight: RealityPlatform.macOS.Entity {}
 }
@@ -185,6 +233,9 @@ extension RealityPlatform.macOS {
 #if os(macOS)
 extension RealityPlatform.macOS.SpotLight {}
 #endif
+
+
+//MARK: TriggerVolume
 
 extension RealityPlatform.macOS {
   public class TriggerVolume: RealityPlatform.macOS.Entity {}
@@ -196,6 +247,10 @@ extension RealityPlatform.macOS.TriggerVolume {}
 
 //MARK: - visionOS
 
+
+
+//MARK: AnchorEntity
+
 extension RealityPlatform.visionOS {
   public class AnchorEntity: RealityPlatform.visionOS.Entity {}
 }
@@ -204,8 +259,10 @@ extension RealityPlatform.visionOS {
 extension RealityPlatform.visionOS.AnchorEntity {}
 #endif
 
+
+//MARK: Entity
+
 extension RealityPlatform.visionOS {
-  //MARK: Entity
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.Entity]?
@@ -214,9 +271,9 @@ extension RealityPlatform.visionOS {
     private(set) public var parent: RealityPlatform.visionOS.Entity?
 
     init(
-        id: UInt64
+      id: UInt64
     ) {
-        self.id = id
+      self.id = id
     }
     
     public static func == (lhs: RealitySymbols.RealityPlatform.visionOS.Entity, rhs: RealitySymbols.RealityPlatform.visionOS.Entity) -> Bool {
@@ -237,6 +294,9 @@ extension RealityPlatform.visionOS.Entity {
 }
 #endif
 
+
+//MARK: ModelEntity
+
 extension RealityPlatform.visionOS {
   public class ModelEntity: RealityPlatform.visionOS.Entity {}
 }
@@ -245,6 +305,9 @@ extension RealityPlatform.visionOS {
 extension RealityPlatform.visionOS.ModelEntity {}
 #endif
 
+
+//MARK: PerspectiveCamera
+
 extension RealityPlatform.visionOS {
   public class PerspectiveCamera: RealityPlatform.visionOS.Entity {}
 }
@@ -252,6 +315,9 @@ extension RealityPlatform.visionOS {
 #if os(visionOS)
 extension RealityPlatform.visionOS.PerspectiveCamera {}
 #endif
+
+
+//MARK: TriggerVolume
 
 extension RealityPlatform.visionOS {
   public class TriggerVolume: RealityPlatform.visionOS.Entity {}
