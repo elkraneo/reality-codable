@@ -8,7 +8,7 @@ import RealitySymbols
 
 
 extension RealityPlatform.iOS {
-  public enum Component: Codable {
+  public enum Component: Codable, Hashable {
       case accessibilityComponent(AccessibilityComponent)
       case anchoringComponent(AnchoringComponent)
       case bodyTrackingComponent(BodyTrackingComponent)
@@ -71,7 +71,7 @@ extension RealityPlatform.iOS.ComponentType {
 }
 
 extension RealityPlatform.iOS {
-  public struct AccessibilityComponent: Codable {
+  public struct AccessibilityComponent: Codable, Hashable {
     //TODO: public var customActions: [LocalizedStringResource]
     //TODO: public var customContent: [AccessibilityComponent.CustomContent]
     //TODO: public var isAccessibilityElement: Bool
@@ -81,18 +81,18 @@ extension RealityPlatform.iOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct AnchoringComponent: Codable {
+  public struct AnchoringComponent: Codable, Hashable {
     //TODO: public let target: AnchoringComponent.Target
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct BodyTrackingComponent: Codable {
+  public struct BodyTrackingComponent: Codable, Hashable {
     //TODO: public var isPaused: Bool
     //TODO: public var target: BodyTrackingComponent.Target
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct CharacterControllerComponent: Codable {
+  public struct CharacterControllerComponent: Codable, Hashable {
     //TODO: public var collisionFilter: CollisionFilter
     //TODO: public var height: Float
     //TODO: public var radius: Float
@@ -103,45 +103,45 @@ extension RealityPlatform.iOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct CharacterControllerStateComponent: Codable {
+  public struct CharacterControllerStateComponent: Codable, Hashable {
     //TODO: public let isOnGround: Bool
     //TODO: public let velocity: SIMD3<Float>
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct CollisionComponent: Codable {
+  public struct CollisionComponent: Codable, Hashable {
     //TODO: public var filter: CollisionFilter
     //TODO: public var mode: CollisionComponent.Mode
     //TODO: public var shapes: [ShapeResource]
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct DirectionalLightComponent: Codable {
+  public struct DirectionalLightComponent: Codable, Hashable {
     //TODO: public var intensity: Float
     //TODO: public var isRealWorldProxy: Bool
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct ModelComponent: Codable {
+  public struct ModelComponent: Codable, Hashable {
     //TODO: public var boundsMargin: Float
     //TODO: public var materials: [Material]
     //TODO: public var mesh: MeshResource
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct ModelDebugOptionsComponent: Codable {
+  public struct ModelDebugOptionsComponent: Codable, Hashable {
     //TODO: public var visualizationMode: ModelDebugOptionsComponent.VisualizationMode
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PerspectiveCameraComponent: Codable {
+  public struct PerspectiveCameraComponent: Codable, Hashable {
     //TODO: public var far: Float
     //TODO: public var fieldOfViewInDegrees: Float
     //TODO: public var near: Float
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PhysicsBodyComponent: Codable {
+  public struct PhysicsBodyComponent: Codable, Hashable {
     //TODO: public var isContinuousCollisionDetectionEnabled: Bool
     //TODO: public var isRotationLocked: (x: Bool, y: Bool, z: Bool)
     //TODO: public var isTranslationLocked: (x: Bool, y: Bool, z: Bool)
@@ -151,24 +151,24 @@ extension RealityPlatform.iOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PhysicsMotionComponent: Codable {
+  public struct PhysicsMotionComponent: Codable, Hashable {
     //TODO: public var angularVelocity: SIMD3<Float>
     //TODO: public var linearVelocity: SIMD3<Float>
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PointLightComponent: Codable {
+  public struct PointLightComponent: Codable, Hashable {
     //TODO: public var attenuationRadius: Float
     //TODO: public var intensity: Float
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct SceneUnderstandingComponent: Codable {
+  public struct SceneUnderstandingComponent: Codable, Hashable {
     //TODO: public var entityType: SceneUnderstandingComponent.EntityType?
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct SpotLightComponent: Codable {
+  public struct SpotLightComponent: Codable, Hashable {
     //TODO: public var attenuationRadius: Float
     //TODO: public var innerAngleInDegrees: Float
     //TODO: public var intensity: Float
@@ -176,14 +176,14 @@ extension RealityPlatform.iOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct SynchronizationComponent: Codable {
+  public struct SynchronizationComponent: Codable, Hashable {
     //TODO: public var identifier: UInt64
     //TODO: public var isOwner: Bool
     //TODO: public var ownershipTransferMode: SynchronizationComponent.OwnershipTransferMode
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct Transform: Codable {
+  public struct Transform: Codable, Hashable {
     //TODO: public var hashValue: Int
     //TODO: public var matrix: float4x4
     //TODO: public var rotation: simd_quatf
@@ -198,7 +198,7 @@ extension RealityPlatform.iOS {
 
 
 extension RealityPlatform.macOS {
-  public enum Component: Codable {
+  public enum Component: Codable, Hashable {
     case accessibilityComponent(AccessibilityComponent)
     case anchoringComponent(AnchoringComponent)
     case characterControllerComponent(CharacterControllerComponent)
@@ -255,7 +255,7 @@ extension RealityPlatform.macOS.ComponentType {
 }
 
 extension RealityPlatform.macOS {
-  public struct AccessibilityComponent: Codable {
+  public struct AccessibilityComponent: Codable, Hashable {
     //TODO: public var customActions: [LocalizedStringResource]
     //TODO: public var customContent: [AccessibilityComponent.CustomContent]
     //TODO: public var isAccessibilityElement: Bool
@@ -265,12 +265,12 @@ extension RealityPlatform.macOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct AnchoringComponent: Codable {
+  public struct AnchoringComponent: Codable, Hashable {
     //TODO: public let target: AnchoringComponent.Target
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct CharacterControllerComponent: Codable {
+  public struct CharacterControllerComponent: Codable, Hashable {
     //TODO: public var collisionFilter: CollisionFilter
     //TODO: public var height: Float
     //TODO: public var radius: Float
@@ -281,45 +281,45 @@ extension RealityPlatform.macOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct CharacterControllerStateComponent: Codable {
+  public struct CharacterControllerStateComponent: Codable, Hashable {
     //TODO: public let isOnGround: Bool
     //TODO: public let velocity: SIMD3<Float>
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct CollisionComponent: Codable {
+  public struct CollisionComponent: Codable, Hashable {
     //TODO: public var filter: CollisionFilter
     //TODO: public var mode: CollisionComponent.Mode
     //TODO: public var shapes: [ShapeResource]
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct DirectionalLightComponent: Codable {
+  public struct DirectionalLightComponent: Codable, Hashable {
     //TODO: public var intensity: Float
     //TODO: public var isRealWorldProxy: Bool
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct ModelComponent: Codable {
+  public struct ModelComponent: Codable, Hashable {
     //TODO: public var boundsMargin: Float
     //TODO: public var materials: [Material]
     //TODO: public var mesh: MeshResource
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct ModelDebugOptionsComponent: Codable {
+  public struct ModelDebugOptionsComponent: Codable, Hashable {
     //TODO: public var visualizationMode: ModelDebugOptionsComponent.VisualizationMode
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PerspectiveCameraComponent: Codable {
+  public struct PerspectiveCameraComponent: Codable, Hashable {
     //TODO: public var far: Float
     //TODO: public var fieldOfViewInDegrees: Float
     //TODO: public var near: Float
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PhysicsBodyComponent: Codable {
+  public struct PhysicsBodyComponent: Codable, Hashable {
     //TODO: public var isContinuousCollisionDetectionEnabled: Bool
     //TODO: public var isRotationLocked: (x: Bool, y: Bool, z: Bool)
     //TODO: public var isTranslationLocked: (x: Bool, y: Bool, z: Bool)
@@ -329,19 +329,19 @@ extension RealityPlatform.macOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PhysicsMotionComponent: Codable {
+  public struct PhysicsMotionComponent: Codable, Hashable {
     //TODO: public var angularVelocity: SIMD3<Float>
     //TODO: public var linearVelocity: SIMD3<Float>
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PointLightComponent: Codable {
+  public struct PointLightComponent: Codable, Hashable {
     //TODO: public var attenuationRadius: Float
     //TODO: public var intensity: Float
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct SpotLightComponent: Codable {
+  public struct SpotLightComponent: Codable, Hashable {
     //TODO: public var attenuationRadius: Float
     //TODO: public var innerAngleInDegrees: Float
     //TODO: public var intensity: Float
@@ -349,14 +349,14 @@ extension RealityPlatform.macOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct SynchronizationComponent: Codable {
+  public struct SynchronizationComponent: Codable, Hashable {
     //TODO: public var identifier: UInt64
     //TODO: public var isOwner: Bool
     //TODO: public var ownershipTransferMode: SynchronizationComponent.OwnershipTransferMode
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct Transform: Codable {
+  public struct Transform: Codable, Hashable {
     //TODO: public var hashValue: Int
     //TODO: public var matrix: float4x4
     //TODO: public var rotation: simd_quatf
@@ -371,7 +371,7 @@ extension RealityPlatform.macOS {
 
 
 extension RealityPlatform.visionOS {
-  public enum Component: Codable {
+  public enum Component: Codable, Hashable {
     case accessibilityComponent(AccessibilityComponent)
     case adaptiveResolutionComponent(AdaptiveResolutionComponent)
     case ambientAudioComponent(AmbientAudioComponent)
@@ -476,7 +476,7 @@ extension RealityPlatform.visionOS.ComponentType {
 }
 
 extension RealityPlatform.visionOS {
-  public struct AccessibilityComponent: Codable {
+  public struct AccessibilityComponent: Codable, Hashable {
     //TODO: public var customActions: [LocalizedStringResource]
     //TODO: public var customContent: [AccessibilityComponent.CustomContent]
     //TODO: public var isAccessibilityElement: Bool
@@ -486,35 +486,35 @@ extension RealityPlatform.visionOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct AdaptiveResolutionComponent: Codable {
+  public struct AdaptiveResolutionComponent: Codable, Hashable {
     //TODO: public var pixelsPerMeter: Float
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct AmbientAudioComponent: Codable {
+  public struct AmbientAudioComponent: Codable, Hashable {
     //TODO: public var gain: Audio.Decibel
     //TODO: public var hashValue: Int
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct AnchoringComponent: Codable {
+  public struct AnchoringComponent: Codable, Hashable {
     //TODO: public let target: AnchoringComponent.Target
     //TODO: public var trackingMode: AnchoringComponent.TrackingMode
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct AudioMixGroupsComponent: Codable {
+  public struct AudioMixGroupsComponent: Codable, Hashable {
     //TODO: public var hashValue: Int
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct ChannelAudioComponent: Codable {
+  public struct ChannelAudioComponent: Codable, Hashable {
     //TODO: public var gain: Audio.Decibel
     //TODO: public var hashValue: Int
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct CharacterControllerComponent: Codable {
+  public struct CharacterControllerComponent: Codable, Hashable {
     //TODO: public var collisionFilter: CollisionFilter
     //TODO: public var height: Float
     //TODO: public var radius: Float
@@ -525,13 +525,13 @@ extension RealityPlatform.visionOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct CharacterControllerStateComponent: Codable {
+  public struct CharacterControllerStateComponent: Codable, Hashable {
     //TODO: public let isOnGround: Bool
     //TODO: public let velocity: SIMD3<Float>
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct CollisionComponent: Codable {
+  public struct CollisionComponent: Codable, Hashable {
     //TODO: public var collisionOptions: CollisionComponent.CollisionOptions
     //TODO: public var filter: CollisionFilter
     //TODO: public var isStatic: Bool
@@ -540,57 +540,57 @@ extension RealityPlatform.visionOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct GroundingShadowComponent: Codable {
+  public struct GroundingShadowComponent: Codable, Hashable {
     //TODO: public var castsShadow: Bool
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct HoverEffectComponent: Codable {
+  public struct HoverEffectComponent: Codable, Hashable {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct ImageBasedLightComponent: Codable {
+  public struct ImageBasedLightComponent: Codable, Hashable {
     //TODO: public var inheritsRotation: Bool
     //TODO: public var intensityExponent: Float
     //TODO: public var source: ImageBasedLightComponent.Source
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct ImageBasedLightReceiverComponent: Codable {
+  public struct ImageBasedLightReceiverComponent: Codable, Hashable {
     //TODO: public var imageBasedLight: Entity
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct InputTargetComponent: Codable {
+  public struct InputTargetComponent: Codable, Hashable {
     //TODO: public var allowedInputTypes: InputTargetComponent.InputType
     //TODO: public var isEnabled: Bool
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct ModelComponent: Codable {
+  public struct ModelComponent: Codable, Hashable {
     //TODO: public var boundsMargin: Float
     //TODO: public var materials: [Material]
     //TODO: public var mesh: MeshResource
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct ModelDebugOptionsComponent: Codable {
+  public struct ModelDebugOptionsComponent: Codable, Hashable {
     //TODO: public var visualizationMode: ModelDebugOptionsComponent.VisualizationMode
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct ModelSortGroupComponent: Codable {
+  public struct ModelSortGroupComponent: Codable, Hashable {
     //TODO: public var group: ModelSortGroup
     //TODO: public var order: Int32
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct OpacityComponent: Codable {
+  public struct OpacityComponent: Codable, Hashable {
     //TODO: public var opacity: Float
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct ParticleEmitterComponent: Codable {
+  public struct ParticleEmitterComponent: Codable, Hashable {
     //TODO: public var birthDirection: ParticleEmitterComponent.BirthDirection
     //TODO: public var birthLocation: ParticleEmitterComponent.BirthLocation
     //TODO: public var burstCount: Int
@@ -616,14 +616,14 @@ extension RealityPlatform.visionOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PerspectiveCameraComponent: Codable {
+  public struct PerspectiveCameraComponent: Codable, Hashable {
     //TODO: public var far: Float
     //TODO: public var fieldOfViewInDegrees: Float
     //TODO: public var near: Float
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PhysicsBodyComponent: Codable {
+  public struct PhysicsBodyComponent: Codable, Hashable {
     //TODO: public var angularDamping: Float
     //TODO: public var isAffectedByGravity: Bool
     //TODO: public var isContinuousCollisionDetectionEnabled: Bool
@@ -636,32 +636,32 @@ extension RealityPlatform.visionOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PhysicsMotionComponent: Codable {
+  public struct PhysicsMotionComponent: Codable, Hashable {
     //TODO: public var angularVelocity: SIMD3<Float>
     //TODO: public var linearVelocity: SIMD3<Float>
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PhysicsSimulationComponent: Codable {
+  public struct PhysicsSimulationComponent: Codable, Hashable {
     //TODO: public var clock: CMClockOrTimebase
     //TODO: public var collisionOptions: PhysicsSimulationComponent.CollisionOptions
     //TODO: public var gravity: SIMD3<Float>
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct PortalComponent: Codable {
+  public struct PortalComponent: Codable, Hashable {
     //TODO: public var clippingPlane: PortalComponent.ClippingPlane?
     //TODO: public var targetEntity: Entity?
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct SceneUnderstandingComponent: Codable {
+  public struct SceneUnderstandingComponent: Codable, Hashable {
     //TODO: public var entityType: SceneUnderstandingComponent.EntityType?
     //TODO: public var origin: SceneUnderstandingComponent.Origin
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct SpatialAudioComponent: Codable {
+  public struct SpatialAudioComponent: Codable, Hashable {
     //TODO: public var directLevel: Audio.Decibel
     //TODO: public var directivity: Audio.Directivity
     //TODO: public var gain: Audio.Decibel
@@ -670,14 +670,14 @@ extension RealityPlatform.visionOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct SynchronizationComponent: Codable {
+  public struct SynchronizationComponent: Codable, Hashable {
     //TODO: public var identifier: UInt64
     //TODO: public var isOwner: Bool
     //TODO: public var ownershipTransferMode: SynchronizationComponent.OwnershipTransferMode
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct TextComponent: Codable {
+  public struct TextComponent: Codable, Hashable {
     //TODO: public var backgroundColor: CGColor?
     //TODO: public var cornerRadius: Float
     //TODO: public var size: CGSize
@@ -685,7 +685,7 @@ extension RealityPlatform.visionOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct Transform: Codable {
+  public struct Transform: Codable, Hashable {
     //TODO: public var hashValue: Int
     //TODO: public var matrix: float4x4
     //TODO: public var rotation: simd_quatf
@@ -694,7 +694,7 @@ extension RealityPlatform.visionOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct VideoPlayerComponent: Codable {
+  public struct VideoPlayerComponent: Codable, Hashable {
     //TODO: public var avPlayer: AVPlayer?
     //TODO: public var currentScreenVideoDimension: SIMD2<Float>
     //TODO: public var desiredViewingMode: VideoPlaybackController.ViewingMode
@@ -705,7 +705,7 @@ extension RealityPlatform.visionOS {
     init(rawValue: RealityKit.Component) {}
   }
 
-  public struct WorldComponent: Codable {
+  public struct WorldComponent: Codable, Hashable {
     init(rawValue: RealityKit.Component) {}
   }
 

@@ -12,7 +12,7 @@ import RealitySymbols
 % data = json.load(file)
 
 extension RealityPlatform.iOS {
-  public enum Component: Codable {
+  public enum Component: Codable, Hashable {
     % for component in data:
       case ${component["name"][0].lower() + component["name"][1:]}(${component["name"]})
     % end
@@ -32,7 +32,7 @@ extension RealityPlatform.iOS.ComponentType {
 
 extension RealityPlatform.iOS {
   % for component in data:
-  public struct ${component["name"]}: Codable {
+  public struct ${component["name"]}: Codable, Hashable {
     % for property in component["properties"]:
     //TODO: public ${property}
     %end
@@ -48,7 +48,7 @@ extension RealityPlatform.iOS {
 % data = json.load(file)
 
 extension RealityPlatform.macOS {
-  public enum Component: Codable {
+  public enum Component: Codable, Hashable {
     % for component in data:
     case ${component["name"][0].lower() + component["name"][1:]}(${component["name"]})
     % end
@@ -68,7 +68,7 @@ extension RealityPlatform.macOS.ComponentType {
 
 extension RealityPlatform.macOS {
   % for component in data:
-  public struct ${component["name"]}: Codable {
+  public struct ${component["name"]}: Codable, Hashable {
     % for property in component["properties"]:
     //TODO: public ${property}
     %end
@@ -84,7 +84,7 @@ extension RealityPlatform.macOS {
 % data = json.load(file)
 
 extension RealityPlatform.visionOS {
-  public enum Component: Codable {
+  public enum Component: Codable, Hashable {
     % for component in data:
     case ${component["name"][0].lower() + component["name"][1:]}(${component["name"]})
     % end
@@ -104,7 +104,7 @@ extension RealityPlatform.visionOS.ComponentType {
 
 extension RealityPlatform.visionOS {
   % for component in data:
-  public struct ${component["name"]}: Codable {
+  public struct ${component["name"]}: Codable, Hashable {
     % for property in component["properties"]:
     //TODO: public ${property}
     %end
