@@ -1,0 +1,115 @@
+% warning = "This file was automatically generated and should not be edited."
+// ${warning}
+
+import Foundation
+import RealityKit
+import RealitySymbols
+% import json
+
+//MARK: - iOS
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Components.json') as file:
+% data = json.load(file)
+
+extension RealityPlatform.iOS {
+  public enum Component: Codable {
+    % for component in data:
+      case ${component["name"][0].lower() + component["name"][1:]}(${component["name"]})
+    % end
+  }
+}
+
+extension RealityPlatform.iOS.ComponentType {
+  func makeCodable(from component: RealityKit.Component) -> RealityPlatform.iOS.Component {
+    switch self {
+      % for component in data:
+      case .${component["name"][0].lower() + component["name"][1:]}:
+        return .${component["name"][0].lower() + component["name"][1:]}(.init(rawValue: component))
+      % end
+    }
+  }
+}
+
+extension RealityPlatform.iOS {
+  % for component in data:
+  public struct ${component["name"]}: Codable {
+    % for property in component["properties"]:
+    //TODO: public ${property}
+    %end
+    init(rawValue: RealityKit.Component) {}
+  }
+
+  % end
+}
+
+//MARK: - macOS
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Components.json') as file:
+% data = json.load(file)
+
+extension RealityPlatform.macOS {
+  public enum Component: Codable {
+    % for component in data:
+    case ${component["name"][0].lower() + component["name"][1:]}(${component["name"]})
+    % end
+  }
+}
+
+extension RealityPlatform.macOS.ComponentType {
+  func makeCodable(from component: RealityKit.Component) -> RealityPlatform.macOS.Component {
+    switch self {
+    % for component in data:
+      case .${component["name"][0].lower() + component["name"][1:]}:
+        return .${component["name"][0].lower() + component["name"][1:]}(.init(rawValue: component))
+    % end
+    }
+  }
+}
+
+extension RealityPlatform.macOS {
+  % for component in data:
+  public struct ${component["name"]}: Codable {
+    % for property in component["properties"]:
+    //TODO: public ${property}
+    %end
+    init(rawValue: RealityKit.Component) {}
+  }
+
+  % end
+}
+
+//MARK: - visionOS
+
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/visionOS/Processed/Components.json') as file:
+% data = json.load(file)
+
+extension RealityPlatform.visionOS {
+  public enum Component: Codable {
+    % for component in data:
+    case ${component["name"][0].lower() + component["name"][1:]}(${component["name"]})
+    % end
+  }
+}
+
+extension RealityPlatform.visionOS.ComponentType {
+  func makeCodable(from component: RealityKit.Component) -> RealityPlatform.visionOS.Component {
+    switch self {
+      % for component in data:
+      case .${component["name"][0].lower() + component["name"][1:]}:
+        return .${component["name"][0].lower() + component["name"][1:]}(.init(rawValue: component))
+      % end
+    }
+  }
+}
+
+extension RealityPlatform.visionOS {
+  % for component in data:
+  public struct ${component["name"]}: Codable {
+    % for property in component["properties"]:
+    //TODO: public ${property}
+    %end
+    init(rawValue: RealityKit.Component) {}
+  }
+
+  % end
+}
