@@ -29,6 +29,47 @@ extension RealityPlatform.iOS {
   }
 }
 
+extension RealityPlatform.iOS.Component: CustomStringConvertible {
+  public var description: String {
+    switch self {
+    case .accessibilityComponent:
+      return "AccessibilityComponent"
+    case .anchoringComponent:
+      return "AnchoringComponent"
+    case .bodyTrackingComponent:
+      return "BodyTrackingComponent"
+    case .characterControllerComponent:
+      return "CharacterControllerComponent"
+    case .characterControllerStateComponent:
+      return "CharacterControllerStateComponent"
+    case .collisionComponent:
+      return "CollisionComponent"
+    case .directionalLightComponent:
+      return "DirectionalLightComponent"
+    case .modelComponent:
+      return "ModelComponent"
+    case .modelDebugOptionsComponent:
+      return "ModelDebugOptionsComponent"
+    case .perspectiveCameraComponent:
+      return "PerspectiveCameraComponent"
+    case .physicsBodyComponent:
+      return "PhysicsBodyComponent"
+    case .physicsMotionComponent:
+      return "PhysicsMotionComponent"
+    case .pointLightComponent:
+      return "PointLightComponent"
+    case .sceneUnderstandingComponent:
+      return "SceneUnderstandingComponent"
+    case .spotLightComponent:
+      return "SpotLightComponent"
+    case .synchronizationComponent:
+      return "SynchronizationComponent"
+    case .transform:
+      return "Transform"
+    }
+  }
+}
+
 extension RealityPlatform.iOS.ComponentType {
   func makeCodable(from component: RealityKit.Component) -> RealityPlatform.iOS.Component {
     switch self {
@@ -214,6 +255,43 @@ extension RealityPlatform.macOS {
     case spotLightComponent(SpotLightComponent)
     case synchronizationComponent(SynchronizationComponent)
     case transform(Transform)
+  }
+}
+
+extension RealityPlatform.macOS.Component: CustomStringConvertible {
+  public var description: String {
+    switch self {
+    case .accessibilityComponent:
+      return "AccessibilityComponent"
+    case .anchoringComponent:
+      return "AnchoringComponent"
+    case .characterControllerComponent:
+      return "CharacterControllerComponent"
+    case .characterControllerStateComponent:
+      return "CharacterControllerStateComponent"
+    case .collisionComponent:
+      return "CollisionComponent"
+    case .directionalLightComponent:
+      return "DirectionalLightComponent"
+    case .modelComponent:
+      return "ModelComponent"
+    case .modelDebugOptionsComponent:
+      return "ModelDebugOptionsComponent"
+    case .perspectiveCameraComponent:
+      return "PerspectiveCameraComponent"
+    case .physicsBodyComponent:
+      return "PhysicsBodyComponent"
+    case .physicsMotionComponent:
+      return "PhysicsMotionComponent"
+    case .pointLightComponent:
+      return "PointLightComponent"
+    case .spotLightComponent:
+      return "SpotLightComponent"
+    case .synchronizationComponent:
+      return "SynchronizationComponent"
+    case .transform:
+      return "Transform"
+    }
   }
 }
 
@@ -403,6 +481,75 @@ extension RealityPlatform.visionOS {
     case transform(Transform)
     case videoPlayerComponent(VideoPlayerComponent)
     case worldComponent(WorldComponent)
+  }
+}
+
+extension RealityPlatform.visionOS.Component: CustomStringConvertible {
+  public var description: String {
+    switch self {
+    case .accessibilityComponent:
+      return "AccessibilityComponent"
+    case .adaptiveResolutionComponent:
+      return "AdaptiveResolutionComponent"
+    case .ambientAudioComponent:
+      return "AmbientAudioComponent"
+    case .anchoringComponent:
+      return "AnchoringComponent"
+    case .audioMixGroupsComponent:
+      return "AudioMixGroupsComponent"
+    case .channelAudioComponent:
+      return "ChannelAudioComponent"
+    case .characterControllerComponent:
+      return "CharacterControllerComponent"
+    case .characterControllerStateComponent:
+      return "CharacterControllerStateComponent"
+    case .collisionComponent:
+      return "CollisionComponent"
+    case .groundingShadowComponent:
+      return "GroundingShadowComponent"
+    case .hoverEffectComponent:
+      return "HoverEffectComponent"
+    case .imageBasedLightComponent:
+      return "ImageBasedLightComponent"
+    case .imageBasedLightReceiverComponent:
+      return "ImageBasedLightReceiverComponent"
+    case .inputTargetComponent:
+      return "InputTargetComponent"
+    case .modelComponent:
+      return "ModelComponent"
+    case .modelDebugOptionsComponent:
+      return "ModelDebugOptionsComponent"
+    case .modelSortGroupComponent:
+      return "ModelSortGroupComponent"
+    case .opacityComponent:
+      return "OpacityComponent"
+    case .particleEmitterComponent:
+      return "ParticleEmitterComponent"
+    case .perspectiveCameraComponent:
+      return "PerspectiveCameraComponent"
+    case .physicsBodyComponent:
+      return "PhysicsBodyComponent"
+    case .physicsMotionComponent:
+      return "PhysicsMotionComponent"
+    case .physicsSimulationComponent:
+      return "PhysicsSimulationComponent"
+    case .portalComponent:
+      return "PortalComponent"
+    case .sceneUnderstandingComponent:
+      return "SceneUnderstandingComponent"
+    case .spatialAudioComponent:
+      return "SpatialAudioComponent"
+    case .synchronizationComponent:
+      return "SynchronizationComponent"
+    case .textComponent:
+      return "TextComponent"
+    case .transform:
+      return "Transform"
+    case .videoPlayerComponent:
+      return "VideoPlayerComponent"
+    case .worldComponent:
+      return "WorldComponent"
+    }
   }
 }
 

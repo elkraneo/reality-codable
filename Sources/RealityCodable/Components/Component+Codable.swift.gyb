@@ -19,6 +19,17 @@ extension RealityPlatform.iOS {
   }
 }
 
+extension RealityPlatform.iOS.Component: CustomStringConvertible {
+  public var description: String {
+    switch self {
+    % for component in data:
+    case .${component["name"][0].lower() + component["name"][1:]}:
+      return "${component["name"]}"
+    %end
+    }
+  }
+}
+
 extension RealityPlatform.iOS.ComponentType {
   func makeCodable(from component: RealityKit.Component) -> RealityPlatform.iOS.Component {
     switch self {
@@ -55,6 +66,17 @@ extension RealityPlatform.macOS {
   }
 }
 
+extension RealityPlatform.macOS.Component: CustomStringConvertible {
+  public var description: String {
+    switch self {
+    % for component in data:
+    case .${component["name"][0].lower() + component["name"][1:]}:
+      return "${component["name"]}"
+    %end
+    }
+  }
+}
+
 extension RealityPlatform.macOS.ComponentType {
   func makeCodable(from component: RealityKit.Component) -> RealityPlatform.macOS.Component {
     switch self {
@@ -88,6 +110,17 @@ extension RealityPlatform.visionOS {
     % for component in data:
     case ${component["name"][0].lower() + component["name"][1:]}(${component["name"]})
     % end
+  }
+}
+
+extension RealityPlatform.visionOS.Component: CustomStringConvertible {
+  public var description: String {
+    switch self {
+    % for component in data:
+    case .${component["name"][0].lower() + component["name"][1:]}:
+      return "${component["name"]}"
+    %end
+    }
   }
 }
 
