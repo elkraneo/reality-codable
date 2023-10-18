@@ -9,23 +9,23 @@ import RealitySymbols
 
 extension RealityPlatform.iOS {
   public enum Component: Codable, Hashable {
-      case accessibilityComponent(AccessibilityComponent)
-      case anchoringComponent(AnchoringComponent)
-      case bodyTrackingComponent(BodyTrackingComponent)
-      case characterControllerComponent(CharacterControllerComponent)
-      case characterControllerStateComponent(CharacterControllerStateComponent)
-      case collisionComponent(CollisionComponent)
-      case directionalLightComponent(DirectionalLightComponent)
-      case modelComponent(ModelComponent)
-      case modelDebugOptionsComponent(ModelDebugOptionsComponent)
-      case perspectiveCameraComponent(PerspectiveCameraComponent)
-      case physicsBodyComponent(PhysicsBodyComponent)
-      case physicsMotionComponent(PhysicsMotionComponent)
-      case pointLightComponent(PointLightComponent)
-      case sceneUnderstandingComponent(SceneUnderstandingComponent)
-      case spotLightComponent(SpotLightComponent)
-      case synchronizationComponent(SynchronizationComponent)
-      case transform(Transform)
+    case accessibilityComponent(AccessibilityComponent)
+    case anchoringComponent(AnchoringComponent)
+    case bodyTrackingComponent(BodyTrackingComponent)
+    case characterControllerComponent(CharacterControllerComponent)
+    case characterControllerStateComponent(CharacterControllerStateComponent)
+    case collisionComponent(CollisionComponent)
+    case directionalLightComponent(DirectionalLightComponent)
+    case modelComponent(ModelComponent)
+    case modelDebugOptionsComponent(ModelDebugOptionsComponent)
+    case perspectiveCameraComponent(PerspectiveCameraComponent)
+    case physicsBodyComponent(PhysicsBodyComponent)
+    case physicsMotionComponent(PhysicsMotionComponent)
+    case pointLightComponent(PointLightComponent)
+    case sceneUnderstandingComponent(SceneUnderstandingComponent)
+    case spotLightComponent(SpotLightComponent)
+    case synchronizationComponent(SynchronizationComponent)
+    case transform(Transform)
   }
 }
 
@@ -261,36 +261,36 @@ extension RealityPlatform.macOS {
 extension RealityPlatform.macOS.Component: CustomStringConvertible {
   public var description: String {
     switch self {
-    case .accessibilityComponent:
-      return "AccessibilityComponent"
-    case .anchoringComponent:
-      return "AnchoringComponent"
-    case .characterControllerComponent:
-      return "CharacterControllerComponent"
-    case .characterControllerStateComponent:
-      return "CharacterControllerStateComponent"
-    case .collisionComponent:
-      return "CollisionComponent"
-    case .directionalLightComponent:
-      return "DirectionalLightComponent"
-    case .modelComponent:
-      return "ModelComponent"
-    case .modelDebugOptionsComponent:
-      return "ModelDebugOptionsComponent"
-    case .perspectiveCameraComponent:
-      return "PerspectiveCameraComponent"
-    case .physicsBodyComponent:
-      return "PhysicsBodyComponent"
-    case .physicsMotionComponent:
-      return "PhysicsMotionComponent"
-    case .pointLightComponent:
-      return "PointLightComponent"
-    case .spotLightComponent:
-      return "SpotLightComponent"
-    case .synchronizationComponent:
-      return "SynchronizationComponent"
-    case .transform:
-      return "Transform"
+      case .accessibilityComponent:
+        return "AccessibilityComponent"
+      case .anchoringComponent:
+        return "AnchoringComponent"
+      case .characterControllerComponent:
+        return "CharacterControllerComponent"
+      case .characterControllerStateComponent:
+        return "CharacterControllerStateComponent"
+      case .collisionComponent:
+        return "CollisionComponent"
+      case .directionalLightComponent:
+        return "DirectionalLightComponent"
+      case .modelComponent:
+        return "ModelComponent"
+      case .modelDebugOptionsComponent:
+        return "ModelDebugOptionsComponent"
+      case .perspectiveCameraComponent:
+        return "PerspectiveCameraComponent"
+      case .physicsBodyComponent:
+        return "PhysicsBodyComponent"
+      case .physicsMotionComponent:
+        return "PhysicsMotionComponent"
+      case .pointLightComponent:
+        return "PointLightComponent"
+      case .spotLightComponent:
+        return "SpotLightComponent"
+      case .synchronizationComponent:
+        return "SynchronizationComponent"
+      case .transform:
+        return "Transform"
     }
   }
 }

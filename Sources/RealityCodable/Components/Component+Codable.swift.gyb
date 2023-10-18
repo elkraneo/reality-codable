@@ -14,7 +14,7 @@ import RealitySymbols
 extension RealityPlatform.iOS {
   public enum Component: Codable, Hashable {
     % for component in data:
-      case ${component["name"][0].lower() + component["name"][1:]}(${component["name"]})
+    case ${component["name"][0].lower() + component["name"][1:]}(${component["name"]})
     % end
   }
 }
@@ -69,10 +69,10 @@ extension RealityPlatform.macOS {
 extension RealityPlatform.macOS.Component: CustomStringConvertible {
   public var description: String {
     switch self {
-    % for component in data:
-    case .${component["name"][0].lower() + component["name"][1:]}:
-      return "${component["name"]}"
-    %end
+      % for component in data:
+      case .${component["name"][0].lower() + component["name"][1:]}:
+        return "${component["name"]}"
+      %end
     }
   }
 }
@@ -80,10 +80,10 @@ extension RealityPlatform.macOS.Component: CustomStringConvertible {
 extension RealityPlatform.macOS.ComponentType {
   func makeCodable(from component: RealityKit.Component) -> RealityPlatform.macOS.Component {
     switch self {
-    % for component in data:
+      % for component in data:
       case .${component["name"][0].lower() + component["name"][1:]}:
         return .${component["name"][0].lower() + component["name"][1:]}(.init(rawValue: component))
-    % end
+      % end
     }
   }
 }

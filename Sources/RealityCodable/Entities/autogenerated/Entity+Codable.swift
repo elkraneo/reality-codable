@@ -46,7 +46,10 @@ extension RealityPlatform.iOS.DirectionalLight {}
 extension RealityPlatform.iOS {
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
-    private(set) public var children: [RealityPlatform.iOS.Entity]?
+    private(set) public var children: [RealityPlatform.iOS.Entity] = []
+    public var childrenOptional: [RealityPlatform.iOS.Entity]? {
+      children.isEmpty ? nil : children
+    }
     private(set) public var components: [RealityPlatform.iOS.Component] = []
     public let id: UInt64
     private(set) public var name: String?
@@ -163,7 +166,10 @@ extension RealityPlatform.macOS.DirectionalLight {}
 extension RealityPlatform.macOS {
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
-    private(set) public var children: [RealityPlatform.macOS.Entity]?
+    private(set) public var children: [RealityPlatform.macOS.Entity] = []
+    public var childrenOptional: [RealityPlatform.macOS.Entity]? {
+      children.isEmpty ? nil : children
+    }
     private(set) public var components: [RealityPlatform.macOS.Component] = []
     public let id: UInt64
     private(set) public var name: String?
@@ -269,7 +275,10 @@ extension RealityPlatform.visionOS.AnchorEntity {}
 extension RealityPlatform.visionOS {
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
-    private(set) public var children: [RealityPlatform.visionOS.Entity]?
+    private(set) public var children: [RealityPlatform.visionOS.Entity] = []
+    public var childrenOptional: [RealityPlatform.visionOS.Entity]? {
+      children.isEmpty ? nil : children
+    }
     private(set) public var components: [RealityPlatform.visionOS.Component] = []
     public let id: UInt64
     private(set) public var name: String?

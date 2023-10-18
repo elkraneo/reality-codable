@@ -90,8 +90,7 @@ extension RealityPlatform.visionOS {
         return root
       }
 
-      guard let children = root.children else { return nil }
-      for child in children {
+      for child in root.children {
         if let foundNode = findEntity(id: targetID, root: child) {
           return foundNode
         }
