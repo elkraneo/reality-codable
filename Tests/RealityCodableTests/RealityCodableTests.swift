@@ -13,7 +13,7 @@ final class RealityCodableTests: XCTestCase {
 
     let n = RealityPlatform.visionOS.Entity(rawValue: entity)
 
-    XCTAssertEqual(n.children?.count, 3)
+    XCTAssertEqual(n.children.count, 3)
   }
 
   func testEntityWithComponentsEncoding() {

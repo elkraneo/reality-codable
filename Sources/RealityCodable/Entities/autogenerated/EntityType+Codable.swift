@@ -7,7 +7,6 @@ import RealitySymbols
 #if os(iOS)
 
 extension RealityPlatform.iOS.EntityType {
-
   func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.iOS.Entity {
     switch self {
       case .anchorEntity:
@@ -35,7 +34,6 @@ extension RealityPlatform.iOS.EntityType {
 #elseif os(macOS)
 
 extension RealityPlatform.macOS.EntityType {
-
   func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.macOS.Entity {
     switch self {
       case .anchorEntity:
@@ -61,7 +59,6 @@ extension RealityPlatform.macOS.EntityType {
 #elseif os(visionOS)
 
 extension RealityPlatform.visionOS.EntityType {
-
   func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.visionOS.Entity {
     switch self {
       case .anchorEntity:

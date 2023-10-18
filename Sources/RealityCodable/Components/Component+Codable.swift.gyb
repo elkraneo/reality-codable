@@ -30,17 +30,6 @@ extension RealityPlatform.iOS.Component: CustomStringConvertible {
   }
 }
 
-extension RealityPlatform.iOS.ComponentType {
-  func makeCodable(from component: RealityKit.Component) -> RealityPlatform.iOS.Component {
-    switch self {
-      % for component in data:
-      case .${component["name"][0].lower() + component["name"][1:]}:
-        return .${component["name"][0].lower() + component["name"][1:]}(.init(rawValue: component))
-      % end
-    }
-  }
-}
-
 extension RealityPlatform.iOS {
   % for component in data:
   public struct ${component["name"]}: Codable, Hashable {
@@ -77,17 +66,6 @@ extension RealityPlatform.macOS.Component: CustomStringConvertible {
   }
 }
 
-extension RealityPlatform.macOS.ComponentType {
-  func makeCodable(from component: RealityKit.Component) -> RealityPlatform.macOS.Component {
-    switch self {
-      % for component in data:
-      case .${component["name"][0].lower() + component["name"][1:]}:
-        return .${component["name"][0].lower() + component["name"][1:]}(.init(rawValue: component))
-      % end
-    }
-  }
-}
-
 extension RealityPlatform.macOS {
   % for component in data:
   public struct ${component["name"]}: Codable, Hashable {
@@ -120,17 +98,6 @@ extension RealityPlatform.visionOS.Component: CustomStringConvertible {
     case .${component["name"][0].lower() + component["name"][1:]}:
       return "${component["name"]}"
     %end
-    }
-  }
-}
-
-extension RealityPlatform.visionOS.ComponentType {
-  func makeCodable(from component: RealityKit.Component) -> RealityPlatform.visionOS.Component {
-    switch self {
-      % for component in data:
-      case .${component["name"][0].lower() + component["name"][1:]}:
-        return .${component["name"][0].lower() + component["name"][1:]}(.init(rawValue: component))
-      % end
     }
   }
 }

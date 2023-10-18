@@ -7,13 +7,12 @@ import RealitySymbols
 % import json
 
 #if os(iOS)
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Entities.json') as file:
+% data = json.load(file)
 
 extension RealityPlatform.iOS.EntityType {
-
   func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.iOS.Entity {
     switch self {
-    % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Entities.json') as file:
-    % data = json.load(file)
     % for entity in data:
       case .${entity["name"][0].lower() + entity["name"][1:]}:
         return RealityPlatform.iOS.${entity["name"]}(rawValue: entity)
@@ -23,13 +22,12 @@ extension RealityPlatform.iOS.EntityType {
 }
 
 #elseif os(macOS)
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Entities.json') as file:
+% data = json.load(file)
 
 extension RealityPlatform.macOS.EntityType {
-
   func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.macOS.Entity {
     switch self {
-    % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Entities.json') as file:
-    % data = json.load(file)
     % for entity in data:
       case .${entity["name"][0].lower() + entity["name"][1:]}:
         return RealityPlatform.macOS.${entity["name"]}(rawValue: entity)
@@ -39,13 +37,12 @@ extension RealityPlatform.macOS.EntityType {
 }
 
 #elseif os(visionOS)
+% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/visionOS/Processed/Entities.json') as file:
+% data = json.load(file)
 
 extension RealityPlatform.visionOS.EntityType {
-
   func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.visionOS.Entity {
     switch self {
-    % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/visionOS/Processed/Entities.json') as file:
-    % data = json.load(file)
     % for entity in data:
       case .${entity["name"][0].lower() + entity["name"][1:]}:
         return RealityPlatform.visionOS.${entity["name"]}(rawValue: entity)
