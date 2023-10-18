@@ -47,6 +47,7 @@ extension RealityPlatform.iOS {
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.iOS.Entity]?
+    private(set) public var components: [RealityPlatform.iOS.Component] = []
     public let id: UInt64
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
@@ -69,6 +70,7 @@ extension RealityPlatform.iOS.Entity {
     self.init(id: entity.id)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.components = entity.components.encoded
     self.name = entity.name
     self.parentID = entity.parent?.id
   }
@@ -162,6 +164,7 @@ extension RealityPlatform.macOS {
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.macOS.Entity]?
+    private(set) public var components: [RealityPlatform.macOS.Component] = []
     public let id: UInt64
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
@@ -184,6 +187,7 @@ extension RealityPlatform.macOS.Entity {
     self.init(id: entity.id)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.components = entity.components.encoded
     self.name = entity.name
     self.parentID = entity.parent?.id
   }
@@ -266,6 +270,7 @@ extension RealityPlatform.visionOS {
   public class Entity: Codable, Equatable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.Entity]?
+    private(set) public var components: [RealityPlatform.visionOS.Component] = []
     public let id: UInt64
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
@@ -288,6 +293,7 @@ extension RealityPlatform.visionOS.Entity {
     self.init(id: entity.id)
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
+    self.components = entity.components.encoded
     self.name = entity.name
     self.parentID = entity.parent?.id
   }

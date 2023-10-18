@@ -4,7 +4,7 @@ import XCTest
 @testable import RealityCodable
 
 final class RealityCodableTests: XCTestCase {
-  func testEntityEncoding_happyPath() {
+  func testEntityEncoding() {
     let entity = RealityKit.Entity()
     entity.name = "...tity"
     entity.addChild(Entity())
@@ -12,7 +12,24 @@ final class RealityCodableTests: XCTestCase {
     entity.addChild(AnchorEntity())
 
     let n = RealityPlatform.visionOS.Entity(rawValue: entity)
-    
+
     XCTAssertEqual(n.children?.count, 3)
+  }
+
+  func testEntityWithComponentsEncoding() {
+    let entity = RealityKit.Entity()
+    entity.name = "...tity"
+    let n = RealityPlatform.visionOS.Entity(rawValue: entity)
+
+    // Default components for Entity:
+    // - SynchronizationComponent
+    // - Transform
+    XCTAssertEqual(n.components.count, 2)
+
+    // Add another component
+    entity.components[AccessibilityComponent.self] = AccessibilityComponent()
+    let m = RealityPlatform.visionOS.Entity(rawValue: entity)
+
+    XCTAssertEqual(m.components.count, 3)
   }
 }
