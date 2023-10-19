@@ -9,7 +9,7 @@ import RealitySymbols
 
 #if os(iOS)
 extension RealityKit.Entity {
-  var encoded: RealityPlatform.iOS.EntityType {
+  public var encoded: RealityPlatform.iOS.EntityType {
     switch "\(type(of: self))" {
       case "AnchorEntity":
         return .anchorEntity(.init(rawValue: self))
@@ -41,7 +41,7 @@ extension RealityKit.Entity {
 
 #if os(macOS)
 extension RealityKit.Entity {
-  var encoded: RealityPlatform.macOS.EntityType {
+  public var encoded: RealityPlatform.macOS.EntityType {
     switch "\(type(of: self))" {
       case "AnchorEntity":
         return .anchorEntity(.init(rawValue: self))
@@ -71,7 +71,7 @@ extension RealityKit.Entity {
 
 #if os(visionOS)
 extension RealityKit.Entity {
-  var encoded: RealityPlatform.visionOS.EntityType {
+  public var encoded: RealityPlatform.visionOS.EntityType {
     switch "\(type(of: self))" {
       case "AnchorEntity":
         return .anchorEntity(.init(rawValue: self))

@@ -12,7 +12,7 @@ import RealitySymbols
 % data = json.load(file)
 
 extension RealityPlatform.iOS {
-  public enum EntityType {
+  public enum EntityType: Equatable {
     % for entity in data:
     case ${entity["name"][0].lower() + entity["name"][1:]}(${entity["name"]})
     %end
@@ -75,7 +75,7 @@ extension RealityPlatform.iOS.EntityType: Codable {
 % data = json.load(file)
 
 extension RealityPlatform.macOS {
-  public enum EntityType {
+  public enum EntityType: Equatable {
     % for entity in data:
     case ${entity["name"][0].lower() + entity["name"][1:]}(${entity["name"]})
     %end
@@ -138,7 +138,7 @@ extension RealityPlatform.macOS.EntityType: Codable {
 % data = json.load(file)
 
 extension RealityPlatform.visionOS {
-  public enum EntityType {
+  public enum EntityType: Equatable {
     % for entity in data:
     case ${entity["name"][0].lower() + entity["name"][1:]}(${entity["name"]})
     %end

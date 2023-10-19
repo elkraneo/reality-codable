@@ -74,10 +74,10 @@ extension RealityPlatform.visionOS {
    ```
   */
   public struct Scene: Codable, Equatable {
-    public let children: [RealityPlatform.visionOS.Entity]
+    public let children: [RealityPlatform.visionOS.EntityType]
 
     public init(
-      children: [RealityPlatform.visionOS.Entity]
+      children: [RealityPlatform.visionOS.EntityType]
     ) {
       self.children = children
     }

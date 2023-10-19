@@ -8,7 +8,7 @@ import RealitySymbols
 
 
 extension RealityPlatform.iOS {
-  public enum EntityType {
+  public enum EntityType: Equatable {
     case anchorEntity(AnchorEntity)
     case bodyTrackedEntity(BodyTrackedEntity)
     case directionalLight(DirectionalLight)
@@ -123,7 +123,7 @@ extension RealityPlatform.iOS.EntityType: Codable {
 
 
 extension RealityPlatform.macOS {
-  public enum EntityType {
+  public enum EntityType: Equatable {
     case anchorEntity(AnchorEntity)
     case directionalLight(DirectionalLight)
     case entity(Entity)
@@ -230,7 +230,7 @@ extension RealityPlatform.macOS.EntityType: Codable {
 
 
 extension RealityPlatform.visionOS {
-  public enum EntityType {
+  public enum EntityType: Equatable {
     case anchorEntity(AnchorEntity)
     case entity(Entity)
     case modelEntity(ModelEntity)

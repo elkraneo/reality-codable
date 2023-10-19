@@ -380,8 +380,8 @@ extension RealityPlatform.visionOS {
   public class Entity: Codable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.EntityType] = []
-    public var childrenOptional: [RealityPlatform.visionOS.EntityType]? {
-      children.isEmpty ? nil : children
+    public var childrenOptional: [RealityPlatform.visionOS.Entity]? {
+      children.isEmpty ? nil : children.map(\.value)
     }
     private(set) public var components: [RealityPlatform.visionOS.Component] = []
     public let id: UInt64
