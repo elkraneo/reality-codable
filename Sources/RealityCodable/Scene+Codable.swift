@@ -94,7 +94,7 @@ extension RealityPlatform.visionOS.Scene {
       return root
     }
 
-    for child in root.children {
+    for child in root.children.map(\.value) {
       if let foundNode = findEntity(id: targetID, root: child) {
         return foundNode
       }

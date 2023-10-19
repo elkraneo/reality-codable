@@ -11,25 +11,25 @@ final class RealityCodableTests: XCTestCase {
     entity.addChild(ModelEntity())
     entity.addChild(AnchorEntity())
 
-    let n = RealityPlatform.visionOS.Entity(entity: entity)
+    let n = RealityPlatform.visionOS.EntityType.entity(.init(entity))
 
-    XCTAssertEqual(n.children.count, 3)
+    XCTAssertEqual(n.value.children.count, 3)
   }
 
   func testEntityWithComponentsEncoding() {
     let entity = RealityKit.Entity()
     entity.name = "...tity"
-    let n = RealityPlatform.visionOS.Entity(entity: entity)
+    let n = RealityPlatform.visionOS.EntityType.entity(.init(entity))
 
     // Default components for Entity:
     // - SynchronizationComponent
     // - Transform
-    XCTAssertEqual(n.components.count, 2)
+    XCTAssertEqual(n.value.components.count, 2)
 
     // Add another component
     entity.components[AccessibilityComponent.self] = AccessibilityComponent()
-    let m = RealityPlatform.visionOS.Entity(entity: entity)
+    let m = RealityPlatform.visionOS.EntityType.entity(.init(entity))
 
-    XCTAssertEqual(m.components.count, 3)
+    XCTAssertEqual(m.value.components.count, 3)
   }
 }

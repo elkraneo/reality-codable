@@ -15,50 +15,55 @@ import RealitySymbols
 
 //MARK: ${entity["name"]}
 
-extension RealityPlatform.iOS {
 %if entity["name"] == "Entity":
-  public class ${entity["name"]}: Codable, Equatable, Identifiable {
+extension RealityPlatform.iOS {
+  public class Entity: Codable, Identifiable {
     private(set) public var accessibilityDescription: String?
-    private(set) public var children: [RealityPlatform.iOS.Entity] = []
-    public var childrenOptional: [RealityPlatform.iOS.Entity]? {
+    private(set) public var children: [RealityPlatform.iOS.EntityType] = []
+    public var childrenOptional: [RealityPlatform.iOS.EntityType]? {
       children.isEmpty ? nil : children
     }
     private(set) public var components: [RealityPlatform.iOS.Component] = []
     public let id: UInt64
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
-
-    init(
-      id: UInt64
-    ) {
-      self.id = id
-    }
     
-    public static func == (lhs: RealityPlatform.iOS.Entity, rhs: RealityPlatform.iOS.Entity) -> Bool {
-      lhs.id == rhs.id
+    #if os(iOS)
+    init(
+    _ entity: RealityKit.Entity
+    ) {
+      self.accessibilityDescription = entity.accessibilityDescription
+      self.children = entity.children.map(\.encoded)
+      self.components = entity.components.encoded
+      self.id = entity.id
+      self.name = entity.name
+      self.parentID = entity.parent?.id
     }
+    #endif
   }
-%else:
-  public class ${entity["name"]}: RealityPlatform.iOS.Entity {}
-%end
 }
 
-#if os(iOS)
-%if entity["name"] == "Entity":
-extension RealityPlatform.iOS.Entity {
-  convenience init(rawValue entity: RealityKit.Entity) {
-    self.init(id: entity.id)
-    self.accessibilityDescription = entity.accessibilityDescription
-    self.children = entity.children.map(\.encoded)
-    self.components = entity.components.encoded
-    self.name = entity.name
-    self.parentID = entity.parent?.id
+extension RealityPlatform.iOS.Entity: Equatable {
+  public static func == (lhs: RealityPlatform.iOS.Entity, rhs: RealityPlatform.iOS.Entity) -> Bool {
+    lhs.id == rhs.id
   }
 }
 %else:
-extension RealityPlatform.iOS.${entity["name"]} {}
+extension RealityPlatform.iOS {
+  public class ${entity["name"]}: RealityPlatform.iOS.Entity {
+    
+    #if os(iOS)
+    init(rawValue entity: RealityKit.Entity) {
+      super.init(entity)
+    }
+    #endif
+    
+    required init(from decoder: Decoder) throws {
+      try super.init(from: decoder)
+    }
+  }
+}
 %end
-#endif
 %end
 
 //MARK: - macOS
@@ -70,50 +75,55 @@ extension RealityPlatform.iOS.${entity["name"]} {}
 
 //MARK: ${entity["name"]}
 
-extension RealityPlatform.macOS {
 %if entity["name"] == "Entity":
-  public class ${entity["name"]}: Codable, Equatable, Identifiable {
+extension RealityPlatform.macOS {
+  public class Entity: Codable, Identifiable {
     private(set) public var accessibilityDescription: String?
-    private(set) public var children: [RealityPlatform.macOS.Entity] = []
-    public var childrenOptional: [RealityPlatform.macOS.Entity]? {
+    private(set) public var children: [RealityPlatform.macOS.EntityType] = []
+    public var childrenOptional: [RealityPlatform.macOS.EntityType]? {
       children.isEmpty ? nil : children
     }
     private(set) public var components: [RealityPlatform.macOS.Component] = []
     public let id: UInt64
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
-
-    init(
-      id: UInt64
-    ) {
-      self.id = id
-    }
     
-    public static func == (lhs: RealityPlatform.macOS.Entity, rhs: RealityPlatform.macOS.Entity) -> Bool {
-      lhs.id == rhs.id
+    #if os(macOS)
+    init(
+    _ entity: RealityKit.Entity
+    ) {
+      self.accessibilityDescription = entity.accessibilityDescription
+      self.children = entity.children.map(\.encoded)
+      self.components = entity.components.encoded
+      self.id = entity.id
+      self.name = entity.name
+      self.parentID = entity.parent?.id
     }
+    #endif
   }
-%else:
-  public class ${entity["name"]}: RealityPlatform.macOS.Entity {}
-%end
 }
 
-#if os(macOS)
-%if entity["name"] == "Entity":
-extension RealityPlatform.macOS.Entity {
-  convenience init(rawValue entity: RealityKit.Entity) {
-    self.init(id: entity.id)
-    self.accessibilityDescription = entity.accessibilityDescription
-    self.children = entity.children.map(\.encoded)
-    self.components = entity.components.encoded
-    self.name = entity.name
-    self.parentID = entity.parent?.id
+extension RealityPlatform.macOS.Entity: Equatable {
+  public static func == (lhs: RealityPlatform.macOS.Entity, rhs: RealityPlatform.macOS.Entity) -> Bool {
+    lhs.id == rhs.id
   }
 }
 %else:
-extension RealityPlatform.macOS.${entity["name"]} {}
+extension RealityPlatform.macOS {
+  public class ${entity["name"]}: RealityPlatform.macOS.Entity {
+    
+    #if os(macOS)
+    init(rawValue entity: RealityKit.Entity) {
+      super.init(entity)
+    }
+    #endif
+    
+    required init(from decoder: Decoder) throws {
+      try super.init(from: decoder)
+    }
+  }
+}
 %end
-#endif
 %end
 
 //MARK: - visionOS
@@ -129,38 +139,27 @@ extension RealityPlatform.macOS.${entity["name"]} {}
 extension RealityPlatform.visionOS {
   public class Entity: Codable, Identifiable {
     private(set) public var accessibilityDescription: String?
-    private(set) public var children: [RealityPlatform.visionOS.Entity] = []
-    public var childrenOptional: [RealityPlatform.visionOS.Entity]? {
+    private(set) public var children: [RealityPlatform.visionOS.EntityType] = []
+    public var childrenOptional: [RealityPlatform.visionOS.EntityType]? {
       children.isEmpty ? nil : children
     }
     private(set) public var components: [RealityPlatform.visionOS.Component] = []
-    public let entityType: EntityType
     public let id: UInt64
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
-
-    fileprivate init(
-      id: UInt64,
-      entityType: EntityType
+    
+    #if os(visionOS)
+    init(
+    _ entity: RealityKit.Entity
     ) {
-      self.id = id
-      self.entityType = entityType
+      self.accessibilityDescription = entity.accessibilityDescription
+      self.children = entity.children.map(\.encoded)
+      self.components = entity.components.encoded
+      self.id = entity.id
+      self.name = entity.name
+      self.parentID = entity.parent?.id
     }
-  }
-}
-
-extension RealityPlatform.visionOS.Entity {
-  public var casted: RealityPlatform.visionOS.Entity {
-    switch self.entityType {
-      % for entity in data:
-      case .${entity["name"][0].lower() + entity["name"][1:]}:
-        %if entity["name"] == "Entity":
-        return self
-        %else:
-        return self as! RealityPlatform.visionOS.${entity["name"]}
-        %end
-      %end
-    }
+    #endif
   }
 }
 
@@ -171,37 +170,18 @@ extension RealityPlatform.visionOS.Entity: Equatable {
 }
 %else:
 extension RealityPlatform.visionOS {
-  public class ${entity["name"]}: RealityPlatform.visionOS.Entity {}
-}
-%end
-
-#if os(visionOS)
-%if entity["name"] == "Entity":
-extension RealityPlatform.visionOS.Entity {
-  convenience init(
-    _ entity: RealityKit.Entity,
-    entityType: RealityPlatform.visionOS.EntityType = .entity
-  ) {
-    self.init(
-      id: entity.id,
-      entityType: entityType
-    )
-    self.accessibilityDescription = entity.accessibilityDescription
-    self.children = entity.children.map(\.encoded)
-    self.components = entity.components.encoded
-    self.name = entity.name
-    self.parentID = entity.parent?.id
-  }
-}
-%else:
-extension RealityPlatform.visionOS.${entity["name"]} {
-  convenience init(rawValue entity: RealityKit.Entity) {
-    self.init(
-      entity: entity,
-      entityType: .${entity["name"][0].lower() + entity["name"][1:]}
-    )
+  public class ${entity["name"]}: RealityPlatform.visionOS.Entity {
+    
+    #if os(visionOS)
+    init(rawValue entity: RealityKit.Entity) {
+      super.init(entity)
+    }
+    #endif
+    
+    required init(from decoder: Decoder) throws {
+      try super.init(from: decoder)
+    }
   }
 }
 %end
-#endif
 %end
