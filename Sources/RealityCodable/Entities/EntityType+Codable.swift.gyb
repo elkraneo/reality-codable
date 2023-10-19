@@ -6,10 +6,23 @@ import RealityKit
 import RealitySymbols
 % import json
 
-#if os(iOS)
+//MARK: - iOS
+
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Entities.json') as file:
 % data = json.load(file)
 
+extension RealityPlatform.iOS.EntityType {
+  public var codableType: RealityPlatform.iOS.Entity.Type  {
+    switch self {
+      % for entity in data:
+      case .${entity["name"][0].lower() + entity["name"][1:]}:
+        return RealityPlatform.iOS.${entity["name"]}.self
+      %end
+    }
+  }
+}
+
+#if os(iOS)
 extension RealityPlatform.iOS.EntityType {
   func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.iOS.Entity {
     switch self {
@@ -20,11 +33,25 @@ extension RealityPlatform.iOS.EntityType {
     }
   }
 }
+#endif
 
-#elseif os(macOS)
+//MARK: - macOS
+
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Entities.json') as file:
 % data = json.load(file)
 
+extension RealityPlatform.macOS.EntityType {
+  public var codableType: RealityPlatform.macOS.Entity.Type  {
+    switch self {
+      % for entity in data:
+      case .${entity["name"][0].lower() + entity["name"][1:]}:
+        return RealityPlatform.macOS.${entity["name"]}.self
+      %end
+    }
+  }
+}
+
+#if os(macOS)
 extension RealityPlatform.macOS.EntityType {
   func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.macOS.Entity {
     switch self {
@@ -35,20 +62,33 @@ extension RealityPlatform.macOS.EntityType {
     }
   }
 }
+#endif
 
-#elseif os(visionOS)
+//MARK: - visionOS
+
 % with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/visionOS/Processed/Entities.json') as file:
 % data = json.load(file)
 
 extension RealityPlatform.visionOS.EntityType {
-  func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.visionOS.Entity {
+  public var codableType: RealityPlatform.visionOS.Entity.Type  {
     switch self {
-    % for entity in data:
+      % for entity in data:
       case .${entity["name"][0].lower() + entity["name"][1:]}:
-        return RealityPlatform.visionOS.${entity["name"]}(rawValue: entity)
-    %end
+        return RealityPlatform.visionOS.${entity["name"]}.self
+      %end
     }
   }
 }
 
+#if os(visionOS)
+extension RealityPlatform.visionOS.EntityType {
+  func makeCodable(from entity: RealityKit.Entity) -> RealityPlatform.visionOS.Entity {
+    switch self {
+      % for entity in data:
+      case .${entity["name"][0].lower() + entity["name"][1:]}:
+        return RealityPlatform.visionOS.${entity["name"]}(rawValue: entity)
+      %end
+    }
+  }
+}
 #endif

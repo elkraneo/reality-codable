@@ -10,7 +10,7 @@ extension RealityKit.Entity {
       let logger = Logger(subsystem: "iOS.reality-codable", category: "Entity.encoded")
 
       for entityType in RealityPlatform.iOS.EntityType.allCases {
-        if "\(type(of: self))" == entityType.description {
+        if type(of: self) == entityType.rawType {
           return entityType.makeCodable(from: self)
         }
       }
@@ -29,7 +29,7 @@ extension RealityKit.Entity {
       let logger = Logger(subsystem: "macOS.reality-codable", category: "Entity.encoded")
 
       for entityType in RealityPlatform.macOS.EntityType.allCases {
-        if "\(type(of: self))" == entityType.description {
+        if type(of: self) == entityType.rawType {
           return entityType.makeCodable(from: self)
         }
       }
@@ -48,7 +48,7 @@ extension RealityKit.Entity {
       let logger = Logger(subsystem: "visionOS.reality-codable", category: "Entity.encoded")
     
       for entityType in RealityPlatform.visionOS.EntityType.allCases {
-        if "\(type(of: self))" == entityType.description {
+        if type(of: self) == entityType.rawType {
            return entityType.makeCodable(from: self)
         }
       }
@@ -58,7 +58,7 @@ extension RealityKit.Entity {
         "\(String(data: data, encoding: .utf8)!, privacy: .public) — Unknown visionOS EntityType case"
       )
       
-      return RealityPlatform.visionOS.Entity(rawValue: self)
+      return RealityPlatform.visionOS.Entity(entity: self)
     }
 
   #endif

@@ -125,39 +125,67 @@ extension RealityPlatform.macOS.${entity["name"]} {}
 
 //MARK: ${entity["name"]}
 
-extension RealityPlatform.visionOS {
 %if entity["name"] == "Entity":
-  public class ${entity["name"]}: Codable, Equatable, Identifiable {
+extension RealityPlatform.visionOS {
+  public class Entity: Codable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.Entity] = []
     public var childrenOptional: [RealityPlatform.visionOS.Entity]? {
       children.isEmpty ? nil : children
     }
     private(set) public var components: [RealityPlatform.visionOS.Component] = []
+    public let entityType: EntityType
     public let id: UInt64
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
 
-    init(
-      id: UInt64
+    fileprivate init(
+      id: UInt64,
+      entityType: EntityType
     ) {
       self.id = id
-    }
-    
-    public static func == (lhs: RealityPlatform.visionOS.Entity, rhs: RealityPlatform.visionOS.Entity) -> Bool {
-      lhs.id == rhs.id
+      self.entityType = entityType
     }
   }
-%else:
-  public class ${entity["name"]}: RealityPlatform.visionOS.Entity {}
-%end
 }
+
+extension RealityPlatform.visionOS.Entity {
+  public var casted: RealityPlatform.visionOS.Entity {
+    switch self.entityType {
+      % for entity in data:
+      case .${entity["name"][0].lower() + entity["name"][1:]}:
+        %if entity["name"] == "Entity":
+        return self
+        %else:
+        return self as! RealityPlatform.visionOS.${entity["name"]}
+        %end
+      %end
+    }
+  }
+}
+
+extension RealityPlatform.visionOS.Entity: Equatable {
+  public static func == (lhs: RealityPlatform.visionOS.Entity, rhs: RealityPlatform.visionOS.Entity) -> Bool {
+    lhs.id == rhs.id
+  }
+}
+%else:
+extension RealityPlatform.visionOS {
+  public class ${entity["name"]}: RealityPlatform.visionOS.Entity {}
+}
+%end
 
 #if os(visionOS)
 %if entity["name"] == "Entity":
 extension RealityPlatform.visionOS.Entity {
-  convenience init(rawValue entity: RealityKit.Entity) {
-    self.init(id: entity.id)
+  convenience init(
+    _ entity: RealityKit.Entity,
+    entityType: RealityPlatform.visionOS.EntityType = .entity
+  ) {
+    self.init(
+      id: entity.id,
+      entityType: entityType
+    )
     self.accessibilityDescription = entity.accessibilityDescription
     self.children = entity.children.map(\.encoded)
     self.components = entity.components.encoded
@@ -166,7 +194,14 @@ extension RealityPlatform.visionOS.Entity {
   }
 }
 %else:
-extension RealityPlatform.visionOS.${entity["name"]} {}
+extension RealityPlatform.visionOS.${entity["name"]} {
+  convenience init(rawValue entity: RealityKit.Entity) {
+    self.init(
+      entity: entity,
+      entityType: .${entity["name"][0].lower() + entity["name"][1:]}
+    )
+  }
+}
 %end
 #endif
 %end

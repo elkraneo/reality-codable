@@ -266,45 +266,72 @@ extension RealityPlatform.visionOS {
 }
 
 #if os(visionOS)
-extension RealityPlatform.visionOS.AnchorEntity {}
+extension RealityPlatform.visionOS.AnchorEntity {
+  convenience init(rawValue entity: RealityKit.Entity) {
+    self.init(
+      entity: entity,
+      entityType: .anchorEntity
+    )
+  }
+}
 #endif
 
 
 //MARK: Entity
 
 extension RealityPlatform.visionOS {
-  public class Entity: Codable, Equatable, Identifiable {
+  public class Entity: Codable, Identifiable {
     private(set) public var accessibilityDescription: String?
     private(set) public var children: [RealityPlatform.visionOS.Entity] = []
     public var childrenOptional: [RealityPlatform.visionOS.Entity]? {
       children.isEmpty ? nil : children
     }
     private(set) public var components: [RealityPlatform.visionOS.Component] = []
+    public let entityType: EntityType
     public let id: UInt64
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
 
-    init(
-      id: UInt64
+    fileprivate init(
+      id: UInt64,
+      entityType: EntityType
     ) {
       self.id = id
-    }
-    
-    public static func == (lhs: RealityPlatform.visionOS.Entity, rhs: RealityPlatform.visionOS.Entity) -> Bool {
-      lhs.id == rhs.id
+      self.entityType = entityType
     }
   }
 }
 
-#if os(visionOS)
 extension RealityPlatform.visionOS.Entity {
+  public var casted: RealityPlatform.visionOS.Entity {
+    switch self.entityType {
+      case .anchorEntity:
+        return self as! RealityPlatform.visionOS.AnchorEntity
+      case .entity:
+        return self
+      case .modelEntity:
+        return self as! RealityPlatform.visionOS.ModelEntity
+      case .perspectiveCamera:
+        return self as! RealityPlatform.visionOS.PerspectiveCamera
+      case .triggerVolume:
+        return self as! RealityPlatform.visionOS.TriggerVolume
+    }
+  }
+}
+
+extension RealityPlatform.visionOS.Entity: Equatable {
+  public static func == (lhs: RealityPlatform.visionOS.Entity, rhs: RealityPlatform.visionOS.Entity) -> Bool {
+    lhs.id == rhs.id
+  }
+}
+
+#if os(visionOS)
+extension RealityPlatform.visionOS.TriggerVolume {
   convenience init(rawValue entity: RealityKit.Entity) {
-    self.init(id: entity.id)
-    self.accessibilityDescription = entity.accessibilityDescription
-    self.children = entity.children.map(\.encoded)
-    self.components = entity.components.encoded
-    self.name = entity.name
-    self.parentID = entity.parent?.id
+    self.init(
+      entity: entity,
+      entityType: .triggerVolume
+    )
   }
 }
 #endif
@@ -317,7 +344,14 @@ extension RealityPlatform.visionOS {
 }
 
 #if os(visionOS)
-extension RealityPlatform.visionOS.ModelEntity {}
+extension RealityPlatform.visionOS.ModelEntity {
+  convenience init(rawValue entity: RealityKit.Entity) {
+    self.init(
+      entity: entity,
+      entityType: .modelEntity
+    )
+  }
+}
 #endif
 
 
@@ -328,7 +362,14 @@ extension RealityPlatform.visionOS {
 }
 
 #if os(visionOS)
-extension RealityPlatform.visionOS.PerspectiveCamera {}
+extension RealityPlatform.visionOS.PerspectiveCamera {
+  convenience init(rawValue entity: RealityKit.Entity) {
+    self.init(
+      entity: entity,
+      entityType: .perspectiveCamera
+    )
+  }
+}
 #endif
 
 
@@ -339,5 +380,12 @@ extension RealityPlatform.visionOS {
 }
 
 #if os(visionOS)
-extension RealityPlatform.visionOS.TriggerVolume {}
+extension RealityPlatform.visionOS.TriggerVolume {
+  convenience init(rawValue entity: RealityKit.Entity) {
+    self.init(
+      entity: entity,
+      entityType: .triggerVolume
+    )
+  }
+}
 #endif
