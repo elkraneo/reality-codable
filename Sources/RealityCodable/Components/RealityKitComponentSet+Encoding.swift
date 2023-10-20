@@ -1,6 +1,5 @@
 import Foundation
 import RealityKit
-import RealitySymbols
 
 extension RealityKit.Entity.ComponentSet {
 

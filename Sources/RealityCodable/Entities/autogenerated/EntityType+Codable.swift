@@ -2,7 +2,6 @@
 
 import Foundation
 import RealityKit
-import RealitySymbols
 
 //MARK: - iOS
 

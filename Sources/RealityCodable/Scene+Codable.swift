@@ -1,7 +1,6 @@
 import AnyCodable
 import Foundation
 import RealityKit
-import RealitySymbols
 
 extension RealityPlatform.iOS {
   /**

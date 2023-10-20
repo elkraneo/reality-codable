@@ -19,7 +19,6 @@ let package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/Flight-School/AnyCodable", from: "0.6.0"),
-    .package(url: "https://github.com/elkraneo/reality-symbols", branch: "main"),
   ],
   targets: [
     // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -28,7 +27,6 @@ let package = Package(
       name: "RealityCodable",
       dependencies: [
         .product(name: "AnyCodable", package: "AnyCodable"),
-        .product(name: "RealitySymbols", package: "reality-symbols"),
       ]
     ),
     .testTarget(

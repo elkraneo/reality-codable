@@ -1,14 +1,14 @@
 % warning = "This file was automatically generated and should not be edited."
 // ${warning}
 
-% import json
 import Foundation
 import RealityKit
-import RealitySymbols
+% import json
+% symbols_path = "../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted"
 
 //MARK: - iOS
 
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Entities.json') as file:
+% with open(f'{symbols_path}/iOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
 
@@ -68,7 +68,7 @@ extension RealityPlatform.iOS {
 
 //MARK: - macOS
 
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Entities.json') as file:
+% with open(f'{symbols_path}/macOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
 
@@ -128,7 +128,7 @@ extension RealityPlatform.macOS {
 
 //MARK: - visionOS
 
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/visionOS/Processed/Entities.json') as file:
+% with open(f'{symbols_path}/visionOS/Processed/Entities.json') as file:
 % data = json.load(file)
 % for entity in data:
 

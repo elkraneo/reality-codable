@@ -3,11 +3,11 @@
 
 import Foundation
 import RealityKit
-import RealitySymbols
 % import json
+% symbols_path = "../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted"
 
 #if os(iOS)
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/iOS/Processed/Components.json') as file:
+% with open(f'{symbols_path}/iOS/Processed/Components.json') as file:
 % data = json.load(file)
 
 extension RealityPlatform.iOS.ComponentType {
@@ -22,7 +22,7 @@ extension RealityPlatform.iOS.ComponentType {
 }
 
 #elseif os(macOS)
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/macOS/Processed/Components.json') as file:
+% with open(f'{symbols_path}/macOS/Processed/Components.json') as file:
 % data = json.load(file)
 
 extension RealityPlatform.macOS.ComponentType {
@@ -37,7 +37,7 @@ extension RealityPlatform.macOS.ComponentType {
 }
 
 #elseif os(visionOS)
-% with open('../../../../../../RealitySymbols/source/reality-symbols/Sources/RealitySymbols/Extracted/visionOS/Processed/Components.json') as file:
+% with open(f'{symbols_path}/visionOS/Processed/Components.json') as file:
 % data = json.load(file)
 
 extension RealityPlatform.visionOS.ComponentType {
