@@ -66,12 +66,11 @@ extension RealityPlatform.iOS {
 extension RealityPlatform.iOS {
   public class Entity: Codable, Identifiable {
     private(set) public var accessibilityDescription: String?
+    private(set) public var accessibilityLabel: String?
     private(set) public var children: [RealityPlatform.iOS.EntityType] = []
-    public var childrenOptional: [RealityPlatform.iOS.EntityType]? {
-      children.isEmpty ? nil : children
-    }
     private(set) public var components: [RealityPlatform.iOS.Component] = []
     public let id: UInt64
+    public let isAccessibilityElement: Bool
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
     
@@ -80,9 +79,11 @@ extension RealityPlatform.iOS {
     _ entity: RealityKit.Entity
     ) {
       self.accessibilityDescription = entity.accessibilityDescription
+      self.accessibilityLabel = entity.accessibilityLabel
       self.children = entity.children.map(\.encoded)
       self.components = entity.components.encoded
       self.id = entity.id
+      self.isAccessibilityElement = entity.isAccessibilityElement
       self.name = entity.name
       self.parentID = entity.parent?.id
     }
@@ -231,12 +232,11 @@ extension RealityPlatform.macOS {
 extension RealityPlatform.macOS {
   public class Entity: Codable, Identifiable {
     private(set) public var accessibilityDescription: String?
+    private(set) public var accessibilityLabel: String?
     private(set) public var children: [RealityPlatform.macOS.EntityType] = []
-    public var childrenOptional: [RealityPlatform.macOS.EntityType]? {
-      children.isEmpty ? nil : children
-    }
     private(set) public var components: [RealityPlatform.macOS.Component] = []
     public let id: UInt64
+    public let isAccessibilityElement: Bool
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
     
@@ -245,9 +245,11 @@ extension RealityPlatform.macOS {
     _ entity: RealityKit.Entity
     ) {
       self.accessibilityDescription = entity.accessibilityDescription
+      self.accessibilityLabel = entity.accessibilityLabel
       self.children = entity.children.map(\.encoded)
       self.components = entity.components.encoded
       self.id = entity.id
+      self.isAccessibilityElement = entity.isAccessibilityElement
       self.name = entity.name
       self.parentID = entity.parent?.id
     }
@@ -378,12 +380,11 @@ extension RealityPlatform.visionOS {
 extension RealityPlatform.visionOS {
   public class Entity: Codable, Identifiable {
     private(set) public var accessibilityDescription: String?
+    private(set) public var accessibilityLabel: String?
     private(set) public var children: [RealityPlatform.visionOS.EntityType] = []
-    public var childrenOptional: [RealityPlatform.visionOS.EntityType]? {
-      children.isEmpty ? nil : children
-    }
     private(set) public var components: [RealityPlatform.visionOS.Component] = []
     public let id: UInt64
+    public let isAccessibilityElement: Bool
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
     
@@ -392,9 +393,11 @@ extension RealityPlatform.visionOS {
     _ entity: RealityKit.Entity
     ) {
       self.accessibilityDescription = entity.accessibilityDescription
+      self.accessibilityLabel = entity.accessibilityLabel
       self.children = entity.children.map(\.encoded)
       self.components = entity.components.encoded
       self.id = entity.id
+      self.isAccessibilityElement = entity.isAccessibilityElement
       self.name = entity.name
       self.parentID = entity.parent?.id
     }
