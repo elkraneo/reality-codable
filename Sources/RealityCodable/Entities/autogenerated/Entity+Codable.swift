@@ -71,6 +71,11 @@ extension RealityPlatform.iOS {
     private(set) public var components: [RealityPlatform.iOS.Component] = []
     public let id: UInt64
     public let isAccessibilityElement: Bool
+    public let isActive: Bool
+    public let isAnchored: Bool
+    public let isEnabled: Bool
+    public let isEnabledInHierarchy: Bool
+    public let isOwner: Bool
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
     
@@ -84,6 +89,11 @@ extension RealityPlatform.iOS {
       self.components = entity.components.encoded
       self.id = entity.id
       self.isAccessibilityElement = entity.isAccessibilityElement
+      self.isActive = entity.isActive
+      self.isAnchored = entity.isAnchored
+      self.isEnabled = entity.isEnabled
+      self.isEnabledInHierarchy = entity.isEnabledInHierarchy
+      self.isOwner = entity.isOwner
       self.name = entity.name
       self.parentID = entity.parent?.id
     }
@@ -237,6 +247,11 @@ extension RealityPlatform.macOS {
     private(set) public var components: [RealityPlatform.macOS.Component] = []
     public let id: UInt64
     public let isAccessibilityElement: Bool
+    public let isActive: Bool
+    public let isAnchored: Bool
+    public let isEnabled: Bool
+    public let isEnabledInHierarchy: Bool
+    public let isOwner: Bool
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
     
@@ -250,6 +265,11 @@ extension RealityPlatform.macOS {
       self.components = entity.components.encoded
       self.id = entity.id
       self.isAccessibilityElement = entity.isAccessibilityElement
+      self.isActive = entity.isActive
+      self.isAnchored = entity.isAnchored
+      self.isEnabled = entity.isEnabled
+      self.isEnabledInHierarchy = entity.isEnabledInHierarchy
+      self.isOwner = entity.isOwner
       self.name = entity.name
       self.parentID = entity.parent?.id
     }
@@ -385,6 +405,11 @@ extension RealityPlatform.visionOS {
     private(set) public var components: [RealityPlatform.visionOS.Component] = []
     public let id: UInt64
     public let isAccessibilityElement: Bool
+    public let isActive: Bool
+    public let isAnchored: Bool
+    public let isEnabled: Bool
+    public let isEnabledInHierarchy: Bool
+    public let isOwner: Bool
     private(set) public var name: String?
     private(set) public var parentID: UInt64?
     
@@ -398,6 +423,11 @@ extension RealityPlatform.visionOS {
       self.components = entity.components.encoded
       self.id = entity.id
       self.isAccessibilityElement = entity.isAccessibilityElement
+      self.isActive = entity.isActive
+      self.isAnchored = entity.isAnchored
+      self.isEnabled = entity.isEnabled
+      self.isEnabledInHierarchy = entity.isEnabledInHierarchy
+      self.isOwner = entity.isOwner
       self.name = entity.name
       self.parentID = entity.parent?.id
     }
