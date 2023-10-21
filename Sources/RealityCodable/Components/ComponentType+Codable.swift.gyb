@@ -45,7 +45,7 @@ extension RealityPlatform.visionOS.ComponentType {
     switch self {
       % for component in data:
       case .${component["name"][0].lower() + component["name"][1:]}:
-        return .${component["name"][0].lower() + component["name"][1:]}(.init(rawValue: component))
+        return .${component["name"][0].lower() + component["name"][1:]}(.init(rawValue: component as! ${component["name"]}))
       % end
     }
   }

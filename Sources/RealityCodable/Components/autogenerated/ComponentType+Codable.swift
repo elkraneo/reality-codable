@@ -91,67 +91,67 @@ extension RealityPlatform.visionOS.ComponentType {
   func makeCodable(from component: RealityKit.Component) -> RealityPlatform.visionOS.Component {
     switch self {
       case .accessibilityComponent:
-        return .accessibilityComponent(.init(rawValue: component))
+        return .accessibilityComponent(.init(rawValue: component as! AccessibilityComponent))
       case .adaptiveResolutionComponent:
-        return .adaptiveResolutionComponent(.init(rawValue: component))
+        return .adaptiveResolutionComponent(.init(rawValue: component as! AdaptiveResolutionComponent))
       case .ambientAudioComponent:
-        return .ambientAudioComponent(.init(rawValue: component))
+        return .ambientAudioComponent(.init(rawValue: component as! AmbientAudioComponent))
       case .anchoringComponent:
-        return .anchoringComponent(.init(rawValue: component))
+        return .anchoringComponent(.init(rawValue: component as! AnchoringComponent))
       case .audioMixGroupsComponent:
-        return .audioMixGroupsComponent(.init(rawValue: component))
+        return .audioMixGroupsComponent(.init(rawValue: component as! AudioMixGroupsComponent))
       case .channelAudioComponent:
-        return .channelAudioComponent(.init(rawValue: component))
+        return .channelAudioComponent(.init(rawValue: component as! ChannelAudioComponent))
       case .characterControllerComponent:
-        return .characterControllerComponent(.init(rawValue: component))
+        return .characterControllerComponent(.init(rawValue: component as! CharacterControllerComponent))
       case .characterControllerStateComponent:
-        return .characterControllerStateComponent(.init(rawValue: component))
+        return .characterControllerStateComponent(.init(rawValue: component as! CharacterControllerStateComponent))
       case .collisionComponent:
-        return .collisionComponent(.init(rawValue: component))
+        return .collisionComponent(.init(rawValue: component as! CollisionComponent))
       case .groundingShadowComponent:
-        return .groundingShadowComponent(.init(rawValue: component))
+        return .groundingShadowComponent(.init(rawValue: component as! GroundingShadowComponent))
       case .hoverEffectComponent:
-        return .hoverEffectComponent(.init(rawValue: component))
+        return .hoverEffectComponent(.init(rawValue: component as! HoverEffectComponent))
       case .imageBasedLightComponent:
-        return .imageBasedLightComponent(.init(rawValue: component))
+        return .imageBasedLightComponent(.init(rawValue: component as! ImageBasedLightComponent))
       case .imageBasedLightReceiverComponent:
-        return .imageBasedLightReceiverComponent(.init(rawValue: component))
+        return .imageBasedLightReceiverComponent(.init(rawValue: component as! ImageBasedLightReceiverComponent))
       case .inputTargetComponent:
-        return .inputTargetComponent(.init(rawValue: component))
+        return .inputTargetComponent(.init(rawValue: component as! InputTargetComponent))
       case .modelComponent:
-        return .modelComponent(.init(rawValue: component))
+        return .modelComponent(.init(rawValue: component as! ModelComponent))
       case .modelDebugOptionsComponent:
-        return .modelDebugOptionsComponent(.init(rawValue: component))
+        return .modelDebugOptionsComponent(.init(rawValue: component as! ModelDebugOptionsComponent))
       case .modelSortGroupComponent:
-        return .modelSortGroupComponent(.init(rawValue: component))
+        return .modelSortGroupComponent(.init(rawValue: component as! ModelSortGroupComponent))
       case .opacityComponent:
-        return .opacityComponent(.init(rawValue: component))
+        return .opacityComponent(.init(rawValue: component as! OpacityComponent))
       case .particleEmitterComponent:
-        return .particleEmitterComponent(.init(rawValue: component))
+        return .particleEmitterComponent(.init(rawValue: component as! ParticleEmitterComponent))
       case .perspectiveCameraComponent:
-        return .perspectiveCameraComponent(.init(rawValue: component))
+        return .perspectiveCameraComponent(.init(rawValue: component as! PerspectiveCameraComponent))
       case .physicsBodyComponent:
-        return .physicsBodyComponent(.init(rawValue: component))
+        return .physicsBodyComponent(.init(rawValue: component as! PhysicsBodyComponent))
       case .physicsMotionComponent:
-        return .physicsMotionComponent(.init(rawValue: component))
+        return .physicsMotionComponent(.init(rawValue: component as! PhysicsMotionComponent))
       case .physicsSimulationComponent:
-        return .physicsSimulationComponent(.init(rawValue: component))
+        return .physicsSimulationComponent(.init(rawValue: component as! PhysicsSimulationComponent))
       case .portalComponent:
-        return .portalComponent(.init(rawValue: component))
+        return .portalComponent(.init(rawValue: component as! PortalComponent))
       case .sceneUnderstandingComponent:
-        return .sceneUnderstandingComponent(.init(rawValue: component))
+        return .sceneUnderstandingComponent(.init(rawValue: component as! SceneUnderstandingComponent))
       case .spatialAudioComponent:
-        return .spatialAudioComponent(.init(rawValue: component))
+        return .spatialAudioComponent(.init(rawValue: component as! SpatialAudioComponent))
       case .synchronizationComponent:
-        return .synchronizationComponent(.init(rawValue: component))
+        return .synchronizationComponent(.init(rawValue: component as! SynchronizationComponent))
       case .textComponent:
-        return .textComponent(.init(rawValue: component))
+        return .textComponent(.init(rawValue: component as! TextComponent))
       case .transform:
-        return .transform(.init(rawValue: component))
+        return .transform(.init(rawValue: component as! Transform))
       case .videoPlayerComponent:
-        return .videoPlayerComponent(.init(rawValue: component))
+        return .videoPlayerComponent(.init(rawValue: component as! VideoPlayerComponent))
       case .worldComponent:
-        return .worldComponent(.init(rawValue: component))
+        return .worldComponent(.init(rawValue: component as! WorldComponent))
     }
   }
 }
