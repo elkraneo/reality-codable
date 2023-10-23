@@ -1051,8 +1051,8 @@ extension RealityPlatform.visionOS {
     public var translation: SIMD3<Float>
     public var hashValue: Int
     public var scale: SIMD3<Float>
-//    public var matrix: float4x4
-//    public var rotation: simd_quatf
+    public var matrix: CodableFloat4x4
+    public var rotation: CodableQuaternion
     public var comment: String?
     
     #if os(visionOS)
@@ -1060,8 +1060,8 @@ extension RealityPlatform.visionOS {
       self.translation = component.translation
       self.hashValue = component.hashValue
       self.scale = component.scale
-//      self.matrix = component.matrix
-//      self.rotation = component.rotation
+      self.matrix = CodableFloat4x4(component.matrix)
+      self.rotation = CodableQuaternion(component.rotation)
       self.comment = """
       A component that defines the scale, rotation, and translation of an entity.  An entity acquires a ``Transform`` component, as well as a set of methods for manipulating the transform, by adopting the ``HasTransform`` protocol. This is true for all entities, because the ``Entity`` base class adopts the protocol.
       """

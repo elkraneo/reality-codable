@@ -1,6 +1,10 @@
 import simd
 
-public struct CodableFloat4x4: Codable {
+public struct CodableFloat4x4: Codable, Equatable {
+  public static func == (lhs: CodableFloat4x4, rhs: CodableFloat4x4) -> Bool {
+    lhs.float4x4 == rhs.float4x4
+  }
+  
   let columns: (SIMD4<Float>, SIMD4<Float>, SIMD4<Float>, SIMD4<Float>)
 
   init(

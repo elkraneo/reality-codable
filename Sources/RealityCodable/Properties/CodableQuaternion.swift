@@ -1,7 +1,7 @@
 import simd
 
 // Wrapper struct for simd_quatf to make it Codable
-public struct CodableQuaternion: Codable {
+public struct CodableQuaternion: Codable, Equatable {
   let vector: SIMD4<Float>
 
   public init(
